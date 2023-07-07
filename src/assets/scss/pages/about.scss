@@ -1,6 +1,81 @@
 @import '../abstracts/Fontmodule.scss';
 @import '../abstracts/variables';
 
+@mixin set-section {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--sub-about);
+
+  .sectionWrap {
+    position: relative;
+    margin: 0 auto;
+    width: 70rem;
+    height: 35rem;
+
+    .aboutTextWrap {
+      position: absolute;
+      top: 4rem;
+
+      & > :first-child {
+        margin-bottom: 1rem;
+      }
+    }
+    .aboutImgwrap {
+      position: absolute;
+      top: 2rem;
+      right: 0;
+
+      img {
+        width: 16rem;
+      }
+    }
+
+    .slideDataWrap {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+
+      & > :first-child {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .slideBtn {
+        margin-top: 2rem;
+        button {
+          width: 3.5rem;
+          padding: 0.2rem 0;
+          border-radius: 3rem;
+          border: 1px solid var(--main);
+          background-color: var(--main);
+          color: #fff;
+
+          margin-right: 0.6rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 2s ease;
+}
+
+.reveal.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -19,8 +94,6 @@ img {
 }
 
 .about {
-  // width: 100%;
-  // padding: 0 24px;
   header {
     width: 100%;
 
@@ -34,6 +107,7 @@ img {
     align-items: center;
     padding: 0 24px;
     background-color: #fff;
+
     h1 {
       a {
         display: flex;
@@ -45,21 +119,18 @@ img {
         }
       }
     }
+
     nav {
       .gnbLog {
         display: flex;
 
-        & li {
+        li {
+          color: var(--main);
           margin-right: 1.7rem;
-          a {
-            text-decoration: none;
-            color: var(--main);
-            font-weight: 500;
-            // font-family: 'Pretendard-Medium';
-          }
-          &:last-child {
-            margin-right: 0;
-          }
+          cursor: pointer;
+        }
+        & > :last-child {
+          margin-right: 0;
         }
       }
     }
@@ -75,21 +146,18 @@ img {
         margin: 0 auto;
         width: 82rem;
         height: 100vh - 17.5vh;
-        // border: 1px solid red;
 
         .mainText {
           position: absolute;
           top: 9rem;
 
           & > :first-child {
-            // font-family: 'Pretendard-Medium';
             color: var(--sub-about);
             font-weight: 800;
           }
 
           & > :last-child {
             margin-top: 2rem;
-            // font-family: 'Pretendard-Medium';
             color: var(--sub-about);
           }
         }
@@ -110,15 +178,15 @@ img {
     }
 
     #section1 {
-      // border: 1px solid red;
       width: 100%;
-      height: 100vh; // 🐛전체화면 비율몰랏ㅇ
-      background-color: #fff;
+      height: 100vh;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      color: var(--sub-about);
 
       .TextWrap {
         // border: 1px solid red;
@@ -160,164 +228,16 @@ img {
         width: 32rem;
       }
     }
+
     #section2 {
-      // border: 1px solid red; //🐛
-
-      width: 100%;
-      height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      color: var(--sub-about);
-
-      .sectionWrap {
-        position: relative;
-        margin: 0 auto;
-        width: 70rem;
-        height: 35rem;
-
-        // border: 1px solid blue; //🐛
-        .aboutTextWrap {
-          position: absolute;
-          top: 4rem;
-
-          & > :first-child {
-            margin-bottom: 1rem;
-          }
-        }
-        .aboutImgwrap {
-          position: absolute;
-          top: 2rem;
-          right: 0;
-
-          img {
-            width: 16rem;
-          }
-        }
-
-        .slideDataWrap {
-          position: absolute;
-          bottom: 2rem;
-          left: 0;
-
-          & > :first-child {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-          }
-
-          .slideBtn {
-            margin-top: 2rem;
-            button {
-              width: 3.5rem;
-              padding: 0.2rem 0;
-              border-radius: 3rem;
-              border: 1px solid var(--main);
-              background-color: var(--main);
-              color: #fff;
-
-              margin-right: 0.6rem;
-              cursor: pointer;
-            }
-          }
-        }
-      }
+      @include set-section();
     }
+
     #section3 {
-      // border: 1px solid red; //🐛
-
-      width: 100%;
-      height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      color: var(--sub-about);
-
-      .sectionWrap {
-        position: relative;
-        margin: 0 auto;
-        width: 70rem;
-        height: 35rem;
-
-        // border: 1px solid blue; //🐛
-        .aboutTextWrap {
-          position: absolute;
-          top: 4rem;
-
-          & > :first-child {
-            margin-bottom: 1rem;
-          }
-        }
-        .aboutImgwrap {
-          position: absolute;
-          top: 2rem;
-          right: 0;
-          img {
-            width: 16rem;
-          }
-        }
-        .slideDataWrap {
-          position: absolute;
-          bottom: 2rem;
-          left: 0;
-
-          & > :first-child {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
+      @include set-section();
     }
     #section4 {
-      width: 100%;
-      height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      color: var(--sub-about);
-
-      .sectionWrap {
-        position: relative;
-        margin: 0 auto;
-        width: 70rem;
-        height: 35rem;
-
-        // border: 1px solid blue; //🐛
-        .aboutTextWrap {
-          position: absolute;
-          top: 4rem;
-
-          & > :first-child {
-            margin-bottom: 1rem;
-          }
-        }
-        .aboutImgwrap {
-          position: absolute;
-          top: 2rem;
-          right: 0;
-          img {
-            width: 16rem;
-          }
-        }
-        .slideDataWrap {
-          position: absolute;
-          bottom: 2rem;
-          left: 0;
-
-          & > :first-child {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
+      @include set-section();
     }
   }
 
