@@ -1,0 +1,90 @@
+$LIGHT_THEME: (
+  // 라이트 테마 변수 선언
+  bgw: #fff,
+  // 배경 흰색
+  bgg: #7e7e7e,
+  // 배경 회색
+  primary: #8f91c7,
+  // 기본 색상 (밝은 보라)
+  main: #494b7c,
+  // 주 메인색상 (어두운 보라)
+  point: #735bf2,
+  // 포인트 색상
+  title-bar: #c9c9d8,
+  // 타이틀바, 프로필 공백란
+  main-bg: #eeefff,
+  // 배경백그라운드
+  //
+  //👇 여기부터 글자, 보더라인 색상
+  sub-about: #434343,
+  //소개페이지 글자
+  sub-text: #1e1d1d,
+  // 텍스트 블랙 (어두움)
+  sub-bold: #656565,
+  // 배경에 들어가는 주제부 글자 (중간 어두움)
+  sub-medium: #7d7d7d,
+  // 사이드바 혹은 배경에 보조로 들어가는 글자 (조금 어두움)
+  sub-thin: #656565,
+  // 글자(밝은 어두움)
+  line: #dddddd,
+  //보더라인 기본
+  sub-light: #bebebe,
+  //버튼 보더색상
+  //
+  //
+  //👇 여기부터 버튼, 호버시, 액티브
+  gbtn-hover: #f1f1f1,
+  //호버시 버튼 백그라운드 그레이
+  pbtn-hover: #dedef1,
+  //호버시 버튼 백그라운드 퍼플
+  active-bg: #f2f0f0,
+  //할 일 완료되었을 때 백그라운드 색
+  active-text: #c9c9c9,
+  //할 일 완료되었을 때 텍스트 색
+  date: #babaca,
+  // 할 일 부분 날짜 백그라운드 색
+);
+
+// reverse-primary: #fff,
+// // 반전된 기본 색상
+// sub: #666,
+// // 보조 색상
+// sub-semi-light: #888,
+// // 보조 색상 반 밝은 버전
+// sub-light: #aaa,
+// // 보조 색상 밝은 버전
+// sub-more-light: #ccc // 보조 색상 더 밝은 버전
+
+:root {
+  // 루트 요소 선택자
+  @each $k, $v in $LIGHT_THEME {
+    // 라이트 테마 변수를 반복문으로 처리
+    #{"--" + $k}: #{$v}; // CSS 변수 선언
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+//   // 다크 모드 미디어 쿼리
+//   :root {
+//     // 루트 요소 선택자
+//     @each $k, $v in $DARK_THEME {
+//       // 다크 테마 변수를 반복문으로 처리
+//       #{"--" + $k}: #{$v}; // CSS 변수 선언
+//     }
+//   }
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  // cursor: none;
+  user-select: none; /* 사용자 선택 금지 */
+  -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
+  scrollbar-width: none; /* 스크롤바 숨김 */
+
+  &::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨김 */
+  }
+}
