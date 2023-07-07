@@ -1,0 +1,340 @@
+@import '../abstracts/Fontmodule.scss';
+@import '../abstracts/variables';
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  // font-family: 'Pretendard-Thin';
+  font-family: 'Pretendard-Medium';
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 200px;
+}
+
+.about {
+  // width: 100%;
+  // padding: 0 24px;
+  header {
+    width: 100%;
+
+    border-bottom: 1px solid var(--line);
+    top: 0;
+    z-index: 30;
+
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background-color: #fff;
+    h1 {
+      a {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        height: 64px;
+        img {
+          width: 6rem;
+        }
+      }
+    }
+    nav {
+      .gnbLog {
+        display: flex;
+
+        & li {
+          margin-right: 1.7rem;
+          a {
+            text-decoration: none;
+            color: var(--main);
+            font-weight: 500;
+            // font-family: 'Pretendard-Medium';
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    .sectionAbout {
+      background-color: var(--main-bg);
+      margin-bottom: 100px;
+
+      .sectionBgColor {
+        position: relative;
+        margin: 0 auto;
+        width: 82rem;
+        height: 100vh - 17.5vh;
+        // border: 1px solid red;
+
+        .mainText {
+          position: absolute;
+          top: 9rem;
+
+          & > :first-child {
+            // font-family: 'Pretendard-Medium';
+            color: var(--sub-about);
+            font-weight: 800;
+          }
+
+          & > :last-child {
+            margin-top: 2rem;
+            // font-family: 'Pretendard-Medium';
+            color: var(--sub-about);
+          }
+        }
+
+        .mainLogo {
+          position: absolute;
+          bottom: 3.6rem;
+
+          width: 6rem;
+        }
+        .mainImg {
+          position: absolute;
+          right: -4rem; //🐛이미지 크기 오류로 밖으로 나갑니다
+          bottom: 0;
+          width: 55em;
+        }
+      }
+    }
+
+    #section1 {
+      // border: 1px solid red;
+      width: 100%;
+      height: 100vh; // 🐛전체화면 비율몰랏ㅇ
+      background-color: #fff;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .TextWrap {
+        // border: 1px solid red;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+          margin-bottom: 2rem;
+        }
+        & > :first-child {
+          font-weight: 800;
+        }
+        & > :nth-child(2) {
+          margin-bottom: 0rem;
+        }
+
+        .ImgWrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 1rem 0 4rem 0;
+
+          img {
+            width: 10rem;
+            margin-right: 1rem;
+          }
+          & > :last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .MockupsImg {
+        width: 32rem;
+      }
+    }
+    #section2 {
+      // border: 1px solid red; //🐛
+
+      width: 100%;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      color: var(--sub-about);
+
+      .sectionWrap {
+        position: relative;
+        margin: 0 auto;
+        width: 70rem;
+        height: 35rem;
+
+        // border: 1px solid blue; //🐛
+        .aboutTextWrap {
+          position: absolute;
+          top: 4rem;
+
+          & > :first-child {
+            margin-bottom: 1rem;
+          }
+        }
+        .aboutImgwrap {
+          position: absolute;
+          top: 2rem;
+          right: 0;
+
+          img {
+            width: 16rem;
+          }
+        }
+
+        .slideDataWrap {
+          position: absolute;
+          bottom: 2rem;
+          left: 0;
+
+          & > :first-child {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+
+          .slideBtn {
+            margin-top: 2rem;
+            button {
+              width: 3.5rem;
+              padding: 0.2rem 0;
+              border-radius: 3rem;
+              border: 1px solid var(--main);
+              background-color: var(--main);
+              color: #fff;
+
+              margin-right: 0.6rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    #section3 {
+      // border: 1px solid red; //🐛
+
+      width: 100%;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      color: var(--sub-about);
+
+      .sectionWrap {
+        position: relative;
+        margin: 0 auto;
+        width: 70rem;
+        height: 35rem;
+
+        // border: 1px solid blue; //🐛
+        .aboutTextWrap {
+          position: absolute;
+          top: 4rem;
+
+          & > :first-child {
+            margin-bottom: 1rem;
+          }
+        }
+        .aboutImgwrap {
+          position: absolute;
+          top: 2rem;
+          right: 0;
+          img {
+            width: 16rem;
+          }
+        }
+        .slideDataWrap {
+          position: absolute;
+          bottom: 2rem;
+          left: 0;
+
+          & > :first-child {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+    #section4 {
+      width: 100%;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      color: var(--sub-about);
+
+      .sectionWrap {
+        position: relative;
+        margin: 0 auto;
+        width: 70rem;
+        height: 35rem;
+
+        // border: 1px solid blue; //🐛
+        .aboutTextWrap {
+          position: absolute;
+          top: 4rem;
+
+          & > :first-child {
+            margin-bottom: 1rem;
+          }
+        }
+        .aboutImgwrap {
+          position: absolute;
+          top: 2rem;
+          right: 0;
+          img {
+            width: 16rem;
+          }
+        }
+        .slideDataWrap {
+          position: absolute;
+          bottom: 2rem;
+          left: 0;
+
+          & > :first-child {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  > button {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 22rem;
+    padding: 0.8rem 0;
+    border-radius: 2rem;
+    border: none;
+    background-color: var(--main);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16), 4px 8px 28px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+  }
+}

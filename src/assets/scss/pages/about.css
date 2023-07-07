@@ -1,0 +1,451 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Pretendard-Thin";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-ExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+.fs_5 {
+  font-size: 0.5rem;
+}
+
+.fs_6 {
+  font-size: 0.6rem;
+}
+
+.fs_7 {
+  font-size: 0.7rem;
+}
+
+.fs_8 {
+  font-size: 0.8rem;
+}
+
+.fs_9 {
+  font-size: 0.9rem;
+}
+
+.fs_10 {
+  font-size: 1rem;
+}
+
+.fs_11 {
+  font-size: 1.1rem;
+}
+
+.fs_12 {
+  font-size: 1.2rem;
+}
+
+.fs_13 {
+  font-size: 1.3rem;
+}
+
+.fs_14 {
+  font-size: 1.4rem;
+}
+
+.fs_15 {
+  font-size: 1.5rem;
+}
+
+.fs_16 {
+  font-size: 1.6rem;
+}
+
+.fs_17 {
+  font-size: 1.7rem;
+}
+
+.fs_18 {
+  font-size: 1.8rem;
+}
+
+.fs_19 {
+  font-size: 1.9rem;
+}
+
+.fs_20 {
+  font-size: 2rem;
+}
+
+.fs_21 {
+  font-size: 2.1rem;
+}
+
+.fs_22 {
+  font-size: 2.2rem;
+}
+
+.fs_23 {
+  font-size: 2.3rem;
+}
+
+.fs_24 {
+  font-size: 2.4rem;
+}
+
+.fs_25 {
+  font-size: 2.5rem;
+}
+
+.fs_26 {
+  font-size: 2.6rem;
+}
+
+.fs_27 {
+  font-size: 2.7rem;
+}
+
+.fs_28 {
+  font-size: 2.8rem;
+}
+
+@media (min-width: 0px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 19.2px;
+  }
+}
+:root {
+  --bgw: #fff;
+  --bgg: #7e7e7e;
+  --primary: #8f91c7;
+  --main: #494b7c;
+  --point: #735bf2;
+  --title-bar: #c9c9d8;
+  --main-bg: #eeefff;
+  --sub-about: #434343;
+  --sub-text: #1e1d1d;
+  --sub-bold: #656565;
+  --sub-medium: #7d7d7d;
+  --sub-thin: #656565;
+  --line: #dddddd;
+  --sub-light: #bebebe;
+  --gbtn-hover: #f1f1f1;
+  --pbtn-hover: #dedef1;
+  --active-bg: #f2f0f0;
+  --active-text: #c9c9c9;
+  --date: #babaca;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none; /* 사용자 선택 금지 */
+  -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
+  scrollbar-width: none; /* 스크롤바 숨김 */
+}
+*::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨김 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: "Pretendard-Medium";
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 200px;
+}
+
+.about header {
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+  top: 0;
+  z-index: 30;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background-color: #fff;
+}
+.about header h1 a {
+  display: flex;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 64px;
+}
+.about header h1 a img {
+  width: 6rem;
+}
+.about header nav .gnbLog {
+  display: flex;
+}
+.about header nav .gnbLog li {
+  margin-right: 1.7rem;
+}
+.about header nav .gnbLog li a {
+  text-decoration: none;
+  color: var(--main);
+  font-weight: 500;
+}
+.about header nav .gnbLog li:last-child {
+  margin-right: 0;
+}
+.about main .sectionAbout {
+  background-color: var(--main-bg);
+  margin-bottom: 100px;
+}
+.about main .sectionAbout .sectionBgColor {
+  position: relative;
+  margin: 0 auto;
+  width: 82rem;
+  height: 82.5vh;
+}
+.about main .sectionAbout .sectionBgColor .mainText {
+  position: absolute;
+  top: 9rem;
+}
+.about main .sectionAbout .sectionBgColor .mainText > :first-child {
+  color: var(--sub-about);
+  font-weight: 800;
+}
+.about main .sectionAbout .sectionBgColor .mainText > :last-child {
+  margin-top: 2rem;
+  color: var(--sub-about);
+}
+.about main .sectionAbout .sectionBgColor .mainLogo {
+  position: absolute;
+  bottom: 3.6rem;
+  width: 6rem;
+}
+.about main .sectionAbout .sectionBgColor .mainImg {
+  position: absolute;
+  right: -4rem;
+  bottom: 0;
+  width: 55em;
+}
+.about main #section1 {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about main #section1 .TextWrap {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about main #section1 .TextWrap p {
+  margin-bottom: 2rem;
+}
+.about main #section1 .TextWrap > :first-child {
+  font-weight: 800;
+}
+.about main #section1 .TextWrap > :nth-child(2) {
+  margin-bottom: 0rem;
+}
+.about main #section1 .TextWrap .ImgWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 4rem 0;
+}
+.about main #section1 .TextWrap .ImgWrap img {
+  width: 10rem;
+  margin-right: 1rem;
+}
+.about main #section1 .TextWrap .ImgWrap > :last-child {
+  margin-right: 0;
+}
+.about main #section1 .MockupsImg {
+  width: 32rem;
+}
+.about main #section2 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub-about);
+}
+.about main #section2 .sectionWrap {
+  position: relative;
+  margin: 0 auto;
+  width: 70rem;
+  height: 35rem;
+}
+.about main #section2 .sectionWrap .aboutTextWrap {
+  position: absolute;
+  top: 4rem;
+}
+.about main #section2 .sectionWrap .aboutTextWrap > :first-child {
+  margin-bottom: 1rem;
+}
+.about main #section2 .sectionWrap .aboutImgwrap {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+}
+.about main #section2 .sectionWrap .aboutImgwrap img {
+  width: 16rem;
+}
+.about main #section2 .sectionWrap .slideDataWrap {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+}
+.about main #section2 .sectionWrap .slideDataWrap > :first-child {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.about main #section2 .sectionWrap .slideDataWrap .slideBtn {
+  margin-top: 2rem;
+}
+.about main #section2 .sectionWrap .slideDataWrap .slideBtn button {
+  width: 3.5rem;
+  padding: 0.2rem 0;
+  border-radius: 3rem;
+  border: 1px solid var(--main);
+  background-color: var(--main);
+  color: #fff;
+  margin-right: 0.6rem;
+  cursor: pointer;
+}
+.about main #section3 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub-about);
+}
+.about main #section3 .sectionWrap {
+  position: relative;
+  margin: 0 auto;
+  width: 70rem;
+  height: 35rem;
+}
+.about main #section3 .sectionWrap .aboutTextWrap {
+  position: absolute;
+  top: 4rem;
+}
+.about main #section3 .sectionWrap .aboutTextWrap > :first-child {
+  margin-bottom: 1rem;
+}
+.about main #section3 .sectionWrap .aboutImgwrap {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+}
+.about main #section3 .sectionWrap .aboutImgwrap img {
+  width: 16rem;
+}
+.about main #section3 .sectionWrap .slideDataWrap {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+}
+.about main #section3 .sectionWrap .slideDataWrap > :first-child {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.about main #section4 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--sub-about);
+}
+.about main #section4 .sectionWrap {
+  position: relative;
+  margin: 0 auto;
+  width: 70rem;
+  height: 35rem;
+}
+.about main #section4 .sectionWrap .aboutTextWrap {
+  position: absolute;
+  top: 4rem;
+}
+.about main #section4 .sectionWrap .aboutTextWrap > :first-child {
+  margin-bottom: 1rem;
+}
+.about main #section4 .sectionWrap .aboutImgwrap {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+}
+.about main #section4 .sectionWrap .aboutImgwrap img {
+  width: 16rem;
+}
+.about main #section4 .sectionWrap .slideDataWrap {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+}
+.about main #section4 .sectionWrap .slideDataWrap > :first-child {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.about > button {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22rem;
+  padding: 0.8rem 0;
+  border-radius: 2rem;
+  border: none;
+  background-color: var(--main);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16), 4px 8px 28px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}/*# sourceMappingURL=about.css.map */

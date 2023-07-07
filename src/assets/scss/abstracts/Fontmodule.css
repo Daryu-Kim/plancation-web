@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "Pretendard-Thin";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-ExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+.fs_5 {
+  font-size: 0.5rem;
+}
+
+.fs_6 {
+  font-size: 0.6rem;
+}
+
+.fs_7 {
+  font-size: 0.7rem;
+}
+
+.fs_8 {
+  font-size: 0.8rem;
+}
+
+.fs_9 {
+  font-size: 0.9rem;
+}
+
+.fs_10 {
+  font-size: 1rem;
+}
+
+.fs_11 {
+  font-size: 1.1rem;
+}
+
+.fs_12 {
+  font-size: 1.2rem;
+}
+
+.fs_13 {
+  font-size: 1.3rem;
+}
+
+.fs_14 {
+  font-size: 1.4rem;
+}
+
+.fs_15 {
+  font-size: 1.5rem;
+}
+
+.fs_16 {
+  font-size: 1.6rem;
+}
+
+.fs_17 {
+  font-size: 1.7rem;
+}
+
+.fs_18 {
+  font-size: 1.8rem;
+}
+
+.fs_19 {
+  font-size: 1.9rem;
+}
+
+.fs_20 {
+  font-size: 2rem;
+}
+
+.fs_21 {
+  font-size: 2.1rem;
+}
+
+.fs_22 {
+  font-size: 2.2rem;
+}
+
+.fs_23 {
+  font-size: 2.3rem;
+}
+
+.fs_24 {
+  font-size: 2.4rem;
+}
+
+.fs_25 {
+  font-size: 2.5rem;
+}
+
+.fs_26 {
+  font-size: 2.6rem;
+}
+
+.fs_27 {
+  font-size: 2.7rem;
+}
+
+.fs_28 {
+  font-size: 2.8rem;
+}
+
+@media (min-width: 0px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 19.2px;
+  }
+}/*# sourceMappingURL=Fontmodule.css.map */
