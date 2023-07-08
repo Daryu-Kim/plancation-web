@@ -6,9 +6,13 @@ const router = createRouter({
   routes: [
     {
       //로그인이 되어 있을때 (메인화면)
-      path: '/',
+      path: '/home',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/',
+      redirect: 'about'
     },
     {
       //로그인이 되어있지 않을 때 처음 소개 페이지

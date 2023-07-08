@@ -219,14 +219,11 @@ img {
   display: flex;
 }
 .about header nav .gnbLog li {
-  margin-right: 1.7rem;
-}
-.about header nav .gnbLog li a {
-  text-decoration: none;
   color: var(--main);
-  font-weight: 500;
+  margin-right: 1.7rem;
+  cursor: pointer;
 }
-.about header nav .gnbLog li:last-child {
+.about header nav .gnbLog > :last-child {
   margin-right: 0;
 }
 .about main .sectionAbout {
@@ -265,11 +262,11 @@ img {
 .about main #section1 {
   width: 100%;
   height: 100vh;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--sub-about);
 }
 .about main #section1 .TextWrap {
   width: -moz-fit-content;
@@ -396,6 +393,19 @@ img {
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
+.about main #section3 .sectionWrap .slideDataWrap .slideBtn {
+  margin-top: 2rem;
+}
+.about main #section3 .sectionWrap .slideDataWrap .slideBtn button {
+  width: 3.5rem;
+  padding: 0.2rem 0;
+  border-radius: 3rem;
+  border: 1px solid var(--main);
+  background-color: var(--main);
+  color: #fff;
+  margin-right: 0.6rem;
+  cursor: pointer;
+}
 .about main #section4 {
   width: 100%;
   height: 100vh;
@@ -434,6 +444,19 @@ img {
 .about main #section4 .sectionWrap .slideDataWrap > :first-child {
   font-weight: 600;
   margin-bottom: 0.5rem;
+}
+.about main #section4 .sectionWrap .slideDataWrap .slideBtn {
+  margin-top: 2rem;
+}
+.about main #section4 .sectionWrap .slideDataWrap .slideBtn button {
+  width: 3.5rem;
+  padding: 0.2rem 0;
+  border-radius: 3rem;
+  border: 1px solid var(--main);
+  background-color: var(--main);
+  color: #fff;
+  margin-right: 0.6rem;
+  cursor: pointer;
 }
 .about > button {
   position: fixed;
