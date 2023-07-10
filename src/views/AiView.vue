@@ -1,13 +1,7 @@
 <template>
   <div class="app">
     <h1>Scroll down to see the animations</h1>
-    <div
-      v-for="(item, index) in boxes"
-      :key="index"
-      ref="box"
-      class="box"
-      :class="visible[index] ? 'animate' : ''"
-    >
+    <div v-for="(item, index) in boxes" :key="index" ref="box" class="box" :class="visible[index] ? 'animate' : ''">
       Box {{ index + 1 }}
     </div>
   </div>

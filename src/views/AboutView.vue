@@ -1,5 +1,5 @@
 <template>
-  <div class="about" v-container id="about">
+  <div class="about">
     <header>
       <h1>
         <a href="">
@@ -49,11 +49,7 @@
       </section>
 
       <section ref="section2" id="section2">
-        <div
-          class="sectionWrap reveal"
-          :class="isActive ? 'sectionWrap reveal active' : 'sectionWrap reveal'"
-          ref="reveal"
-        >
+        <div class="sectionWrap reveal" ref="reveal2">
           <div class="aboutTextWrap">
             <h2 class="fs_19">캘린더/ to-do list</h2>
             <p class="fs_13">일정관리의 기본이 되는</p>
@@ -78,11 +74,7 @@
       </section>
 
       <section ref="section3" id="section3">
-        <div
-          class="sectionWrap reveal"
-          :class="isActive ? 'sectionWrap reveal active' : 'sectionWrap reveal'"
-          ref="reveal"
-        >
+        <div class="sectionWrap reveal" ref="reveal3">
           <div class="aboutTextWrap">
             <h2 class="fs_19">Auto schedule</h2>
             <p class="fs_13">짜기 어려운 계획을 대신 해결해주는</p>
@@ -102,11 +94,7 @@
       </section>
 
       <section ref="section4" id="section4">
-        <div
-          class="sectionWrap reveal"
-          :class="isActive ? 'sectionWrap reveal active' : 'sectionWrap reveal'"
-          ref="reveal"
-        >
+        <div class="sectionWrap reveal" ref="reveal4">
           <div class="aboutTextWrap">
             <h2 class="fs_19">다이어리/기록</h2>
             <p class="fs_13">오늘 하루 무슨 일이 있었나요?</p>
@@ -124,10 +112,12 @@
         </div>
       </section>
     </main>
-    <button class="fs_10">이용하러 가기</button>
+
+    <button class="fs_10" @click="goToHome">이용하러 가기</button>
+
   </div>
 </template>
-<!-- sdjkfhjskdjfhdskf -->
+
 <style lang="scss">
 @import '../assets/scss/pages/about.scss';
 @import '../assets/scss/abstracts/Fontmodule.css';
@@ -135,12 +125,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+// import { useRouter } from "vue-router";
+// const router = useRouter();
+
+
 
 export default defineComponent({
-  components: {},
+  mounted() {
+    window.addEventListener('scroll', this.reveal)
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.reveal)
+  },
+
   data() {
     return {
-      isActive: false,
       // 이미지 변경
       calendarTodoImages1: [
         'src/assets/images/aboutCalenderImg1.png',
@@ -162,11 +161,13 @@ export default defineComponent({
 
       textIndex: 0
 
-      // 스크롤 이벤트 페이드인 & 페이드아웃
     }
   },
 
   methods: {
+    goToHome() {
+      this.$router.push('/home')
+    },
     // 1번 버튼: Calendar이미지와 텍스트로 변경
     changeCalendarTodoItem1() {
       this.imageIndex = 0
@@ -184,25 +185,23 @@ export default defineComponent({
       const element = this.$refs[refName] as HTMLElement
 
       element.scrollIntoView({ behavior: 'smooth' })
+    },
+
+
+    // 👇스크롤시 페이드인 & 페이드아웃 애니메이션 이벤트
+    reveal() {
+      const reveals: HTMLDivElement[] = [this.$refs.reveal2 as HTMLDivElement, this.$refs.reveal3 as HTMLDivElement, this.$refs.reveal4 as HTMLDivElement]
+      for (var i = 0; i < reveals.length; i++) {
+        var windowheight = window.innerHeight
+        var revealtop = reveals[i].getBoundingClientRect().top
+        var revealpoint = 150
+        if (revealtop < windowheight - revealpoint) {
+          reveals[i].classList.add('active')
+        } else {
+          reveals[i].classList.remove('active')
+        }
+      }
     }
-
-    // 👇스크롤 이벤트 페이드인 & 페이드아웃
-
-    // handleScroll() {
-    //   const reveals = document.querySelectorAll('.reveal')
-    //   const windowheight = window.innerHeight
-    //   const revealpoint = 150
-
-    //   for (let i = 0; i < reveals.length; i++) {
-    //     const { top: revealtop } = reveals[i].getBoundingClientRect()
-
-    //     if (revealtop < windowheight - revealpoint) {
-    //       this.isActive = true
-    //     } else {
-    //       this.isActive = false
-    //     }
-    //   }
-    // }
   }
 })
 </script>
