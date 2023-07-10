@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Pretendard-Thin";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-ExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+.fs_5 {
+  font-size: 0.5rem;
+}
+
+.fs_6 {
+  font-size: 0.6rem;
+}
+
+.fs_7 {
+  font-size: 0.7rem;
+}
+
+.fs_8 {
+  font-size: 0.8rem;
+}
+
+.fs_9 {
+  font-size: 0.9rem;
+}
+
+.fs_10 {
+  font-size: 1rem;
+}
+
+.fs_11 {
+  font-size: 1.1rem;
+}
+
+.fs_12 {
+  font-size: 1.2rem;
+}
+
+.fs_13 {
+  font-size: 1.3rem;
+}
+
+.fs_14 {
+  font-size: 1.4rem;
+}
+
+.fs_15 {
+  font-size: 1.5rem;
+}
+
+.fs_16 {
+  font-size: 1.6rem;
+}
+
+.fs_17 {
+  font-size: 1.7rem;
+}
+
+.fs_18 {
+  font-size: 1.8rem;
+}
+
+.fs_19 {
+  font-size: 1.9rem;
+}
+
+.fs_20 {
+  font-size: 2rem;
+}
+
+.fs_21 {
+  font-size: 2.1rem;
+}
+
+.fs_22 {
+  font-size: 2.2rem;
+}
+
+.fs_23 {
+  font-size: 2.3rem;
+}
+
+.fs_24 {
+  font-size: 2.4rem;
+}
+
+.fs_25 {
+  font-size: 2.5rem;
+}
+
+.fs_26 {
+  font-size: 2.6rem;
+}
+
+.fs_27 {
+  font-size: 2.7rem;
+}
+
+.fs_28 {
+  font-size: 2.8rem;
+}
+
+@media (min-width: 0px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 19.2px;
+  }
+}
+:root {
+  --bgw: #fff;
+  --bgg: #7e7e7e;
+  --primary: #8f91c7;
+  --main: #494b7c;
+  --point: #735bf2;
+  --title-bar: #c9c9d8;
+  --main-bg: #eeefff;
+  --sub-about: #434343;
+  --sub-text: #1e1d1d;
+  --sub-bold: #656565;
+  --sub-medium: #7d7d7d;
+  --sub-thin: #656565;
+  --line: #dddddd;
+  --sub-light: #bebebe;
+  --gbtn-hover: #f1f1f1;
+  --pbtn-hover: #dedef1;
+  --active-bg: #f2f0f0;
+  --active-text: #c9c9c9;
+  --date: #babaca;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none; /* 사용자 선택 금지 */
+  -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
+  scrollbar-width: none; /* 스크롤바 숨김 */
+}
+*::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨김 */
+}
+
+.LoginJoinModal {
+  background-color: #fff;
+  border-radius: 1rem;
+  border: 1px solid red;
+  padding: 4rem 3rem;
+}
+.LoginJoinModal .header {
+  color: var(--main);
+  margin-bottom: 3rem;
+}
+.LoginJoinModal .emailInput {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.LoginJoinModal .emailInput input {
+  width: 20rem;
+  padding: 1rem 0.8rem 0.3rem 0.8rem;
+  top: 0;
+  left: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid var(--sub-thin);
+}
+.LoginJoinModal .emailInput .loginText {
+  font-size: 0.9rem;
+  position: absolute;
+}
+.LoginJoinModal .emailInput .loginText.emailTextId {
+  top: 1rem;
+  left: 0.5rem;
+}
+.LoginJoinModal .emailInput .loginText.emailWran {
+  top: 1rem;
+  right: 0.5rem;
+  display: none;
+}/*# sourceMappingURL=LoginJoinModal.css.map */
