@@ -3,7 +3,7 @@
     <header>
       <h1>
         <a href="">
-          <img src="@/assets/images/logotext.png" alt="헤더로고" />
+          <img src="@/assets/images/about/logotext.png" alt="헤더로고" />
         </a>
       </h1>
 
@@ -25,13 +25,13 @@
             <p class="fs_21">순간순간이 소중한 당신을 위해,</p>
             <p class="fs_15">시간관리의 길잡이</p>
           </div>
-          <img class="mainLogo" src="@/assets/images/logotext.png" alt="메인로고" />
-          <img class="mainImg" src="@/assets/images/aboutMainImg.png" alt="소개페이지 메인이미지" />
+          <img class="mainLogo" src="@/assets/images/about/logotext.png" alt="메인로고" />
+          <img class="mainImg" src="@/assets/images/about/aboutMainImg.png" alt="소개페이지 메인이미지" />
         </div>
       </section>
 
       <section ref="section1" id="section1">
-        <div class="TextWrap">
+        <div class="TextWrap reveal" ref="reveal1">
           <p class="fs_21">설치</p>
           <p class="fs_12">모바일에서도 플랜케이션을 사용할 수 있어요.</p>
           <p class="fs_12">
@@ -39,12 +39,12 @@
           </p>
 
           <div class="ImgWrap">
-            <img src="@/assets/images/pwa.png" alt="pwa다운로드" />
-            <img src="@/assets/images/appStore.png" alt="appStore다운로드" />
-            <img src="@/assets/images/googlePlay.png" alt="googlePlay다운로드" />
+            <img src="@/assets/images/about/pwa.png" alt="pwa다운로드" />
+            <img src="@/assets/images/about/appStore.png" alt="appStore다운로드" />
+            <img src="@/assets/images/about/googlePlay.png" alt="googlePlay다운로드" />
           </div>
 
-          <img class="MockupsImg" src="@/assets/images/aboutDownloadImg.png" />
+          <img class="MockupsImg" src="@/assets/images/about/aboutDownloadImg.png" />
         </div>
       </section>
 
@@ -82,8 +82,8 @@
           </div>
 
           <div class="aboutImgwrap">
-            <img src="@/assets/images/aboutAI1.png" alt="todo 이미지1" />
-            <img src="@/assets/images/aboutAI2.png" alt="todo 이미지2" />
+            <img src="@/assets/images/about/aboutAI1.png" alt="todo 이미지1" />
+            <img src="@/assets/images/about/aboutAI2.png" alt="todo 이미지2" />
           </div>
 
           <div class="slideDataWrap">
@@ -101,8 +101,8 @@
           </div>
 
           <div class="aboutImgwrap">
-            <img src="@/assets/images/aboutDiary1.png" alt="todo 이미지1" />
-            <img src="@/assets/images/aboutDiary2.png" alt="todo 이미지2" />
+            <img src="@/assets/images/about/aboutDiary1.png" alt="todo 이미지1" />
+            <img src="@/assets/images/about/aboutDiary2.png" alt="todo 이미지2" />
           </div>
 
           <div class="slideDataWrap">
@@ -113,7 +113,7 @@
       </section>
     </main>
 
-    <button class="fs_10" @click="goToHome">이용하러 가기</button>
+    <button class="fs_10" @click="goToLoginJoin">이용하러 가기</button>
 
   </div>
 </template>
@@ -125,10 +125,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import { useRouter } from "vue-router";
-// const router = useRouter();
-
-
 
 export default defineComponent({
   mounted() {
@@ -142,14 +138,13 @@ export default defineComponent({
     return {
       // 이미지 변경
       calendarTodoImages1: [
-        'src/assets/images/aboutCalenderImg1.png',
-        'src/assets/images/aboutTodoImg1.png'
+        'src/assets/images/about/aboutCalenderImg1.png',
+        'src/assets/images/about/aboutTodoImg1.png'
       ],
       calendarTodoImages2: [
-        'src/assets/images/aboutCalenderImg2.png',
-        'src/assets/images/aboutTodoImg2.png'
+        'src/assets/images/about/aboutCalenderImg2.png',
+        'src/assets/images/about/aboutTodoImg2.png'
       ],
-
       imageIndex: 0,
 
       // 텍스트 변경
@@ -158,16 +153,16 @@ export default defineComponent({
         '시간과 알림, 장소, 참여자에 대한 관리도 가능합니다.'
       ],
       calendarTodotText2: ['중요한 일정을 강조하세요.', '해야 할 일들에 대해 간결하게 관리하세요.'],
-
       textIndex: 0
-
     }
   },
 
   methods: {
-    goToHome() {
-      this.$router.push('/home')
+    // 로그인/가입 페이지로 이동
+    goToLoginJoin() {
+      this.$router.push('/loginjoin')
     },
+
     // 1번 버튼: Calendar이미지와 텍스트로 변경
     changeCalendarTodoItem1() {
       this.imageIndex = 0
@@ -190,7 +185,11 @@ export default defineComponent({
 
     // 👇스크롤시 페이드인 & 페이드아웃 애니메이션 이벤트
     reveal() {
-      const reveals: HTMLDivElement[] = [this.$refs.reveal2 as HTMLDivElement, this.$refs.reveal3 as HTMLDivElement, this.$refs.reveal4 as HTMLDivElement]
+      const reveals: HTMLDivElement[] = [
+        this.$refs.reveal1 as HTMLDivElement,
+        this.$refs.reveal2 as HTMLDivElement,
+        this.$refs.reveal3 as HTMLDivElement,
+        this.$refs.reveal4 as HTMLDivElement]
       for (var i = 0; i < reveals.length; i++) {
         var windowheight = window.innerHeight
         var revealtop = reveals[i].getBoundingClientRect().top
