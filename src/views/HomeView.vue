@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="wrapper">
+    <h1>hi</h1>
+  </div>
 </template>
