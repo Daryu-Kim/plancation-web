@@ -6,4 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style></style>
+<style lang="scss">
+* {
+  font-family: 'Pretendard-Medium';
+}
+</style>
