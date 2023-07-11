@@ -143,6 +143,7 @@
 }
 :root {
   --bgw: #fff;
+  --bgl: #eaeaeb;
   --bgg: #7e7e7e;
   --primary: #8f91c7;
   --main: #494b7c;
@@ -180,21 +181,20 @@
 .LoginJoinModal {
   background-color: #fff;
   border-radius: 1rem;
-  box-shadow: 8px 16px 16px hsla(0, 0%, 0%, 0.25);
-  width: 32rem;
-  padding: 4rem 3.5rem;
+  width: 30rem;
+  padding: 3.5rem 3.2rem;
 }
 .LoginJoinModal .form {
   width: 100%;
 }
 .LoginJoinModal .form .header {
   color: var(--main);
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 .LoginJoinModal .form .emailInput {
   position: relative;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .LoginJoinModal .form .emailInput input {
   width: 100%;
@@ -202,6 +202,13 @@
   font-size: 1rem;
   border: none;
   border-bottom: 2px solid var(--bgg);
+}
+.LoginJoinModal .form .emailInput input:focus {
+  outline: none;
+  color: var(--point);
+}
+.LoginJoinModal .form .emailInput input:hover {
+  border-bottom: 2px solid var(--point);
 }
 .LoginJoinModal .form .emailInput .loginText {
   font-size: 0.9rem;
@@ -217,10 +224,22 @@
   left: 0.8rem;
   color: var(--sub-bold);
 }
+.LoginJoinModal .form .emailInput .loginText.emailTextId.active {
+  font-size: 0.8rem;
+  top: 0rem;
+  left: 0.5rem;
+}
 .LoginJoinModal .form .emailInput .loginText.emailWran {
   top: 1rem;
   right: 0.5rem;
   display: none;
+}
+.LoginJoinModal .form .emailInput .loginText.emailWran.active {
+  display: block;
+  font-size: 0.8rem;
+  top: 0rem;
+  right: 0.5rem;
+  color: var(--point);
 }
 .LoginJoinModal .form .pwInput {
   position: relative;
@@ -234,12 +253,24 @@
   border: none;
   border-bottom: 2px solid var(--bgg);
 }
+.LoginJoinModal .form .pwInput input:focus {
+  outline: none;
+  color: var(--point);
+}
+.LoginJoinModal .form .pwInput input:hover {
+  border-bottom: 2px solid var(--point);
+}
 .LoginJoinModal .form .pwInput .passwordText {
   position: absolute;
   top: 1rem;
   left: 0.8rem;
   color: var(--sub-bold);
   pointer-events: none;
+}
+.LoginJoinModal .form .pwInput .passwordText.active {
+  font-size: 0.8rem;
+  top: 0rem;
+  left: 0.5rem;
 }
 .LoginJoinModal .form .pwInput .passwordWranF {
   position: absolute;
@@ -253,6 +284,13 @@
   right: 0.5rem;
   display: none;
   pointer-events: none;
+}
+.LoginJoinModal .form .pwInput .passwordWranL.active {
+  display: block;
+  top: 0;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--point);
 }
 .LoginJoinModal .form .getPassword {
   display: block;
@@ -279,7 +317,7 @@
   margin-bottom: 1.2rem;
 }
 .LoginJoinModal .form .lineBox .line {
-  width: 35%;
+  width: 30%;
   border-bottom: 1px solid var(--bgg);
 }
 .LoginJoinModal .form .lineBox p {
