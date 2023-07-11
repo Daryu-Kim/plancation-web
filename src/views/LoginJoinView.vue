@@ -28,7 +28,6 @@
             <input type="password">
             <span class="passwordText loginTextPw fs_9">비밀번호 확인</span>
           </div>
-
         </template>
 
         <!-- 👇 비밀번호 창일때 보여질 부분 : isActive일때 , 아닐 때는 로그인 창으로 -->
@@ -40,7 +39,9 @@
         </template>
 
         <template v-slot:loginBottom v-else>
-          <a class="getPassword fs_8" href="">비밀번호를 잊으셨나요?</a>
+          <router-link to="/findpw">
+            <p class="getPassword fs_8">비밀번호를 잊으셨나요?</p>
+          </router-link>
           <button type="button" class="loginBtn fs_10">로그인</button>
           <div class="lineBox">
             <div class="line"></div>

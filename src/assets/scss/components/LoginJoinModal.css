@@ -286,18 +286,18 @@
   pointer-events: none;
 }
 .LoginJoinModal .form .pwInput .passwordWranL.active {
-  display: block;
   top: 0;
   right: 0.5rem;
   font-size: 0.8rem;
   color: var(--point);
 }
-.LoginJoinModal .form .getPassword {
-  display: block;
+.LoginJoinModal .form a {
+  text-decoration: none;
+}
+.LoginJoinModal .form a .getPassword {
   text-align: center;
   margin-bottom: 1rem;
   color: var(--main);
-  text-decoration: none;
 }
 .LoginJoinModal .form .loginBtn {
   width: 100%;

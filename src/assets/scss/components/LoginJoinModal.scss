@@ -130,7 +130,6 @@
         pointer-events: none;
 
         &.active {
-          display: block;
           top: 0;
           right: 0.5rem;
           font-size: 0.8rem;
@@ -139,12 +138,13 @@
       }
     }
 
-    .getPassword {
-      display: block;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: var(--main);
+    a {
       text-decoration: none;
+      .getPassword {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--main);
+      }
     }
 
     .loginBtn {
