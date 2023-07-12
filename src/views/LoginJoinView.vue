@@ -222,15 +222,17 @@ export default defineComponent({
         this.valid.password = true
         return
       } this.valid.password = false
+      this.password.trim()
     },
 
     //비밀번호 확인 검사
     checkConfirmPW() {
-      if (this.password != this.confirmPW) {
+      if (this.password !== this.confirmPW) {
         this.valid.confirmPW = true
         return
       }
       this.valid.confirmPW = false
+      this.confirmPW.trim()
     }
   }
 })
