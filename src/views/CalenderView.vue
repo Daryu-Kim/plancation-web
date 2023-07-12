@@ -1,5 +1,18 @@
 <template>
-  <div class="calender">
-    <h1>calender</h1>
+  <div class="calendar">
+    <SideBar></SideBar>
+    <HeaderBar></HeaderBar>
   </div>
-</template>
+</template> 
+<script lang="ts">
+import SideBar from "../components/SideBar.vue";
+import HeaderBar from '../components/HeaderBar.vue'
+
+export default {
+  components: {
+    SideBar,
+    HeaderBar,
+  }
+}
+</script>
+<style></style>

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+:root {
+  --bgw: #fff;
+  --bgl: #eaeaeb;
+  --bgg: #7e7e7e;
+  --primary: #8f91c7;
+  --main: #494b7c;
+  --point: #735bf2;
+  --title-bar: #c9c9d8;
+  --main-bg: #eeefff;
+  --sub-about: #434343;
+  --sub-text: #1e1d1d;
+  --sub-bold: #656565;
+  --sub-medium: #7d7d7d;
+  --sub-thin: #656565;
+  --line: #dddddd;
+  --sub-light: #bebebe;
+  --gbtn-hover: #f1f1f1;
+  --pbtn-hover: #dedef1;
+  --active-bg: #f2f0f0;
+  --active-text: #c9c9c9;
+  --date: #babaca;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none; /* 사용자 선택 금지 */
+  -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
+  scrollbar-width: none; /* 스크롤바 숨김 */
+}
+*::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨김 */
+}
+
+.headerBar {
+  width: 85vw;
+  height: 65px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.headerBar .left {
+  display: flex;
+  align-items: center;
+}
+.headerBar .left > :first-child {
+  width: 2.5rem;
+  margin-right: 0.5rem;
+}
+.headerBar .left > :last-child {
+  width: 6rem;
+}
+.headerBar img {
+  width: 1.5rem;
+}/*# sourceMappingURL=HeaderBar.css.map */

@@ -1,0 +1,29 @@
+.sidebar {
+  width: 15vw;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid var(--line);
+
+  .profilePart {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: var(--title-bar);
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        width: 3.5rem;
+
+        top: 0;
+        left: 0.8rem;
+      }
+    }
+  }
+}
