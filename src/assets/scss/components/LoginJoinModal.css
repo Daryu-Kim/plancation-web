@@ -223,8 +223,9 @@
   top: 1rem;
   left: 0.8rem;
   color: var(--sub-bold);
+  transition: all 200ms ease-in-out;
 }
-.LoginJoinModal .form .emailInput .loginText.emailTextId.active {
+.LoginJoinModal .form .emailInput .loginText.emailTextId.move {
   font-size: 0.8rem;
   top: 0rem;
   left: 0.5rem;
@@ -234,7 +235,7 @@
   right: 0.5rem;
   display: none;
 }
-.LoginJoinModal .form .emailInput .loginText.emailWran.active {
+.LoginJoinModal .form .emailInput .loginText.emailWran.move {
   display: block;
   font-size: 0.8rem;
   top: 0rem;
@@ -266,8 +267,9 @@
   left: 0.8rem;
   color: var(--sub-bold);
   pointer-events: none;
+  transition: all 200ms ease-in-out;
 }
-.LoginJoinModal .form .pwInput .passwordText.active {
+.LoginJoinModal .form .pwInput .passwordText.move {
   font-size: 0.8rem;
   top: 0rem;
   left: 0.5rem;
@@ -285,7 +287,8 @@
   display: none;
   pointer-events: none;
 }
-.LoginJoinModal .form .pwInput .passwordWranL.active {
+.LoginJoinModal .form .pwInput .passwordWranL.move {
+  display: block;
   top: 0;
   right: 0.5rem;
   font-size: 0.8rem;
