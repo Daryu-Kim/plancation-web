@@ -1,0 +1,214 @@
+@import '../abstracts/Fontmodule.scss';
+@import '../abstracts/variables';
+
+.LoginJoinModal {
+  background-color: #fff;
+  border-radius: 1rem;
+
+  width: 30rem;
+  padding: 3.5rem 3.2rem;
+
+  & .form {
+    width: 100%;
+
+    .header {
+      color: var(--main);
+      margin-bottom: 4rem;
+    }
+
+    .emailInput {
+      position: relative;
+      width: 100%;
+      margin-bottom: 1rem;
+
+      input {
+        width: 100%;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        font-size: 1rem;
+        border: none;
+        border-bottom: 2px solid var(--bgg);
+
+        &:focus {
+          outline: none;
+          //👆 클릭시 인풋의 테두리 제거
+          color: var(--point);
+        }
+        &:hover {
+          border-bottom: 2px solid var(--point);
+        }
+      }
+
+      .loginText {
+        font-size: 0.9rem;
+        position: absolute;
+        user-select: none;
+
+        color: var(--sub-bold);
+        pointer-events: none;
+        //👆 이벤트 제어 : HTML요소에 정의된 클릭을 비활성화 시킴. 요소가 포인터 이벤트에 반응 X
+
+        &.emailTextId {
+          top: 1rem;
+          left: 0.8rem;
+
+          color: var(--sub-bold);
+
+          // 👇 active 클래스 : 한 글자라도 입력했을 때
+          &.active {
+            font-size: 0.8rem;
+            top: 0rem;
+            left: 0.5rem;
+          }
+        }
+
+        &.emailWran {
+          top: 1rem;
+          right: 0.5rem;
+          display: none;
+          &.active {
+            display: block;
+            font-size: 0.8rem;
+            top: 0rem;
+            right: 0.5rem;
+            color: var(--point);
+          }
+        }
+      }
+    }
+
+    .pwInput {
+      position: relative;
+      width: 100%;
+      margin-bottom: 1rem;
+
+      input {
+        width: 100%;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        font-size: 1rem;
+        border: none;
+        border-bottom: 2px solid var(--bgg);
+
+        &:focus {
+          // focus 상태
+          outline: none; // 아웃라인 없음
+          color: var(--point); // 글자색
+        }
+        &:hover {
+          border-bottom: 2px solid var(--point);
+        }
+      }
+
+      .passwordText {
+        position: absolute;
+        top: 1rem;
+        left: 0.8rem;
+
+        color: var(--sub-bold);
+        pointer-events: none;
+
+        &.active {
+          font-size: 0.8rem;
+          top: 0rem;
+          left: 0.5rem;
+        }
+      }
+
+      .passwordWranF {
+        position: absolute;
+        top: 1rem;
+        right: 0.5rem;
+
+        color: var(--sub-bold);
+        cursor: pointer;
+      }
+
+      .passwordWranL {
+        position: absolute;
+        right: 0.5rem;
+
+        display: none;
+        pointer-events: none;
+
+        &.active {
+          top: 0;
+          right: 0.5rem;
+          font-size: 0.8rem;
+          color: var(--point);
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      .getPassword {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--main);
+      }
+    }
+
+    .loginBtn {
+      width: 100%;
+      padding: 0.8rem 0;
+      border-radius: 1.5rem;
+      border: none;
+      background-color: var(--main);
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 7rem;
+    }
+
+    .lineBox {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 1.2rem;
+
+      .line {
+        width: 30%;
+        border-bottom: 1px solid var(--bgg);
+      }
+      p {
+        color: var(--sub-bold);
+      }
+    }
+
+    .anotherLogin {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      padding: 0.5rem 0;
+      margin-bottom: 1.2rem;
+
+      border-radius: 1.5rem;
+      border: 2px solid var(--main);
+      color: var(--sub-bold);
+      background-color: #fff;
+
+      cursor: pointer;
+
+      img {
+        width: 1.6rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .goJoin {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        color: var(--sub-thin);
+        margin-right: 1rem;
+      }
+      & > :last-child {
+        font-weight: 800;
+        cursor: pointer;
+      }
+    }
+  }
+}
