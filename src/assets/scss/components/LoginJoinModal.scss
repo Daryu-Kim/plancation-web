@@ -52,9 +52,10 @@
           left: 0.8rem;
 
           color: var(--sub-bold);
+          transition: all 200ms ease-in-out;
 
-          // 👇 active 클래스 : 한 글자라도 입력했을 때
-          &.active {
+          // 👇 move 클래스 : 한 글자라도 입력했을 때 : 플레이스홀더 문구 위로 올라가는 모션
+          &.move {
             font-size: 0.8rem;
             top: 0rem;
             left: 0.5rem;
@@ -65,7 +66,7 @@
           top: 1rem;
           right: 0.5rem;
           display: none;
-          &.active {
+          &.move {
             display: block;
             font-size: 0.8rem;
             top: 0rem;
@@ -105,8 +106,9 @@
 
         color: var(--sub-bold);
         pointer-events: none;
+        transition: all 200ms ease-in-out;
 
-        &.active {
+        &.move {
           font-size: 0.8rem;
           top: 0rem;
           left: 0.5rem;
@@ -129,7 +131,8 @@
         display: none;
         pointer-events: none;
 
-        &.active {
+        &.move {
+          display: block;
           top: 0;
           right: 0.5rem;
           font-size: 0.8rem;
