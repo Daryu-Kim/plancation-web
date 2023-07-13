@@ -28,7 +28,8 @@
             <img src="@/assets/images/main/icon_key.svg" alt="열쇠아이콘">
             <p>비밀번호 변경</p>
           </li>
-          <li>
+          <!-- 로그아웃 -->
+          <li @click="__logout()">
             <img src="@/assets/images/main/icon_logout.svg" alt="로그아웃아이콘">
             <p>로그아웃</p>
           </li>
@@ -70,12 +71,30 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
+import { getAuth, signOut } from "firebase/auth";
+
 export default {
-  //믹스인으로 공통 스타일 묶기
+  methods: {
+    //로그아웃
+    async __logout() {
+      try {
+        const auth = getAuth()
+        await signOut(auth)
+        alert("로그아웃 성공")
+      } catch (error) {
+        console.log(error)
+      }
+      //로그아웃되면 로그인페이지로 내보내기
+      return this.$router.push('/loginjoin')
+    }
+  },
 }
 </script>
+
 <style lang="scss">
 @import '../assets/scss/components/SideBar.scss';
 @import '../assets/scss/abstracts/Fontmodule.css';
+//믹스인으로 공통 스타일 묶기
 </style>

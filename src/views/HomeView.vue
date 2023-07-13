@@ -1,11 +1,27 @@
 <template>
   <div class="home">
     <div class="fixMenu">
-      <SideBar class="fixSideBar" /> <!-- 사이드바 컴포넌트 -->
+      <!-- 사이드바 컴포넌트 -->
+      <SideBar class="fixSideBar" />
       <div class="fixHeaderBar">
-        <HeaderBar class="rightHeader" /> <!-- 헤더바 컴포넌트 -->
+        <!-- 헤더바 컴포넌트 -->
+        <HeaderBar class="rightHeader" />
         <div class="mainScreen">
-          <CalendarList /> <!-- 캘린더 리스트 컴포넌트 -->
+          <p class="homeTitle fs_12">캘린더 목록</p>
+          <div class="CalendarListWrap">
+            <!-- 캘린더 리스트 컴포넌트 -->
+            <CalendarList class="calendarListItem" />
+            <CalendarList class="calendarListItem" />
+            <CalendarList />
+          </div>
+          <div class="notifyTitle">
+            <p class="homeTitle fs_12">새로운 알림</p>
+            <button class="fs_12">
+              알림 모두 지우기
+            </button>
+          </div>
+          <!-- 알림리스트 컴포넌트 -->
+          <NotifyItem />
         </div>
       </div>
 
@@ -16,13 +32,15 @@
 import HeaderBar from '../components/HeaderBar.vue';
 import SideBar from "../components/SideBar.vue";
 import CalendarList from "../components/CalendarList.vue";
+import NotifyItem from "../components/NotifyItem.vue";
 
 export default {
   components: {
     SideBar,
     HeaderBar,
     CalendarList,
-  }
+    NotifyItem,
+  },
 }
 </script>
 

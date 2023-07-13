@@ -107,14 +107,12 @@ import LoginJoinModal from "../components/LoginJoinModal.vue";
 import LoginJoinSlide from '../components/LoginJoinSlide.vue'
 import { defineComponent } from 'vue';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-const auth = getAuth();
 
 export default defineComponent({
   components: {
     LoginJoinModal,
     LoginJoinSlide,
   },
-
   data() {
     return {
       //슬라이드 화면전환 토글
@@ -137,7 +135,6 @@ export default defineComponent({
       },
     };
   },
-
   // 👇 `v-model`로 걸어둔 email이랑 password input창이 변하는것을 `watch`로 감시하고,
   //     변경이되면 `methods`가 실행된다. 따라서 실시간으로 이메일 형식이 맞는지 판단할 수 있다.
   watch: {
@@ -171,6 +168,7 @@ export default defineComponent({
     //로그인
     async __login() {
       try {
+        const auth = getAuth();
         const currentUser = await signInWithEmailAndPassword(
           auth,
           this.email,
@@ -189,6 +187,7 @@ export default defineComponent({
     //회원가입
     async __join() {
       try {
+        const auth = getAuth();
         const currentUser = await createUserWithEmailAndPassword(
           auth,
           this.email,
