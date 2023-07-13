@@ -1,9 +1,9 @@
 <template lang="">
-  <div class="calendarList">
+  <div class="calendarList"  @click="goToCalendar">
     <div class="top">
       <p class="fs_11">dw503 native 실무과정</p>
       <div class="profileWrap">
-        <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar"></div>
+        <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar" ></div>
         <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar"></div>
         <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar"></div>
       </div>
@@ -14,12 +14,21 @@
         <p class="fs_9">공유캘린더</p>
         <div class="circle"></div>
       </div>
-      <button class="shareBtn fs_9">공유하기</button>
+      <button class="shareBtn fs_9" @click="text()">공유하기</button>
     </div>
   </div>
 </template>
 <script lang="ts">
-export default {}
+export default {
+  methods: {
+    goToCalendar() {
+      this.$router.push('/calendar')
+    },
+    text() {
+      alert('공유하기')
+    }
+  }
+}
 </script>
 <style lang="scss">
 @import '../assets/scss/abstracts/Fontmodule.css';
