@@ -22,7 +22,7 @@
 
     <div class="sidebarMenu">
       <!-- 👇현재 라우터의 이름이 home이면 ? 보여줄 것  -->
-      <template v-if="this.$route.name === 'home'">
+      <template v-if="$route.name === 'home'">
         <ul class="sidebarList">
           <li>
             <img src="@/assets/images/main/icon_key.svg" alt="열쇠아이콘">

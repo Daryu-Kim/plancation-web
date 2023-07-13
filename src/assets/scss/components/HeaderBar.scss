@@ -1,7 +1,7 @@
 @import '../abstracts/_variables.scss';
 
 .headerBar {
-  width: 85vw;
+  width: 82vw;
   height: 65px;
   padding: 0 24px;
 
@@ -17,16 +17,16 @@
     align-items: center;
 
     & > :first-child {
-      width: 2.5rem;
+      width: 2rem;
       margin-right: 0.5rem;
     }
 
     & > :last-child {
-      width: 6rem;
+      width: 5rem;
     }
   }
 
   img {
-    width: 1.5rem;
+    width: 1.2rem;
   }
 }

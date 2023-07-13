@@ -1,8 +1,24 @@
-@import '../assets/scss/abstracts/_variables.scss';
+.home {
+  .fixMenu {
+    position: relative;
+    .fixSideBar {
+      position: static;
+      top: 0;
+      left: 0;
+    }
+    .fixHeaderBar {
+      position: absolute;
+      top: 0;
+      right: 0;
 
-.wrapper {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--bgl);
+      display: flex;
+      flex-direction: column;
+
+      .mainScreen {
+        width: 100%;
+        height: 93.3vh; //🐛 높이값 나머지를 구해야하는데
+        // border: 1px solid red;
+      }
+    }
+  }
 }

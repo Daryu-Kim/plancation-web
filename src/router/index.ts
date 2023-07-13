@@ -42,8 +42,8 @@ const router = createRouter({
     },
     {
       //캘린더
-      path: '/calender',
-      component: () => import('../views/CalenderView.vue')
+      path: '/calendar',
+      component: () => import('../views/CalendarView.vue')
     },
     {
       //할일
