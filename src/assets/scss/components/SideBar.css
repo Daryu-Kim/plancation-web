@@ -42,6 +42,9 @@
   display: flex;
   align-items: center;
 }
+.sidebar .profilePart .profileName label img {
+  width: 1.2rem;
+}
 .sidebar .profilePart .profileName .modifyBtn {
   display: none;
 }
