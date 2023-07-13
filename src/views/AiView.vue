@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ai">
     <SideBar></SideBar>
     <HeaderBar></HeaderBar>
   </div>
@@ -15,4 +15,8 @@ export default {
   }
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.ai {
+  display: flex;
+}
+</style>

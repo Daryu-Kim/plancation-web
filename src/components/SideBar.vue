@@ -1,15 +1,23 @@
 <template>
   <div class="sidebar">
     <div class="profilePart">
-      <div class="avatar">
-        <img src="@/assets/images/main/icon_user.svg" alt="유저프로필기본">
-      </div>
+      <!-- <img src="@/assets/images/main/icon_user.svg" alt="유저프로필기본"> -->
+      <label for="chooseImage">
+        <div
+          :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }"
+          class="avatar">
+          <input type="file" id="chooseImage" accept="image/*" />
+        </div>
+      </label>
 
-      <div enter-class="profileName">
-        <input type="text" value={} placeholder="닉네임을 입력해주세요">
-        <img src="@/assets/images/main/icon_pencil.svg" alt="연필모양아이콘">
+      <div class="profileName">
+        <input type="text" value="르세라핌 흥해라" class="fs_9" id="modifyName">
+        <label for="modifyName">
+          <img src="@/assets/images/main/icon_pencil.svg" alt="연필모양아이콘">
+        </label>
+        <p class="modifyBtn">수정</p>
       </div>
-      <p>userName</p>
+      <p class="userEmail">ggg222@gmail.com</p>
     </div>
 
     <div class="sidebarMenu">
@@ -27,8 +35,10 @@
         </ul>
         <div class="sidebarBottom">
           <div class="line"></div>
-          <p>버전 정보</p>
-          <p>V22.01</p>
+          <div class="version fs_9">
+            <p>버전 정보</p>
+            <p>V22.01</p>
+          </div>
         </div>
       </template>
 
@@ -66,5 +76,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../assets/scss/components/SideBar.scss'
+@import '../assets/scss/components/SideBar.scss';
+@import '../assets/scss/abstracts/Fontmodule.css';
 </style>

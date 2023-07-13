@@ -7,6 +7,8 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style lang="scss">
+@import './assets/scss/abstracts/Fontmodule.css';
+
 * {
   margin: 0;
   padding: 0;
