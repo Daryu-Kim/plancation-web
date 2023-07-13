@@ -41,11 +41,6 @@ const router = createRouter({
       component: () => import('../views/SettingView.vue')
     },
     {
-      //알림
-      path: '/notify',
-      component: () => import('../views/NotifyView.vue')
-    },
-    {
       //캘린더
       path: '/calender',
       component: () => import('../views/CalenderView.vue')
