@@ -46,7 +46,7 @@
   width: 1.2rem;
 }
 .sidebar .profilePart .profileName .modifyBtn {
-  display: none;
+  display: block;
 }
 .sidebar .profilePart .userEmail {
   color: var(--sub-medium);

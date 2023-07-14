@@ -3,21 +3,22 @@
     <div class="profilePart">
       <!-- <img src="@/assets/images/main/icon_user.svg" alt="유저프로필기본"> -->
       <label for="chooseImage">
-        <div
-          :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }"
-          class="avatar">
-          <input type="file" id="chooseImage" accept="image/*" />
+        <div :style="{ 'background-image': `url(${URL})` }" class="avatar">
+          <!-- v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용, input의 값 선택될 때  -->
+          <input type="file" id="chooseImage" accept="image/*" v-on:input="setPhotoURL" />
         </div>
       </label>
 
       <div class="profileName">
-        <input type="text" value="르세라핌 흥해라" class="fs_9" id="modifyName">
+        <!-- 💡영어로 쓸때는 v-model로 가능하지만, 한글로 쓰면 한 글자씩 업데이트가 느리다. 이를 보완하기 위해 v-bind,v-on을 쓴다. -->
+        <input type="text" v-bind:value="displayName" v-on:input="setDisplayName" class="fs_9" id="modifyName">
         <label for="modifyName">
           <img src="@/assets/images/main/icon_pencil.svg" alt="연필모양아이콘">
         </label>
-        <p class="modifyBtn">수정</p>
+        <!-- 유저 닉네임 수정 -->
+        <p class="modifyBtn" @click="__updateDisplayName()">수정</p>
       </div>
-      <p class="userEmail">ggg222@gmail.com</p>
+      <p class="userEmail">{{ email }}</p>
     </div>
 
     <div class="sidebarMenu">
@@ -73,10 +74,83 @@
 </template>
 
 <script lang="ts">
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, updateProfile } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 
 export default {
+  data() {
+    return {
+      displayName: '',
+      email: '',
+      photoURL: '' as any,
+      URL: '',
+    }
+  },
+
   methods: {
+    //프로필사진 새로 선택 될 때
+    setPhotoURL(e: any) {
+      this.photoURL = e.target.files[0]
+      console.log(this.photoURL.name)
+
+      //선택이 완료되자마자 파이어베이스 스토리지에 사진 업로드
+      this.__uploadImage()
+    },
+
+    //파이어베이스 스토리지에 이미지 업로드
+    async __uploadImage() {
+      try {
+        const auth = getAuth()
+        const user: any = auth.currentUser
+        const storage = getStorage()
+        const storageRef = ref(storage, `Users/${user.uid}/${this.photoURL.name}`)
+
+        // 'file' comes from the Blob or File API
+        const response = await uploadBytes(storageRef, this.photoURL)
+        //이미지를 url로 받아와서 data에 담기
+        const url = await getDownloadURL(response.ref)
+        this.URL = url
+        this.__updatePhotoURL()
+      }
+      catch (err) { console.log(err) }
+      return console.log('Uploaded a blob or file!');
+    },
+
+    //유저프로필 사진 변경
+    async __updatePhotoURL() {
+      const auth = getAuth()
+      const user: any = auth.currentUser
+      await updateProfile(user, {
+        photoURL: this.URL,
+      }).then(() => {
+        alert("유저프로필사진 업데이트 완료")
+      }).catch((error) => {
+        console.log(error)
+      });
+    },
+
+    //유저닉네임 새로 작성 될 때
+    setDisplayName(e: any) {
+      var updateName = e.target.value;
+      this.displayName = updateName
+      console.log(this.displayName)
+    },
+
+    //유저프로필 닉네임 변경
+    async __updateDisplayName() {
+      const auth = getAuth()
+      const user: any = auth.currentUser
+      await updateProfile(user, {
+        displayName: this.displayName,
+      }).then(() => {
+        alert("유저 네임 업데이트 완료")
+        console.log(user)
+      }).catch((error) => {
+        console.log(error)
+      });
+    },
+
     //로그아웃
     async __logout() {
       try {
@@ -89,12 +163,12 @@ export default {
       //로그아웃되면 로그인페이지로 내보내기
       return this.$router.push('/loginjoin')
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
+//믹스인으로 공통 스타일 묶기
 @import '../assets/scss/components/SideBar.scss';
 @import '../assets/scss/abstracts/Fontmodule.css';
-//믹스인으로 공통 스타일 묶기
 </style>
