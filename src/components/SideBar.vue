@@ -3,7 +3,7 @@
     <div class="profilePart">
       <!-- <img src="@/assets/images/main/icon_user.svg" alt="유저프로필기본"> -->
       <label for="chooseImage">
-        <div :style="{ 'background-image': `url(${URL})` }" class="avatar">
+        <div :style="{ 'background-image': `url(${photoURL})` }" class="avatar">
           <!-- v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용, input의 값 선택될 때  -->
           <input type="file" id="chooseImage" accept="image/*" v-on:input="setPhotoURL" />
         </div>
@@ -83,19 +83,29 @@ export default {
     return {
       displayName: '',
       email: '',
-      photoURL: '' as any,
-      URL: '',
+      selectedPhoto: '' as any,
+      photoURL: '',
     }
   },
 
-  methods: {
-    //프로필사진 새로 선택 될 때
-    setPhotoURL(e: any) {
-      this.photoURL = e.target.files[0]
-      console.log(this.photoURL.name)
+  created() {
+    //컴포넌트가 생성되자마자 현재 로그인한 사용자의 프로필 정보 가져와 표시
+    this.loadCurrentUserProfile();
+  },
 
-      //선택이 완료되자마자 파이어베이스 스토리지에 사진 업로드
-      this.__uploadImage()
+  methods: {
+    //현재 로그인한 사용자의 프로필 정보를 가져오기
+    async loadCurrentUserProfile() {
+      const auth = getAuth();
+      const user: any = auth.currentUser;
+
+      if (user) {
+        this.displayName = user.displayName;
+        this.email = user.email;
+        this.photoURL = user.photoURL;
+      } else {
+        console.log("No user is currently logged in.");
+      }
     },
 
     //파이어베이스 스토리지에 이미지 업로드
@@ -104,17 +114,26 @@ export default {
         const auth = getAuth()
         const user: any = auth.currentUser
         const storage = getStorage()
-        const storageRef = ref(storage, `Users/${user.uid}/${this.photoURL.name}`)
+        const storageRef = ref(storage, `Users/${user.uid}/${this.selectedPhoto.name}`)
 
         // 'file' comes from the Blob or File API
-        const response = await uploadBytes(storageRef, this.photoURL)
+        const response = await uploadBytes(storageRef, this.selectedPhoto)
         //이미지를 url로 받아와서 data에 담기
         const url = await getDownloadURL(response.ref)
-        this.URL = url
+        this.photoURL = url
         this.__updatePhotoURL()
       }
       catch (err) { console.log(err) }
       return console.log('Uploaded a blob or file!');
+    },
+
+    //프로필사진 새로 선택 될 때
+    setPhotoURL(e: any) {
+      this.selectedPhoto = e.target.files[0]
+      console.log(this.selectedPhoto.name)
+
+      //선택이 완료되자마자 파이어베이스 스토리지에 사진 업로드
+      this.__uploadImage()
     },
 
     //유저프로필 사진 변경
@@ -122,7 +141,7 @@ export default {
       const auth = getAuth()
       const user: any = auth.currentUser
       await updateProfile(user, {
-        photoURL: this.URL,
+        photoURL: this.photoURL,
       }).then(() => {
         alert("유저프로필사진 업데이트 완료")
       }).catch((error) => {
@@ -161,7 +180,7 @@ export default {
         console.log(error)
       }
       //로그아웃되면 로그인페이지로 내보내기
-      return this.$router.push('/loginjoin')
+      return this.$router.replace('/loginjoin')
     }
   }
 }
