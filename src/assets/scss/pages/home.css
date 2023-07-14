@@ -17,7 +17,7 @@
   background-color: var(--bgl);
   width: 100%;
   height: 93.3vh;
-  padding: 2rem;
+  padding: 1.7rem;
 }
 .home .fixMenu .fixHeaderBar .mainScreen .homeTitle {
   padding-bottom: 1rem;
@@ -27,7 +27,7 @@
 }
 .home .fixMenu .fixHeaderBar .mainScreen .CalendarListWrap {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 .home .fixMenu .fixHeaderBar .mainScreen .CalendarListWrap .calendarListItem {
   margin-right: 1.5rem;
@@ -43,23 +43,4 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-.home .fixMenu .fixHeaderBar .mainScreen .notifyWrap .notifyBox {
-  width: 100%;
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 1.3rem;
-  display: flex;
-}
-.home .fixMenu .fixHeaderBar .mainScreen .notifyWrap .notifyBox img {
-  width: 1.5rem;
-  margin-right: 1rem;
-}
-.home .fixMenu .fixHeaderBar .mainScreen .notifyWrap .notifyBox p {
-  color: var(--sub-text);
-  margin-right: 1.5rem;
-}
-.home .fixMenu .fixHeaderBar .mainScreen .notifyWrap .notifyBox p span {
-  color: #555;
-  margin-left: 0.5rem;
 }/*# sourceMappingURL=home.css.map */

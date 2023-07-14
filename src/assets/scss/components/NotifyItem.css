@@ -1,0 +1,19 @@
+.notifyWrap .notifyBox {
+  width: 100%;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1.3rem;
+  display: flex;
+}
+.notifyWrap .notifyBox img {
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+.notifyWrap .notifyBox p {
+  color: var(--sub-text);
+  margin-right: 1.5rem;
+}
+.notifyWrap .notifyBox p span {
+  color: #555;
+  margin-left: 0.5rem;
+}/*# sourceMappingURL=NotifyItem.css.map */
