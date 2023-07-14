@@ -1,7 +1,7 @@
 <template>
   <div class="LoginJoinSlide">
     <div class="slideLogoWrap">
-      <img src="@/assets/images/LoginJoin/calendarIcon.png" alt="로고심볼">
+      <img src="@/assets/images/LoginJoin/mainLogo.png" alt="로고심볼">
       <img src="@/assets/images/LoginJoin/logoTextWhite.png" alt="로고텍스트">
 
       <p class="desc fs_12">

@@ -1,5 +1,5 @@
 <template>
-  <div class="diary">
+  <div class="calendar">
     <SideBar></SideBar>
     <HeaderBar></HeaderBar>
   </div>
@@ -7,16 +7,16 @@
 <script lang="ts">
 import SideBar from "../components/SideBar.vue";
 import HeaderBar from '../components/HeaderBar.vue'
-
 export default {
   components: {
     SideBar,
     HeaderBar,
-  }
+  },
+
 }
 </script>
 <style lang="scss">
-.diary {
+.calendar {
   display: flex;
 }
 </style>

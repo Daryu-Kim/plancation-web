@@ -1,69 +1,99 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+
+//인증정보가 있는지없는지 확인 후 페이지 이동!
+const requireAuth = () => (to: any, from: any, next: any) => {
+  const auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in
+      const uid = user.uid
+      console.log(uid)
+      return next()
+    } else {
+      // User is signed out
+      console.log(auth)
+      next('/loginjoin')
+    }
+  })
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      //로그인이 되어 있을때 (메인화면)
-      path: '/home',
-      name: 'home',
-      component: HomeView
-    },
-    {
       path: '/',
       redirect: 'about'
     },
     {
-      //로그인이 되어있지 않을 때 처음 소개 페이지
+      //처음 소개 페이지
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue')
     },
     {
-      //로그인/회원가입
+      //로그인이 되어 있을때 (메인화면)
+      path: '/home',
+      name: 'home',
+      component: HomeView,
+      // 💡navigation guard - 뷰 라우터 내비게이션 가드
+      beforeEnter: requireAuth()
+    },
+    {
+      //로그인이 되어있지 않을 때 ==> 로그인/회원가입
       path: '/loginjoin',
+      name: 'loginjoin',
       component: () => import('../views/LoginJoinView.vue')
     },
     {
       //비밀번호 찾기
       path: '/findpw',
-      component: () => import('../views/FindPwView.vue')
+      name: 'findpw',
+      component: () => import('../views/FindPwView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //비밀번호 변경
       path: '/changepw',
-      component: () => import('../views/ChangePwView.vue')
+      name: 'changepw',
+      component: () => import('../views/ChangePwView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //환경설정
       path: '/setting',
-      component: () => import('../views/SettingView.vue')
-    },
-    {
-      //알림
-      path: '/notify',
-      component: () => import('../views/NotifyView.vue')
+      name: 'setting',
+      component: () => import('../views/SettingView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //캘린더
-      path: '/calender',
-      component: () => import('../views/CalenderView.vue')
+      path: '/calendar',
+      name: 'calendar',
+      component: () => import('../views/CalendarView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //할일
       path: '/todo',
-      component: () => import('../views/TodoView.vue')
+      name: 'todo',
+      component: () => import('../views/TodoView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //기록/다이어리
       path: '/diary',
-      component: () => import('../views/DiaryView.vue')
+      name: 'diary',
+      component: () => import('../views/DiaryView.vue'),
+      beforeEnter: requireAuth()
     },
     {
       //AI
       path: '/ai',
-      component: () => import('../views/AiView.vue')
+      name: 'ai',
+      component: () => import('../views/AiView.vue'),
+      beforeEnter: requireAuth()
     }
   ]
 })

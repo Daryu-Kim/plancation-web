@@ -1,0 +1,25 @@
+.notifyWrap {
+  .notifyBox {
+    width: 100%;
+    background: #fff;
+    border-radius: 0.5rem;
+
+    padding: 1.3rem;
+    display: flex;
+
+    img {
+      width: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    p {
+      color: var(--sub-text);
+      margin-right: 1.5rem;
+
+      span {
+        color: #555;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

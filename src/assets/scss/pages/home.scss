@@ -1,0 +1,53 @@
+.home {
+  .fixMenu {
+    position: relative;
+    .fixSideBar {
+      position: static;
+      top: 0;
+      left: 0;
+    }
+    .fixHeaderBar {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      .mainScreen {
+        background-color: var(--bgl);
+        width: 100%;
+        height: 93.3vh; //🐛 높이값 나머지를 구해야하는데
+        padding: 1.7rem;
+        // border: 1px solid red;
+        .homeTitle {
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px solid var(--line);
+          color: var(--sub-bold);
+        }
+        .CalendarListWrap {
+          display: flex;
+          margin-bottom: 1.2rem;
+          .calendarListItem {
+            margin-right: 1.5rem;
+          }
+        }
+        .notifyTitle {
+          position: relative;
+
+          button {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            color: var(--sub-bold);
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
