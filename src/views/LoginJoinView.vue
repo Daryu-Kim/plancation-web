@@ -33,7 +33,7 @@
 
         <!-- 비밀번호 인풋 -->
         <template v-slot:pwInput>
-          <div class="pwInput">
+          <div class="pwInput"><!-- 👇 비밀번호 표시 & 가리기 -->
             <input :type="isPasswordVisible ? 'text' : 'password'" v-model.trim="password" autocomplete="off">
             <span class="passwordText loginTextPw fs_9" :class="{ move: password }"> 비밀번호 </span>
             <span class=" passwordWranF fs_9" :class="{ move: password }" @click="togglePwVisibleClass()">표시</span>
