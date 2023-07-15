@@ -177,8 +177,6 @@ export default defineComponent({
         );
         // console.log(currentUser.user)
         return (this.$router.push('/home'))
-
-
       } catch (error) {
         alert(error)
         console.log(error);

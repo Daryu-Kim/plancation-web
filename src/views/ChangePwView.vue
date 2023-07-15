@@ -7,7 +7,9 @@
         <!-- 헤더바 컴포넌트 -->
         <HeaderBar class="rightHeader" />
         <div class="mainScreen">
-          <ChangePwModal />
+          <div class="centerPwModal">
+            <ChangePwModal />
+          </div>
         </div>
       </div>
     </div>

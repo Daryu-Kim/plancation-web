@@ -27,7 +27,7 @@
         </template>
 
         <template v-slot:loginBottom>
-          <button type="button" class="loginBtn fs_10" @click="__updatePassword()">비밀번호 변경</button>
+          <button type="button" class="changePwBtn fs_10" @click="__updatePassword()">비밀번호 변경</button>
         </template>
       </LoginJoinModal>
     </div>
@@ -62,29 +62,62 @@ export default {
       },
     }
   },
+  watch: {
+    'password': function () {
+      this.checkPassword()
+    },
+    'confirmPW': function () {
+      this.checkConfirmPW()
+      // console.log(this.confirmPW)
+    }
+  },
   methods: {
     //메인으로 가기
     goBack() {
       this.$router.go(-1);
     },
+
     //비밀번호 표시&가리기 토글버튼
     togglePwVisibleClass() {
       this.isPasswordVisible = !this.isPasswordVisible;
     },
+
     //비밀번호 변경
     async __updatePassword() {
-      const auth = getAuth();
-      const user: any = auth.currentUser;
-      const newPassword: string = "123456"
+      try {
+        const auth = getAuth();
+        const user: any = auth.currentUser;
+        const newPassword: string = this.confirmPW
 
-      updatePassword(user, newPassword)
-        .then(() => {
-          alert("Update successful.")
-        }).catch((err) => {
-          console.log(err)
-          alert(err)
-        })
+        await updatePassword(user, newPassword)
+        alert("비밀번호 변경완료")
+
+      } catch (err) {
+        console.log(err)
+        alert(err)
+      }
+      return (this.$router.push('/home'))
     },
+
+    //비밀번호 형식 검사(영문, 숫자, 특수문자가 포함되게)
+    checkPassword() {
+      const validatePassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}$/
+      if (!validatePassword.test(this.password)) {
+        this.valid.password = true
+        return
+      } this.valid.password = false
+      this.password.trim()
+    },
+
+    //비밀번호 확인 검사
+    checkConfirmPW() {
+      if (this.password !== this.confirmPW) {
+        this.valid.confirmPW = true
+        return
+      }
+      this.valid.confirmPW = false
+      this.confirmPW.trim()
+    }
   }
 }
 </script>
