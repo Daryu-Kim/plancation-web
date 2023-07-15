@@ -8,8 +8,8 @@ const requireAuth = () => (to: any, from: any, next: any) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in
-      const uid = user.uid
-      console.log(uid)
+      // const uid = user.uid
+      console.log(user)
       return next()
     } else {
       // User is signed out
@@ -50,8 +50,7 @@ const router = createRouter({
       //비밀번호 찾기
       path: '/findpw',
       name: 'findpw',
-      component: () => import('../views/FindPwView.vue'),
-      beforeEnter: requireAuth()
+      component: () => import('../views/FindPwView.vue')
     },
     {
       //비밀번호 변경
