@@ -27,10 +27,12 @@
 }
 .sidebar .profilePart .profileName {
   display: flex;
+  align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 80%;
 }
 .sidebar .profilePart .profileName > input {
+  width: 70%;
   text-align: center;
   border: none;
   border-bottom: 1px solid var(--primary);
@@ -42,10 +44,16 @@
   display: flex;
   align-items: center;
 }
-.sidebar .profilePart .profileName label img {
+.sidebar .profilePart .profileName label .pencilIcon {
   width: 1.2rem;
 }
+.sidebar .profilePart .profileName label .pencilIcon.active {
+  display: none;
+}
 .sidebar .profilePart .profileName .modifyBtn {
+  display: none;
+}
+.sidebar .profilePart .profileName .modifyBtn.active {
   display: block;
 }
 .sidebar .profilePart .userEmail {
@@ -77,6 +85,10 @@
   margin-right: 0.8rem;
 }
 .sidebar .sidebarMenu .sidebarList > li:hover {
+  background-color: var(--main);
+  color: #fff;
+}
+.sidebar .sidebarMenu .sidebarList > li.active {
   background-color: var(--main);
   color: #fff;
 }

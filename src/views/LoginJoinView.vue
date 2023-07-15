@@ -106,7 +106,8 @@
 import LoginJoinModal from "../components/LoginJoinModal.vue";
 import LoginJoinSlide from '../components/LoginJoinSlide.vue'
 import { defineComponent } from 'vue';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
 
 export default defineComponent({
   components: {
@@ -169,12 +170,12 @@ export default defineComponent({
     async __login() {
       try {
         const auth = getAuth();
-        const currentUser = await signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           this.email,
           this.password
         );
-        console.log(currentUser.user)
+        // console.log(currentUser.user)
         return (this.$router.push('/home'))
 
 
@@ -193,9 +194,11 @@ export default defineComponent({
           this.email,
           this.password,
         );
-        console.log(currentUser.user)
+        await updateProfile(currentUser.user, {
+          displayName: this.displayname,
+          photoURL: 'https://ifh.cc/g/MmLgZP.jpg',
+        })
         return (this.$router.push('/home'))
-
       } catch (error) {
         alert(error)
         console.log(error);

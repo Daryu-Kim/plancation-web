@@ -13,19 +13,20 @@
         <!-- 💡영어로 쓸때는 v-model로 가능하지만, 한글로 쓰면 한 글자씩 업데이트가 느리다. 이를 보완하기 위해 v-bind,v-on을 쓴다. -->
         <input type="text" v-bind:value="displayName" v-on:input="setDisplayName" class="fs_9" id="modifyName">
         <label for="modifyName">
-          <img src="@/assets/images/main/icon_pencil.svg" alt="연필모양아이콘">
+          <img src="@/assets/images/main/icon_pencil.svg" alt="연필모양아이콘" class="pencilIcon"
+            :class="{ active: modifyDisplayname }">
         </label>
         <!-- 유저 닉네임 수정 -->
-        <p class="modifyBtn" @click="__updateDisplayName()">수정</p>
+        <p class="modifyBtn" :class="{ active: modifyDisplayname }" @click="__updateDisplayName()">수정</p>
       </div>
       <p class="userEmail">{{ email }}</p>
     </div>
 
     <div class="sidebarMenu">
       <!-- 👇현재 라우터의 이름이 home이면 ? 보여줄 것  -->
-      <template v-if="$route.name === 'home'">
+      <template v-if="$route.name === 'home' || $route.name === 'changepw'">
         <ul class="sidebarList">
-          <li>
+          <li :class="{ active: $route.path === '/changepw' }" @click="goChangedPw()">
             <img src="@/assets/images/main/icon_key.svg" alt="열쇠아이콘">
             <p>비밀번호 변경</p>
           </li>
@@ -47,24 +48,24 @@
       <!-- 👇현재 라우터의 이름이 home이 아니면 ? 그 외의 캘린더, 투두, 기록, ai등에서 보여줄 것  -->
       <template v-else>
         <ul class="sidebarList">
-          <li>
+          <li @click="goCalendar()" :class="{ active: $route.path === '/calendar' }">
             <img src="@/assets/images/main/icon_calendar.svg" alt="캘린더아이콘">
             <p>캘린더</p>
           </li>
-          <li>
+          <li @click="goTodo()" :class="{ active: $route.path === '/todo' }">
             <img src="@/assets/images/main/icon_todo.svg" alt="할일아이콘">
             <p>할 일</p>
           </li>
-          <li>
+          <li @click="goAi()" :class="{ active: $route.path === '/ai' }">
             <img src="@/assets/images/main/icon_ai.svg" alt="AI아이콘">
             <p>AI</p>
           </li>
-          <li>
+          <li @click="goDiary()" :class="{ active: $route.path === '/diary' }">
             <img src="@/assets/images/main/icon_diary.svg" alt="기록아이콘">
             <p>기록/다이어리</p>
           </li>
         </ul>
-        <div class="sidebarBottom">
+        <div class="sidebarBottom" @click="goHome()">
           <img src="@/assets/images/main/icon_back.svg" alt="뒤로가기아이콘">
           <p>메인으로 이동</p>
         </div>
@@ -76,18 +77,16 @@
 <script lang="ts">
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-
 export default {
   data() {
     return {
-      displayName: '',
-      email: '',
-      selectedPhoto: '' as any,
-      photoURL: '',
+      displayName: '', //유저닉네임
+      email: '',  //유저이메일
+      selectedPhoto: '' as any, //프로필변경: 고른사진
+      photoURL: '', // 유저프로필에 저장된 사진 
+      modifyDisplayname: false, //유저닉네임 수정되면 클래스 부여
     }
   },
-
   created() {
     //컴포넌트가 생성되자마자 현재 로그인한 사용자의 프로필 정보 가져와 표시
     this.loadCurrentUserProfile();
@@ -98,14 +97,13 @@ export default {
     async loadCurrentUserProfile() {
       const auth = getAuth();
       const user: any = auth.currentUser;
-
-      if (user) {
+      try {
         this.displayName = user.displayName;
         this.email = user.email;
         this.photoURL = user.photoURL;
-      } else {
-        console.log("No user is currently logged in.");
       }
+      catch (err) { console.log(err) }
+      return
     },
 
     //파이어베이스 스토리지에 이미지 업로드
@@ -153,7 +151,8 @@ export default {
     setDisplayName(e: any) {
       var updateName = e.target.value;
       this.displayName = updateName
-      console.log(this.displayName)
+      // 연필모양아이콘 수정으로 바뀌게
+      this.modifyDisplayname = true
     },
 
     //유저프로필 닉네임 변경
@@ -163,6 +162,7 @@ export default {
       await updateProfile(user, {
         displayName: this.displayName,
       }).then(() => {
+        this.modifyDisplayname = false
         alert("유저 네임 업데이트 완료")
         console.log(user)
       }).catch((error) => {
@@ -181,7 +181,33 @@ export default {
       }
       //로그아웃되면 로그인페이지로 내보내기
       return this.$router.replace('/loginjoin')
-    }
+    },
+
+    //페이지 이동
+    goBack() {
+      this.$router.go(-1);
+    },
+    goFront() {
+      ; (this as any).$router.go(+1)
+    },
+    goCalendar() {
+      ; (this as any).$router.push('/calendar')
+    },
+    goTodo() {
+      ; (this as any).$router.push('/todo')
+    },
+    goAi() {
+      ; (this as any).$router.push('/ai')
+    },
+    goDiary() {
+      ; (this as any).$router.push('/diary')
+    },
+    goHome() {
+      ; (this as any).$router.push('/home')
+    },
+    goChangedPw() {
+      ; (this as any).$router.push('/changepw')
+    },
   }
 }
 </script>
