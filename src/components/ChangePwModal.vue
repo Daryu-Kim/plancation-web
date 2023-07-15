@@ -91,12 +91,11 @@ export default {
 
         await updatePassword(user, newPassword)
         alert("비밀번호 변경완료")
-
+        return (this.$router.push('/home'))
       } catch (err) {
         console.log(err)
         alert(err)
       }
-      return (this.$router.push('/home'))
     },
 
     //비밀번호 형식 검사(영문, 숫자, 특수문자가 포함되게)
