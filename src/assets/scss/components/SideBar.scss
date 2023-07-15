@@ -31,9 +31,12 @@
 
     .profileName {
       display: flex;
+      align-items: center;
       justify-content: center;
-      width: 70%;
+      width: 80%;
+
       > input {
+        width: 70%;
         text-align: center;
         border: none;
         border-bottom: 1px solid var(--primary);
@@ -45,13 +48,20 @@
         display: flex;
         align-items: center;
 
-        img {
+        .pencilIcon {
           width: 1.2rem;
+
+          &.active {
+            display: none;
+          }
         }
       }
       .modifyBtn {
-        display: block;
-        // display: none;
+        display: none;
+
+        &.active {
+          display: block;
+        }
       }
     }
     .userEmail {
@@ -85,6 +95,11 @@
         }
 
         &:hover {
+          background-color: var(--main);
+          color: #fff;
+        }
+
+        &.active {
           background-color: var(--main);
           color: #fff;
         }
