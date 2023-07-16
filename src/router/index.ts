@@ -54,14 +54,14 @@ const router = createRouter({
     },
     {
       //비밀번호 변경
-      path: '/changepw/:id',
+      path: '/changepw',
       name: 'changepw',
       component: () => import('../views/ChangePwView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //환경설정
-      path: '/setting/:id',
+      path: '/setting',
       name: 'setting',
       component: () => import('../views/SettingView.vue'),
       beforeEnter: requireAuth()
