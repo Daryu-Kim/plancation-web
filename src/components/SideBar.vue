@@ -65,9 +65,11 @@
             <p>기록/다이어리</p>
           </li>
         </ul>
-        <div class="sidebarBottom" @click="goHome()">
-          <img src="@/assets/images/main/icon_back.svg" alt="뒤로가기아이콘">
-          <p>메인으로 이동</p>
+        <div class="bottomCenter">
+          <div class="goMain" @click="goHome()">
+            <img src="@/assets/images/main/icon_back.svg" alt="뒤로가기아이콘">
+            <p>메인으로 이동</p>
+          </div>
         </div>
       </template>
     </div>

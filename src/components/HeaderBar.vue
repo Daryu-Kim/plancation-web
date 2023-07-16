@@ -1,9 +1,12 @@
 <template>
   <div class="headerBar">
-    <div class="left">
-      <img src="@/assets/images/LoginJoin/mainLogo.png" alt="로고심볼">
-      <img src="@/assets/images/about/logotext.png" alt="로고심볼">
-    </div>
+    <router-link to="/home">
+      <div class="left">
+        <img src="@/assets/images/LoginJoin/mainLogo.png" alt="로고심볼">
+        <img src="@/assets/images/about/logotext.png" alt="로고심볼">
+      </div>
+    </router-link>
+
     <router-link to="/setting">
       <img src="@/assets/images/main/icon_set.svg" alt="설정아이콘">
     </router-link>

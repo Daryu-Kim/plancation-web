@@ -72,7 +72,7 @@
             <p class="fs_8">다른방법으로 로그인</p>
             <div class="line"></div>
           </div>
-          <button class="anotherLogin" type="button">
+          <button class="anotherLogin" type="button" @click="__googleLogin()">
             <img src="@/assets/images/LoginJoin/GoogleLogo.png" alt="구글로고">
             <p class="fs_10">Google로 로그인</p>
           </button>
@@ -106,7 +106,8 @@
 import LoginJoinModal from "../components/LoginJoinModal.vue";
 import LoginJoinSlide from '../components/LoginJoinSlide.vue'
 import { defineComponent } from 'vue';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 
 
 export default defineComponent({
@@ -176,28 +177,69 @@ export default defineComponent({
           this.password
         );
         // console.log(currentUser.user)
-        return (this.$router.push('/home'))
+        return (this.$router.replace('/home'))
       } catch (error) {
         alert(error)
         console.log(error);
       }
     },
 
+    //구글로그인
+    async __googleLogin() {
+      try {
+        const auth = getAuth()
+        const provider = new GoogleAuthProvider()
+        await signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user
+            console.log(user)
+            window.close();
+          }).catch((err) => {
+            // Handle Errors here.
+            const errorCode = err.code
+            const errorMessage = err.message
+            console.log(errorCode)
+            console.log(errorMessage)
+          })
+      } catch (err) { console.log(err) }
+      return (this.$router.replace('/home'))
+    },
+
     //회원가입
     async __join() {
       try {
+        const db = getFirestore();
         const auth = getAuth();
         const currentUser = await createUserWithEmailAndPassword(
           auth,
           this.email,
           this.password,
         );
+        // 회원가입한 유저의 프로필 등록
         await updateProfile(currentUser.user, {
           displayName: this.displayname,
-          photoURL: 'https://ifh.cc/g/MmLgZP.jpg',
+          photoURL: 'https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452',
         })
-        return (this.$router.push('/home'))
-      } catch (error) {
+
+        //👇firestore로 'Users'라는 컬렉션에 방금 회원가입한 유저정보 추가하기
+        await setDoc(doc(db, "Users", currentUser.user.uid), {
+          userID: currentUser.user.uid,
+          userImagePath: null,
+          userName: this.displayname,
+        })
+
+        //👇기본 캘린더 부여하기
+        //firestore로 'Calendars'라는 컬렉션에 유저UID로 문서추가하기
+        await setDoc(doc(db, "Calendars", currentUser.user.uid), {
+          calendarAuthorID: currentUser.user.uid,
+          calendarTitle: "개인",
+          calendarID: currentUser.user.uid,
+          calendarUsers: [currentUser.user.uid]
+        })
+        alert(`${this.displayname}님 안녕하세요! 회원가입되었습니다.`)
+        return (this.$router.replace('/home'))
+      }
+      catch (error) {
         alert(error)
         console.log(error);
       }
