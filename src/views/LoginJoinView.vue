@@ -72,7 +72,7 @@
             <p class="fs_8">다른방법으로 로그인</p>
             <div class="line"></div>
           </div>
-          <button class="anotherLogin" type="button">
+          <button class="anotherLogin" type="button" @click="__googleLogin()">
             <img src="@/assets/images/LoginJoin/GoogleLogo.png" alt="구글로고">
             <p class="fs_10">Google로 로그인</p>
           </button>
@@ -106,16 +106,8 @@
 import LoginJoinModal from "../components/LoginJoinModal.vue";
 import LoginJoinSlide from '../components/LoginJoinSlide.vue'
 import { defineComponent } from 'vue';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {
-  // addDoc,
-  // collection,
-  doc,
-  getFirestore,
-  setDoc,
-  // Timestamp,
-  // updateDoc,
-} from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 
 
 export default defineComponent({
@@ -190,6 +182,27 @@ export default defineComponent({
         alert(error)
         console.log(error);
       }
+    },
+
+    //구글로그인
+    async __googleLogin() {
+      try {
+        const auth = getAuth()
+        const provider = new GoogleAuthProvider()
+        await signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user
+            console.log(user)
+            window.close();
+          }).catch((err) => {
+            // Handle Errors here.
+            const errorCode = err.code
+            const errorMessage = err.message
+            console.log(errorCode)
+            console.log(errorMessage)
+          })
+      } catch (err) { console.log(err) }
+      return (this.$router.replace('/home'))
     },
 
     //회원가입
