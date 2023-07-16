@@ -29,9 +29,6 @@
   display: flex;
   margin-bottom: 1.2rem;
 }
-.home .fixMenu .fixHeaderBar .mainScreen .CalendarListWrap .calendarListItem {
-  margin-right: 1.5rem;
-}
 .home .fixMenu .fixHeaderBar .mainScreen .notifyTitle {
   position: relative;
 }

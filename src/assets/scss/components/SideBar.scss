@@ -81,6 +81,7 @@
       align-items: center;
       > li {
         width: 95%;
+        height: 3rem;
         border-radius: 0.6rem;
         display: flex;
         align-items: center;
@@ -107,6 +108,8 @@
     }
     .sidebarBottom {
       padding: 0 0.6rem 1rem 0.6rem;
+      // padding: 0.7rem 0.5rem;
+
       .line {
         border-bottom: 1px solid var(--line);
         margin-bottom: 0.4em;
@@ -117,6 +120,33 @@
 
         p {
           color: var(--sub-medium);
+        }
+      }
+    }
+    .bottomCenter {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      .goMain {
+        width: 95%;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.6rem;
+        padding: 0.7rem 0.5rem;
+        border: 1px solid var(--sub-medium);
+        cursor: pointer;
+
+        img {
+          margin-right: 0.5rem;
+        }
+        p {
+          color: var(--sub-medium);
+        }
+
+        &:hover {
+          background-color: var(--gbtn-hover);
         }
       }
     }

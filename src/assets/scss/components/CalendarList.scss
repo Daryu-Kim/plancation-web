@@ -1,0 +1,102 @@
+.calendarList {
+  cursor: pointer;
+
+  width: 14rem;
+  height: 14rem;
+
+  background-color: var(--bgw);
+  // border: 1px solid var(--main);
+  border-radius: 0.6rem;
+
+  padding: 1rem;
+  margin-right: 1.2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: all 200ms ease;
+
+  &:hover {
+    // background-color: var(--pbtn-hover);
+    background-color: var(--main);
+    border: none;
+  }
+
+  &:hover .top p {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  &:hover .bottom .left p {
+    color: #fff;
+  }
+
+  .top {
+    p {
+      color: var(--sub-medium);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .profileWrap {
+      display: flex;
+
+      .avatar {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 3rem;
+        margin-right: 0.3rem;
+
+        background: {
+          color: #fff;
+          position: center;
+          repeat: no-repeat;
+          size: cover;
+        }
+
+        & > :last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      p {
+        color: var(--sub-medium);
+
+        // &::before {
+        //   content: '';
+
+        //   width: 1rem;
+        //   height: 0.6rem;
+        //   border-radius: 1rem;
+
+        //   background-color: #fff;
+        // }
+      }
+    }
+
+    .circle {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 1rem;
+
+      background-color: var(--point);
+    }
+
+    button {
+      padding: 0.4rem 0.3rem;
+      border-radius: 0.6rem;
+      border: none;
+      background-color: var(--primary);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,29 +1,58 @@
-<template lang="">
-  <div class="calendarList"  @click="goToCalendar">
+<template>
+  <div class="calendarList" v-for:="item in myCalendars" @click="goToCalendar">
     <div class="top">
-      <p class="fs_11">dw503 native 실무과정</p>
+      <p class="fs_11">{{ item?.calendarTitle }}</p>
       <div class="profileWrap">
-        <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar" ></div>
-        <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar"></div>
-        <div :style="{ 'background-image': 'url(https://item.kakaocdn.net/do/dc9561970173c28a13654c3f14180b4b617ea012db208c18f6e83b1a90a7baa7)' }" class="avatar"></div>
+        <div
+          :style="{ 'background-image': 'url(https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452)' }"
+          class="avatar"></div>
       </div>
     </div>
     <div class="bottom">
       <div class="left">
-        <p class="fs_8">강해민</p>
-        <p class="fs_9">공유캘린더</p>
+        <!-- <p class="fs_8">Robert Downey Jr.</p> -->
+        <!-- <p class="fs_9">{{ item?.calendarTitle }}</p> -->
         <div class="circle"></div>
+        <p class="fs_8">{{ item?.calendarAuthorID == user ? '개인캘린더' : '공유캘린더' }}</p>
       </div>
       <button class="shareBtn fs_9" @click="text()">공유하기</button>
     </div>
   </div>
 </template>
 <script lang="ts">
+import { getAuth } from 'firebase/auth'
 export default {
+  props: {
+    myCalendars: Object,
+  },
+  data() {
+    return {
+      user: ''
+    }
+  },
+  created() {
+    this.loadCurrentUserProfile()
+    console.log(this.myCalendars)
+  },
   methods: {
+    //현재 로그인한 사용자의 프로필 정보를 가져오기
+    async loadCurrentUserProfile() {
+      const auth = getAuth();
+      const user: any = auth.currentUser;
+      try {
+        this.user = user.uid
+        console.log(user.uid)
+      }
+      catch (err) { console.log(err) }
+      return
+    },
+
+    //캘린더 목록에서 선택하면 해당 캘린더로 페이지 넘어가기
     goToCalendar() {
       this.$router.push('/calendar')
     },
+
+    //캘린더 공유
     text() {
       alert('공유하기')
     }
@@ -32,89 +61,5 @@ export default {
 </script>
 <style lang="scss">
 @import '../assets/scss/abstracts/Fontmodule.css';
-
-.calendarList {
-  cursor: pointer;
-
-  width: 14rem;
-  height: 14rem;
-
-  background-color: var(--main);
-  border-radius: 0.6rem;
-
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .top {
-    p {
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .profileWrap {
-      display: flex;
-
-      .avatar {
-        width: 2.2rem;
-        height: 2.2rem;
-        border-radius: 3rem;
-        margin-right: 0.3rem;
-
-        background: {
-          color: #fff;
-          position: center;
-          repeat: no-repeat;
-          size: cover;
-        }
-
-        &> :last-child {
-          margin: 0;
-        }
-      }
-    }
-  }
-
-  .bottom {
-    display: flex;
-    justify-content: space-between;
-
-    .left {
-      p {
-        color: #fff;
-
-        &::before {
-          content: "";
-
-          width: 1rem;
-          height: 0.6rem;
-          border-radius: 1rem;
-
-          background-color: #fff;
-        }
-      }
-
-    }
-
-    // .circle {
-    //   width: 0.6rem;
-    //   height: 0.6rem;
-    //   border-radius: 1rem;
-
-    //   background-color: var(--point);
-    // }
-
-    button {
-      padding: 0.4rem 0.3rem;
-      border-radius: 0.6rem;
-      border: none;
-      background-color: var(--point);
-      color: #fff;
-      cursor: pointer;
-    }
-  }
-
-}
+@import '../assets/scss/components/CalendarList.css';
 </style>

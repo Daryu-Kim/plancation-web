@@ -72,6 +72,7 @@
 }
 .sidebar .sidebarMenu .sidebarList > li {
   width: 95%;
+  height: 3rem;
   border-radius: 0.6rem;
   display: flex;
   align-items: center;
@@ -105,4 +106,28 @@
 }
 .sidebar .sidebarMenu .sidebarBottom .version p {
   color: var(--sub-medium);
+}
+.sidebar .sidebarMenu .bottomCenter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.sidebar .sidebarMenu .bottomCenter .goMain {
+  width: 95%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.6rem;
+  padding: 0.7rem 0.5rem;
+  border: 1px solid var(--sub-medium);
+  cursor: pointer;
+}
+.sidebar .sidebarMenu .bottomCenter .goMain img {
+  margin-right: 0.5rem;
+}
+.sidebar .sidebarMenu .bottomCenter .goMain p {
+  color: var(--sub-medium);
+}
+.sidebar .sidebarMenu .bottomCenter .goMain:hover {
+  background-color: var(--gbtn-hover);
 }/*# sourceMappingURL=SideBar.css.map */

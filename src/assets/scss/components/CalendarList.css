@@ -1,0 +1,66 @@
+.calendarList {
+  cursor: pointer;
+  width: 14rem;
+  height: 14rem;
+  background-color: var(--bgw);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  margin-right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 200ms ease;
+}
+.calendarList:hover {
+  background-color: var(--main);
+  border: none;
+}
+.calendarList:hover .top p {
+  color: #fff;
+  font-weight: 500;
+}
+.calendarList:hover .bottom .left p {
+  color: #fff;
+}
+.calendarList .top p {
+  color: var(--sub-medium);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.calendarList .top .profileWrap {
+  display: flex;
+}
+.calendarList .top .profileWrap .avatar {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 3rem;
+  margin-right: 0.3rem;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.calendarList .top .profileWrap .avatar > :last-child {
+  margin: 0;
+}
+.calendarList .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.calendarList .bottom .left p {
+  color: var(--sub-medium);
+}
+.calendarList .bottom .circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 1rem;
+  background-color: var(--point);
+}
+.calendarList .bottom button {
+  padding: 0.4rem 0.3rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}/*# sourceMappingURL=CalendarList.css.map */
