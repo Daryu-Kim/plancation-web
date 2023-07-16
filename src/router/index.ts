@@ -54,42 +54,42 @@ const router = createRouter({
     },
     {
       //비밀번호 변경
-      path: '/changepw',
+      path: '/changepw/:id',
       name: 'changepw',
       component: () => import('../views/ChangePwView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //환경설정
-      path: '/setting',
+      path: '/setting/:id',
       name: 'setting',
       component: () => import('../views/SettingView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //캘린더
-      path: '/calendar',
+      path: '/calendar/:id',
       name: 'calendar',
       component: () => import('../views/CalendarView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //할일
-      path: '/todo',
+      path: '/calendar/:id/todo',
       name: 'todo',
       component: () => import('../views/TodoView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //기록/다이어리
-      path: '/diary',
+      path: '/calendar/:id/diary',
       name: 'diary',
       component: () => import('../views/DiaryView.vue'),
       beforeEnter: requireAuth()
     },
     {
       //AI
-      path: '/ai',
+      path: '/calendar/:id/ai',
       name: 'ai',
       component: () => import('../views/AiView.vue'),
       beforeEnter: requireAuth()

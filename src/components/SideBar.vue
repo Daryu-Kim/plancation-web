@@ -193,22 +193,22 @@ export default {
       ; (this as any).$router.go(+1)
     },
     goCalendar() {
-      ; (this as any).$router.push('/calendar')
+      ; (this as any).$router.push('calendar')
     },
     goTodo() {
-      ; (this as any).$router.push('/todo')
+      ; (this as any).$router.push('todo')
     },
     goAi() {
-      ; (this as any).$router.push('/ai')
+      ; (this as any).$router.push('ai')
     },
     goDiary() {
-      ; (this as any).$router.push('/diary')
+      ; (this as any).$router.push('diary')
     },
     goHome() {
-      ; (this as any).$router.push('/home')
+      ; (this as any).$router.push('home')
     },
     goChangedPw() {
-      ; (this as any).$router.push('/changepw')
+      ; (this as any).$router.push('changepw')
     },
   }
 }

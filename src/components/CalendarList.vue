@@ -1,5 +1,5 @@
 <template>
-  <div class="calendarList" v-for:="item in myCalendars" @click="goToCalendar">
+  <div class="calendarList" v-for="item in myCalendars" :key="item.calendarID" @click="goToCalendar(item.calendarID)">
     <div class="top">
       <p class="fs_11">{{ item?.calendarTitle }}</p>
       <div class="profileWrap">
@@ -48,8 +48,8 @@ export default {
     },
 
     //캘린더 목록에서 선택하면 해당 캘린더로 페이지 넘어가기
-    goToCalendar() {
-      this.$router.push('/calendar')
+    goToCalendar(calendarID: string) {
+      this.$router.push(`/calendar/${calendarID}`)
     },
 
     //캘린더 공유
