@@ -14,9 +14,12 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
+    "moduleResolution": "node",
     "types": ["node", "vuex"],
     "paths": {
+      "*": ["src/*"],
       "vuex": ["./node_modules/vuex/types/index"]
     }
-  }
+  },
+  "include": ["src/**/*", "types/**/*"]
 }
