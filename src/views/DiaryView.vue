@@ -11,21 +11,22 @@
           <CurrentUsers />
           <!-- 기록/다이어리 리스트 컴포넌트 -->
           <WritePost :class="{ active: isActive }" />
-          <div class="diaryListWrap" @click="addPost()" :class="{ active: isActive }">
-            <DiaryList class="diaryListasd" :class="{ active: !isActive }" :allDiary="postList" />
+          <div class="diaryListWrap" :class="{ active: isActive }">
+            <!-- 👇 $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
+            <DiaryList @diaryClick="isActiveTrue()" :allDiary="postList" />
           </div>
         </div>
       </div>
     </div>
   </div>
 </template> 
+
 <script lang="ts">
 import SideBar from "../components/SideBar.vue";
 import HeaderBar from '../components/HeaderBar.vue'
 import DiaryList from '../components/DiaryList.vue'
 import CurrentUsers from '../components/CurrentUsers.vue'
 import WritePost from '../components/WritePost.vue'
-// import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Firestore, collection, getDocs, getFirestore } from "firebase/firestore";
 
 export default {
@@ -36,6 +37,11 @@ export default {
     CurrentUsers,
     WritePost
   },
+
+  created() {
+    this.getDiary()
+  },
+
   data() {
     return {
       isActive: false,
@@ -43,32 +49,23 @@ export default {
       calendarID: this.$route.params.id
     }
   },
-  created() {
-    this.getDiary()
-  },
-  // computed: {
-  //   calendarID() {
-  //     return this.$route.params.id;
-  //   }
-  // },
+
   methods: {
-    addPost() {
+    isActiveTrue() {
       this.isActive = true
     },
 
-    //post 가져오기
+    //현재 캘린더의 Posts내에 전체문서 가져오기
     async getDiary() {
       const db: Firestore = getFirestore();
-      // const q = query(collection(db, `${this.calendarID} / Posts`));
 
       // getDocs 함수에 위에 정의한 쿼리를 적용해서 모든 문서들을 가져온다.
-      const querySnapshot = await getDocs(
+      const yourCalendars = await getDocs(
         collection(db, `Calendars/${this.calendarID}/Posts`)
       );
-      querySnapshot.forEach((doc) => {
+      yourCalendars.forEach((doc) => {
         // 가져온 모든 문서들을 확인
         this.postList.push(doc.data()); //배열에 문서 데이터를 푸시
-        console.log(this.postList);
       });
     }
   }
@@ -76,10 +73,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/abstracts/Fontmodule.css';
 @import '../assets/scss/pages/diary.css';
-
-.mainScreen {
-  overflow: scroll;
-}
 </style>

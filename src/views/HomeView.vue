@@ -65,7 +65,6 @@ export default {
       querySnapshot.forEach((doc) => {
         // 가져온 모든 문서들을 확인
         this.calendarList.push(doc.data()); //배열에 문서 데이터를 푸시
-        console.log(this.calendarList);
       });
     }
   },
