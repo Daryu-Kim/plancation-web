@@ -48,19 +48,19 @@
       <!-- 👇현재 라우터의 이름이 home이 아니면 ? 그 외의 캘린더, 투두, 기록, ai등에서 보여줄 것  -->
       <template v-else>
         <ul class="sidebarList">
-          <li @click="goCalendar()" :class="{ active: $route.path === '/calendar' }">
+          <li @click="goCalendar()" :class="{ active: $route.name === 'calendar' }">
             <img src="@/assets/images/main/icon_calendar.svg" alt="캘린더아이콘">
             <p>캘린더</p>
           </li>
-          <li @click="goTodo()" :class="{ active: $route.path === '/todo' }">
+          <li @click="goTodo()" :class="{ active: $route.name === 'todo' }">
             <img src="@/assets/images/main/icon_todo.svg" alt="할일아이콘">
             <p>할 일</p>
           </li>
-          <li @click="goAi()" :class="{ active: $route.path === '/ai' }">
+          <li @click="goAi()" :class="{ active: $route.name === 'ai' }">
             <img src="@/assets/images/main/icon_ai.svg" alt="AI아이콘">
             <p>AI</p>
           </li>
-          <li @click="goDiary()" :class="{ active: $route.path === '/diary' }">
+          <li @click="goDiary()" :class="{ active: $route.name === 'diary' }">
             <img src="@/assets/images/main/icon_diary.svg" alt="기록아이콘">
             <p>기록/다이어리</p>
           </li>
@@ -193,16 +193,16 @@ export default {
       ; (this as any).$router.go(+1)
     },
     goCalendar() {
-      ; (this as any).$router.push('/calendar')
+      this.$router.push(`/calendar/${this.$route.params.id}`);
     },
     goTodo() {
-      ; (this as any).$router.push('/todo')
+      this.$router.push(`/calendar/${this.$route.params.id}/todo`);
     },
     goAi() {
-      ; (this as any).$router.push('/ai')
+      this.$router.push(`/calendar/${this.$route.params.id}/ai`);
     },
     goDiary() {
-      ; (this as any).$router.push('/diary')
+      this.$router.push(`/calendar/${this.$route.params.id}/diary`);
     },
     goHome() {
       ; (this as any).$router.push('/home')
