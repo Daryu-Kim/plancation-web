@@ -10,7 +10,7 @@
           <!-- 해당 캘린더의 제목과 참여유저! -->
           <CurrentUsers />
           <!-- 기록/다이어리 리스트 컴포넌트 -->
-          <WritePost :class="{ active: isActive }" />
+          <WritePost />
           <div class="diaryListWrap" :class="{ active: isActive }">
             <!-- 👇 $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
             <DiaryList @diaryClick="isActiveTrue()" :allDiary="postList" />

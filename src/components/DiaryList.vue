@@ -1,6 +1,6 @@
 <template>
-  <div class="diaryList" v-for:="item in    allDiary   " :key="item.id">
-    <div class="diaryContent" @click="$emit('diaryClick', item)">
+  <div class="diaryList" v-for:="item in allDiary" :key="item.id">
+    <div class="diaryContent" @click="__deleteDiary(item.postID)">
       <div class="imageWrap">
         <div v-if="item.postImage === ''" class="nullPath">
           <p>{{ item.postContent }}</p>
@@ -9,8 +9,8 @@
         </div>
       </div>
       <div class="userInfo">
-        <p class="fs_9">{{ item.postAuthorID }}</p>
-        <!-- <p class="fs_9" style="display: none;">{{ findUser(item.postAuthorID) }}</p> -->
+        <!-- <p class="fs_9">{{ item.postAuthorID }}</p> -->
+        <p class="fs_9">{{ findUser(item.postAuthorID) }}</p>
         <p class="fs_9">{{ userNickname }}</p>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452"
@@ -24,8 +24,8 @@
   </div>
 </template>
 <script lang="ts">
-import { getFirestore, collection, getDocs, where, query } from "firebase/firestore";
-
+import { getFirestore, collection, getDocs, where, query, deleteDoc, doc, FirestoreError, QuerySnapshot, getDoc, DocumentSnapshot } from "firebase/firestore";
+// @click="$emit('diaryClick', item)"
 
 export default {
   props: {
@@ -34,7 +34,7 @@ export default {
   },
   created() {
     console.log(this.allDiary);
-    // this.findUser()
+    this.findUser()
   },
   data() {
     return {
@@ -48,18 +48,41 @@ export default {
     async findUser(user) {
       try {
         const db = getFirestore();
-        const q = query(collection(db, "Users"), where("userID", "==", `${user}`));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          // console.log(doc.id, " => ", doc.data());
-          const userName = doc.data().userName;
-          console.log(doc.data().userName);
-          return this.userNickname = userName
-        });
+        await getDoc(collection(db, `Users/${user}`))
+          .then((doc: DocumentSnapshot) => {
+            const userName = doc.data().userName;
+            console.log(doc.data().userName);
+            return this.userNickname = userName;
+          })
+          .catch((_) => {
+
+          });
 
       } catch (err) { console.log(err) }
-    }
+    },
 
+    //문서 삭제하기
+    async __deleteDiary(postID) {
+      try {
+        const db = getFirestore();
+        await deleteDoc(doc(collection(db, "Calendars", this.$route.params.id, "Posts"), `${postID}`))
+          .then(() => {
+            alert("기록삭제완료!")
+          })
+          .catch((err) => {
+            alert(err.code)
+          })
+        return this.$router.go(0);
+      }
+      catch (err) {
+        console.log(err)
+      }
+    },
+
+    //캘린더 목록에서 선택하면 해당 캘린더로 페이지 넘어가기
+    goToCalendar(calendarID: string) {
+      this.$router.push(`/calendar/${calendarID}`)
+    },
   }
 }
 </script>

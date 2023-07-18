@@ -23,7 +23,7 @@ export default {
       selectedPhoto: '' as any,
       photoURL: ''
       ,
-      calendarList: [] as any[]
+      calendarList: [] as any[],
     }
   },
   methods: {
@@ -88,12 +88,14 @@ export default {
 
           //가지고온 url로 postImage업데이트, 랜덤으로 받은 Posts아이디로 postID업데이트 
           this.updatePost(postID)
+          this.$router.go(0);
           return console.log(`스토리지 ${postID}에 이미지업로드 완료!`);
         }
         catch (err) { console.log(err) }
       } else {
         //선택한 사진이 없다면?
         this.updatePost(postID)
+        this.$router.go(0);
         return console.log(`이미지없음! 완료!`);
       }
     },
@@ -116,13 +118,9 @@ export default {
 .writePost {
   width: 20rem;
   height: 20rem;
+  display: flex;
+  flex-direction: column;
   display: none;
-
-  &.active {
-    display: block;
-    display: flex;
-    flex-direction: column;
-  }
 
   // .postTitle {}
 }

@@ -22,12 +22,12 @@
 
         overflow: hidden;
 
-        .writePost {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
+        // .writePost {
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+        // }
 
         .diaryListWrap {
           width: 100%;
@@ -43,9 +43,9 @@
           //1줄 5개
           grid-template-columns: repeat(5, 1fr);
 
-          &.active {
-            display: none;
-          }
+          // &.active {
+          //   display: none;
+          // }
         }
       }
     }

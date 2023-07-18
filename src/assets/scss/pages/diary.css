@@ -20,12 +20,6 @@
   height: 93.3vh;
   overflow: hidden;
 }
-.diary .fixMenu .fixHeaderBar .mainScreen .writePost {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap {
   width: 100%;
   height: 92%;
@@ -34,7 +28,4 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(5, 1fr);
-}
-.diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap.active {
-  display: none;
 }/*# sourceMappingURL=diary.css.map */
