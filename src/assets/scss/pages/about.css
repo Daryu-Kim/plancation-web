@@ -174,9 +174,6 @@
   -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
   scrollbar-width: none; /* 스크롤바 숨김 */
 }
-*::-webkit-scrollbar {
-  display: none; /* 스크롤바 숨김 */
-}
 
 .reveal {
   position: relative;

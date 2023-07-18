@@ -1,5 +1,6 @@
 <template>
   <div class="writePost">
+<<<<<<< HEAD
     <div class="postTextWrap">
       <input v-bind:value="postTitle" v-on:input="setPostTitle" class="postTitle fs_11" type="text"
         placeholder="기록/다이어리 제목">
@@ -24,6 +25,15 @@
         <button class="fs_11" @click="__addDiary()">기록에 등록</button>
       </div>
     </div>
+=======
+    <input v-bind:value="postTitle" v-on:input="setPostTitle" class="postTitle fs_14" type="text"
+      placeholder="기록/다이어리 제목">
+    <textarea v-bind:value="postContent" v-on:input="setPostContent" class="fs_14" name="" id="" cols="30" rows="10"
+      placeholder="기록/다이어리 텍스트를 입력해주세요."></textarea>
+    <input type="file" class="fs_14" accept="image/*" v-on:input="setPhotoURL">
+    <button class="fs_14">취소</button>
+    <button class="fs_14" @click="__addDiary()">기록에 등록</button>
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   </div>
 </template>
 
@@ -37,6 +47,7 @@ export default {
     return {
       postTitle: '',
       postContent: '',
+<<<<<<< HEAD
       selectedPhoto: '',
       photoURL: '',
       calendarList: [] as any[],
@@ -45,6 +56,14 @@ export default {
 
   emits: ['cancle'],
 
+=======
+      selectedPhoto: '' as any,
+      photoURL: ''
+      ,
+      calendarList: [] as any[],
+    }
+  },
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   methods: {
     //타이틀 값 받아내기
     setPostTitle(e: any) {
@@ -61,6 +80,7 @@ export default {
     //선택한 사진 값 받아내기
     setPhotoURL(e: any) {
       this.selectedPhoto = e.target.files[0]
+<<<<<<< HEAD
       console.log(this.selectedPhoto)
       this.displayPhoto()
     },
@@ -84,6 +104,8 @@ export default {
       }
       catch (err) { console.log(err) }
       return console.log('Uploaded a blob or file!');
+=======
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
     },
 
     //기록/다이어리 등록
@@ -125,6 +147,7 @@ export default {
 
           const response = await uploadBytes(storageRef, this.selectedPhoto)
           //storage에 담았던 이미지를 url로 받아와서 data에 담기
+<<<<<<< HEAD
           await getDownloadURL(response.ref)
             .then((url) => {
               this.photoURL = url
@@ -135,6 +158,15 @@ export default {
             }).catch((err) => {
               console.log(err)
             })
+=======
+          const url = await getDownloadURL(response.ref)
+          this.photoURL = url
+
+          //가지고온 url로 postImage업데이트, 랜덤으로 받은 Posts아이디로 postID업데이트 
+          this.updatePost(postID)
+          this.$router.go(0);
+          return console.log(`스토리지 ${postID}에 이미지업로드 완료!`);
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
         }
         catch (err) { console.log(err) }
       } else {
@@ -160,5 +192,17 @@ export default {
 </script>
 
 <style lang="scss">
+<<<<<<< HEAD
 @import '../assets/scss/components/WritePost.css'
+=======
+.writePost {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  display: none;
+
+  // .postTitle {}
+}
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 </style>

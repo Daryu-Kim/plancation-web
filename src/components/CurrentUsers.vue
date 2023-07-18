@@ -10,7 +10,11 @@
     <img
       src="https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452"
       alt="유저이미지">
+<<<<<<< HEAD
     <button @click="$emit('addClick')" class="addBtn fs_9">기록추가</button>
+=======
+    <button class="btnSanghyun fs_10">여치</button>
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   </div>
 </template>
 <script lang="ts">
