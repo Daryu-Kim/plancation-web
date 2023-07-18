@@ -1,0 +1,80 @@
+.diaryList {
+  // display: none;
+  // &.active {
+  // }
+  // &::-webkit-scrollbar {
+  //   display: none; /* 스크롤바 숨김 */
+  // }
+  .diaryContent {
+    width: fit-content;
+    height: 19.5rem;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 0.6rem;
+    cursor: pointer;
+
+    .imageWrap {
+      width: 13.3rem;
+      height: 13.3rem;
+      overflow: hidden;
+
+      .nullPath {
+        padding: 1rem;
+        height: 100%;
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+          transform: scale(1.04);
+        }
+      }
+
+      .diaryImageBox {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0.6rem;
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+          transform: scale(1.04);
+        }
+      }
+    }
+    .userInfo {
+      width: 13.3rem;
+      text-align: end;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      margin: 0.4rem 0;
+
+      p {
+        color: var(--sub-bold);
+      }
+
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 2rem;
+        margin-left: 0.4rem;
+      }
+    }
+
+    .diaryText {
+      width: 13.3rem;
+      color: var(--sub-text);
+
+      p {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+}

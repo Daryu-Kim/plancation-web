@@ -1,0 +1,45 @@
+.diary .fixMenu {
+  position: relative;
+}
+.diary .fixMenu .fixSideBar {
+  position: static;
+  top: 0;
+  left: 0;
+}
+.diary .fixMenu .fixHeaderBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.diary .fixMenu .fixHeaderBar .mainScreen {
+  position: relative;
+  background-color: var(--bgl);
+  width: 100%;
+  height: 93.3vh;
+  overflow: hidden;
+}
+.diary .fixMenu .fixHeaderBar .mainScreen .overlay {
+  position: absolute;
+  z-index: 10;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  display: none;
+}
+.diary .fixMenu .fixHeaderBar .mainScreen .overlay.active {
+  display: block;
+}
+.diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap {
+  width: 100%;
+  height: 92%;
+  overflow: scroll;
+  padding: 1.7rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+}/*# sourceMappingURL=diary.css.map */

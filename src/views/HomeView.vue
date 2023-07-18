@@ -50,6 +50,7 @@ export default {
   created() {
     //컴포넌트가 생성되자마자 현재 로그인한 사용자의 프로필 정보 가져와 표시
     this.getCalendars();
+    console.log(this.calendarList)
   },
 
   methods: {
@@ -65,7 +66,6 @@ export default {
       querySnapshot.forEach((doc) => {
         // 가져온 모든 문서들을 확인
         this.calendarList.push(doc.data()); //배열에 문서 데이터를 푸시
-        console.log(this.calendarList);
       });
     }
   },
