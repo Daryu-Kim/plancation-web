@@ -22,16 +22,38 @@
 
         overflow: hidden;
 
+<<<<<<< HEAD
+        .overlay {
+          position: absolute;
+          z-index: 10;
+          opacity: 0.5;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #dedede;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+        }
+=======
         // .writePost {
         // position: absolute;
         // top: 50%;
         // left: 50%;
         // transform: translate(-50%, -50%);
         // }
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 
         .diaryListWrap {
           width: 100%;
           height: 92%; //🐛 높이값 나머지를 구해야하는데
+<<<<<<< HEAD
+          // filter: blur(6px);
+=======
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 
           overflow: scroll;
 

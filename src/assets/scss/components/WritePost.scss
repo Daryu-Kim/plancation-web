@@ -1,0 +1,117 @@
+.writePost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+
+  display: flex;
+  padding: 3rem 1.5rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+
+  &.active {
+    display: none;
+  }
+
+  .postTextWrap {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+
+    .postTitle {
+      width: 100%;
+      color: var(--sub-text);
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 1px solid var(--point);
+      outline: none;
+      margin-bottom: 0.8rem;
+    }
+    textarea {
+      width: 100%;
+      height: 27rem;
+      color: var(--sub-text);
+      padding: 0.5rem;
+      border: 1px solid var(--point);
+      outline: none;
+      resize: none;
+    }
+  }
+
+  .postImage {
+    width: 30rem;
+    padding: 0 2rem 0 2rem;
+
+    .currentDate {
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--point);
+      text-align: end;
+    }
+
+    label {
+      .selectedPhoto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        color: var(--sub-bold);
+
+        width: 100%;
+        height: 75%;
+        border: 1px solid var(--point);
+
+        div {
+          padding: 5rem;
+          transition: all 200ms ease;
+          &:hover {
+            scale: 1.1;
+          }
+        }
+      }
+
+      #addPhoto {
+        display: none;
+      }
+    }
+
+    .btnWrap {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        width: 48%;
+        padding: 0.8rem 0;
+        border-radius: 0.4rem;
+        border: none;
+        margin-top: 2.5rem;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #fff;
+          border: 1px solid var(--sub-light);
+          color: var(--sub-light);
+          transition: all 200ms ease;
+
+          &:hover {
+            background-color: var(--gbtn-hover);
+          }
+        }
+
+        &:last-child {
+          background-color: #fff;
+          border: 1px solid var(--point);
+          color: var(--point);
+          transition: all 200ms ease;
+
+          &:hover {
+            background-color: var(--pbtn-hover);
+          }
+        }
+      }
+    }
+  }
+}

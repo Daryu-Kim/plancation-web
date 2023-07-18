@@ -19,7 +19,7 @@ $LIGHT_THEME: (
   //👇 여기부터 글자, 보더라인 색상
   sub-about: #434343,
   //소개페이지 글자
-  sub-text: #1e1d1d,
+  sub-text: #252424,
   // 텍스트 블랙 (어두움)
   sub-bold: #656565,
   // 배경에 들어가는 주제부 글자 (중간 어두움)
@@ -80,12 +80,19 @@ $LIGHT_THEME: (
   padding: 0;
   box-sizing: border-box;
 
-  // cursor: none;
   user-select: none; /* 사용자 선택 금지 */
   -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
   scrollbar-width: none; /* 스크롤바 숨김 */
 
+<<<<<<< HEAD
+  // overflow-x: none;
+  // overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨김 */
+  }
+=======
   // &::-webkit-scrollbar {
   //   display: none; /* 스크롤바 숨김 */
   // }
+>>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 }
