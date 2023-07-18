@@ -1,41 +1,88 @@
 <template>
-  <div class="diaryList" v-for="item in allDiary" :key="item.allDiary">
-    <div class="diaryContent">
+  <div class="diaryList" v-for:="item in allDiary" :key="item.id">
+    <div class="diaryContent" @click="__deleteDiary(item.postID)">
       <div class="imageWrap">
-        <div
-          :style="{ 'background-image': 'url(https://ilyo.co.kr/contents/article/images/2022/1205/1670245148372767.jpg)' }"
-          class="diaryImageBox">
+        <div v-if="item.postImage === ''" class="nullPath">
+          <p>{{ item.postContent }}</p>
+        </div>
+        <div v-else :style="{ 'background-image': `url(${item.postImage})` }" class="diaryImageBox">
         </div>
       </div>
       <div class="userInfo">
-        <p class="fs_9">르세라핌 흥해라</p>
+        <!-- <p class="fs_9">{{ item.postAuthorID }}</p> -->
+        <p class="fs_9">{{ findUser(item.postAuthorID) }}</p>
+        <p class="fs_9">{{ userNickname }}</p>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452"
           alt="유저이미지">
-        <!-- <img src="https://ilyo.co.kr/contents/article/images/2022/1205/1670245148372767.jpg" alt="유저이미지"> -->
       </div>
       <div class="diaryText">
-        <p class="diaryTitle fs_9">테스트기록제목</p>
-        <p class="fs_9">2023.06.10</p>
-        <!-- <p class="fs_9">{{ calendarID }}</p> -->
+        <p class="diaryTitle fs_9">{{ item.postTitle }}</p>
+        <p class="fs_9">{{ item.postTime.seconds }}</p>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
+import { getFirestore, collection, getDocs, where, query, deleteDoc, doc, FirestoreError, QuerySnapshot, getDoc, DocumentSnapshot } from "firebase/firestore";
+// @click="$emit('diaryClick', item)"
+
 export default {
   props: {
+    //보유중인 캘린더의 정보
     allDiary: Object,
   },
-
+  created() {
+    console.log(this.allDiary);
+    this.findUser()
+  },
   data() {
     return {
+      userNickname: '',
 
-    }
+    };
   },
-
+  emits: ['diaryClick'],
   methods: {
+    //다이어리 글쓴이와 일치하는 유저찾아 가져오기
+    async findUser(user) {
+      try {
+        const db = getFirestore();
+        await getDoc(collection(db, `Users/${user}`))
+          .then((doc: DocumentSnapshot) => {
+            const userName = doc.data().userName;
+            console.log(doc.data().userName);
+            return this.userNickname = userName;
+          })
+          .catch((_) => {
 
+          });
+
+      } catch (err) { console.log(err) }
+    },
+
+    //문서 삭제하기
+    async __deleteDiary(postID) {
+      try {
+        const db = getFirestore();
+        await deleteDoc(doc(collection(db, "Calendars", this.$route.params.id, "Posts"), `${postID}`))
+          .then(() => {
+            alert("기록삭제완료!")
+          })
+          .catch((err) => {
+            alert(err.code)
+          })
+        return this.$router.go(0);
+      }
+      catch (err) {
+        console.log(err)
+      }
+    },
+
+    //캘린더 목록에서 선택하면 해당 캘린더로 페이지 넘어가기
+    goToCalendar(calendarID: string) {
+      this.$router.push(`/calendar/${calendarID}`)
+    },
   }
 }
 </script>

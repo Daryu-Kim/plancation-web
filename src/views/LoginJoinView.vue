@@ -224,7 +224,7 @@ export default defineComponent({
         //👇firestore로 'Users'라는 컬렉션에 방금 회원가입한 유저정보 추가하기
         await setDoc(doc(db, "Users", currentUser.user.uid), {
           userID: currentUser.user.uid,
-          userImagePath: null,
+          userImagePath: 'https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452',
           userName: this.displayname,
         })
 
@@ -232,7 +232,7 @@ export default defineComponent({
         //firestore로 'Calendars'라는 컬렉션에 유저UID로 문서추가하기
         await setDoc(doc(db, "Calendars", currentUser.user.uid), {
           calendarAuthorID: currentUser.user.uid,
-          calendarTitle: "개인",
+          calendarTitle: "기본캘린더",
           calendarID: currentUser.user.uid,
           calendarUsers: [currentUser.user.uid]
         })

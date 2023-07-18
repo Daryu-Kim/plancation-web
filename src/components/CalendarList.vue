@@ -30,10 +30,11 @@ export default {
       user: ''
     }
   },
+
   created() {
     this.loadCurrentUserProfile()
-    console.log(this.myCalendars)
   },
+
   methods: {
     //현재 로그인한 사용자의 프로필 정보를 가져오기
     async loadCurrentUserProfile() {
@@ -41,7 +42,7 @@ export default {
       const user: any = auth.currentUser;
       try {
         this.user = user.uid
-        console.log(user.uid)
+        // console.log(user.uid)
       }
       catch (err) { console.log(err) }
       return
