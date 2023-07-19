@@ -123,7 +123,7 @@
   cursor: pointer;
 }
 .sidebar .sidebarMenu .bottomCenter .goMain img {
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
 }
 .sidebar .sidebarMenu .bottomCenter .goMain p {
   color: var(--sub-medium);
