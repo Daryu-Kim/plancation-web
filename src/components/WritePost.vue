@@ -1,6 +1,5 @@
 <template>
   <div class="writePost">
-<<<<<<< HEAD
     <div class="postTextWrap">
       <input v-bind:value="postTitle" v-on:input="setPostTitle" class="postTitle fs_11" type="text"
         placeholder="기록/다이어리 제목">
@@ -13,7 +12,7 @@
         <div class="selectedPhoto" :style="{ 'background-image': `url(${photoURL})` }">
           <!-- <img src=this.selectedPhoto alt="사진"> -->
           <!-- 👆이 div에 백그라운드 입히기 , 밑은 디스플레이 논 -->
-          <div>
+          <div class="selectedNone">
             <img src="../assets/images/main/icon-add-image.png" alt="사진추가아이콘">
             <p>사진 추가</p>
           </div>
@@ -25,15 +24,6 @@
         <button class="fs_11" @click="__addDiary()">기록에 등록</button>
       </div>
     </div>
-=======
-    <input v-bind:value="postTitle" v-on:input="setPostTitle" class="postTitle fs_14" type="text"
-      placeholder="기록/다이어리 제목">
-    <textarea v-bind:value="postContent" v-on:input="setPostContent" class="fs_14" name="" id="" cols="30" rows="10"
-      placeholder="기록/다이어리 텍스트를 입력해주세요."></textarea>
-    <input type="file" class="fs_14" accept="image/*" v-on:input="setPhotoURL">
-    <button class="fs_14">취소</button>
-    <button class="fs_14" @click="__addDiary()">기록에 등록</button>
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   </div>
 </template>
 
@@ -45,25 +35,27 @@ import { getFirestore, collection, addDoc, Timestamp, updateDoc, doc } from "fir
 export default {
   data() {
     return {
-      postTitle: '',
-      postContent: '',
-<<<<<<< HEAD
-      selectedPhoto: '',
-      photoURL: '',
+      postTitle: this.selectedPost ? this.selectedPost.postTitle : "",
+      postContent: this.selectedPost ? this.selectedPost.postContent : "",
+      selectedPhoto: "",
+      photoURL: this.selectedPost ? this.selectedPost.postImage : "",
       calendarList: [] as any[],
+    }
+  },
+
+  created() {
+    console.log(this.postTitle)
+  },
+
+  props: {
+    selectedPost: {
+      type: Object,
+      default: null,
     }
   },
 
   emits: ['cancle'],
 
-=======
-      selectedPhoto: '' as any,
-      photoURL: ''
-      ,
-      calendarList: [] as any[],
-    }
-  },
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   methods: {
     //타이틀 값 받아내기
     setPostTitle(e: any) {
@@ -80,7 +72,6 @@ export default {
     //선택한 사진 값 받아내기
     setPhotoURL(e: any) {
       this.selectedPhoto = e.target.files[0]
-<<<<<<< HEAD
       console.log(this.selectedPhoto)
       this.displayPhoto()
     },
@@ -104,8 +95,6 @@ export default {
       }
       catch (err) { console.log(err) }
       return console.log('Uploaded a blob or file!');
-=======
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
     },
 
     //기록/다이어리 등록
@@ -147,26 +136,16 @@ export default {
 
           const response = await uploadBytes(storageRef, this.selectedPhoto)
           //storage에 담았던 이미지를 url로 받아와서 data에 담기
-<<<<<<< HEAD
           await getDownloadURL(response.ref)
             .then((url) => {
               this.photoURL = url
               //가지고온 url로 postImage업데이트, 랜덤으로 받은 Posts아이디로 postID업데이트 
               this.updatePost(postID)
-              this.$router.go(0);
+              // this.$router.go(0);
               return console.log(`스토리지 ${postID}에 이미지업로드 완료!`);
             }).catch((err) => {
               console.log(err)
             })
-=======
-          const url = await getDownloadURL(response.ref)
-          this.photoURL = url
-
-          //가지고온 url로 postImage업데이트, 랜덤으로 받은 Posts아이디로 postID업데이트 
-          this.updatePost(postID)
-          this.$router.go(0);
-          return console.log(`스토리지 ${postID}에 이미지업로드 완료!`);
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
         }
         catch (err) { console.log(err) }
       } else {
@@ -192,17 +171,5 @@ export default {
 </script>
 
 <style lang="scss">
-<<<<<<< HEAD
 @import '../assets/scss/components/WritePost.css'
-=======
-.writePost {
-  width: 20rem;
-  height: 20rem;
-  display: flex;
-  flex-direction: column;
-  display: none;
-
-  // .postTitle {}
-}
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 </style>

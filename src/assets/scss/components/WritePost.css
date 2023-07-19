@@ -67,6 +67,14 @@
 .writePost .postImage label #addPhoto {
   display: none;
 }
+.writePost .postImage label #addPhoto .selectedPhoto {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.writePost .postImage label #addPhoto .selectedPhoto .selectedNone {
+  display: none;
+}
 .writePost .postImage .btnWrap {
   display: flex;
   justify-content: space-between;

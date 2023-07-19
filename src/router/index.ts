@@ -23,7 +23,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'about'
+      redirect: '/about'
     },
     {
       //처음 소개 페이지
