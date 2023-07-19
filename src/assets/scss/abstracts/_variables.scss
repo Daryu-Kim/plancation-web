@@ -84,15 +84,7 @@ $LIGHT_THEME: (
   -ms-overflow-style: none; /* IE에서 스크롤바 숨김 */
   scrollbar-width: none; /* 스크롤바 숨김 */
 
-<<<<<<< HEAD
-  // overflow-x: none;
-  // overflow-y: auto;
   &::-webkit-scrollbar {
     display: none; /* 스크롤바 숨김 */
   }
-=======
-  // &::-webkit-scrollbar {
-  //   display: none; /* 스크롤바 숨김 */
-  // }
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 }

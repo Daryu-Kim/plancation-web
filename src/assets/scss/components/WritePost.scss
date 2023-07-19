@@ -29,6 +29,7 @@
       outline: none;
       margin-bottom: 0.8rem;
     }
+
     textarea {
       width: 100%;
       height: 27rem;
@@ -75,6 +76,16 @@
 
       #addPhoto {
         display: none;
+
+        .selectedPhoto {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+          .selectedNone {
+            display: none;
+          }
+        }
       }
     }
 

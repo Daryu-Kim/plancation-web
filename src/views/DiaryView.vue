@@ -1,32 +1,32 @@
 <template>
   <div class="diary">
     <div class="fixMenu">
-      <!-- 사이드바 컴포넌트 -->
+      <!-- 사이드바 컴포넌트 (NAV메뉴,프로필)-->
       <SideBar class="fixSideBar" />
       <div class="fixHeaderBar">
-        <!-- 헤더바 컴포넌트 -->
+        <!-- 헤더바 컴포넌트 (상단 헤더, 로고& 설정)-->
         <HeaderBar class="rightHeader" />
+        <!-- 메인 화면 -->
         <div class="mainScreen">
-<<<<<<< HEAD
           <div class="overlay" @click="isActivefalse()" :class="{ active: isActive }"></div>
-          <!-- 해당 캘린더의 제목과 참여유저! -->
+          <!-- 👇해당 캘린더의 제목과 참여유저! -->
           <CurrentUsers @addClick="openWriteModal" />
-          <!-- 기록/다이어리 리스트 컴포넌트 -->
-          <ReadDiaryModal v-if="showPostModal" :postId="selectedPostID" @cancle="isActivefalse"
+
+          <!-- 👇showPostModal이 참일 때 클릭했을 때 뜨는 게시물 상세보기 모달 -->
+          <!-- ⚪ @cancle= 닫기, @updateClick= 수정버튼 누르면 실행될 이벤트  -->
+          <!--  1. diaryList에서 클릭한 게시물을 item으로 여기서 selectedPost으로 저장.
+                2. selectedPost으로 가져온 Post게시물의 정보를 readPost로 상세보기 모달에 props 전달 -->
+          <ReadDiaryModal v-if="showPostModal" :readPost="selectedPost" @cancle="isActivefalse"
             @updateClick="openUpdateModal" />
-          <WritePost v-if="showWriteModal" @cancle="isActivefalse" />
+
+          <!-- 👇새글 작성 모달 -->
+          <WritePost v-if="showWriteModal" :selectedPost="selectedPost" @cancle="isActivefalse" />
+
           <div class="diaryListWrap" :class="{ active: isActive }">
-            <!-- 👇 $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
+            <!-- 👇기록/다이어리 리스트 컴포넌트 -->
+            <!-- ⚪ $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
+            <!-- ⚪ allDiary로 가져온 기록게시물 전부 props 전달하기 -->
             <DiaryList @diaryClick="openReadModal" :allDiary="postList" />
-=======
-          <!-- 해당 캘린더의 제목과 참여유저! -->
-          <CurrentUsers />
-          <!-- 기록/다이어리 리스트 컴포넌트 -->
-          <WritePost />
-          <div class="diaryListWrap" :class="{ active: isActive }">
-            <!-- 👇 $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
-            <DiaryList @diaryClick="isActiveTrue()" :allDiary="postList" />
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
           </div>
         </div>
       </div>
@@ -40,10 +40,7 @@ import HeaderBar from '../components/HeaderBar.vue'
 import DiaryList from '../components/DiaryList.vue'
 import CurrentUsers from '../components/CurrentUsers.vue'
 import WritePost from '../components/WritePost.vue'
-<<<<<<< HEAD
 import ReadDiaryModal from '../components/ReadDiaryModal.vue'
-=======
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 import { Firestore, collection, getDocs, getFirestore } from "firebase/firestore";
 
 export default {
@@ -52,78 +49,56 @@ export default {
     HeaderBar,
     DiaryList,
     CurrentUsers,
-<<<<<<< HEAD
     WritePost,
-    ReadDiaryModal
-=======
-    WritePost
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
+    ReadDiaryModal,
   },
-
+  //게시물 클릭이벤트, 게시물 추가버튼 클릭이벤트
+  emits: ['diaryClick', 'addClick'],
   created() {
     this.getDiary()
   },
-<<<<<<< HEAD
-  emits: ['diaryClick', 'addClick'],
-=======
-
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
   data() {
     return {
-      isActive: false,
-      postList: [] as any[],
-<<<<<<< HEAD
-      calendarID: this.$route.params.id,
-      selectedPostID: null,
-      showPostModal: false,
-      showWriteModal: false
-=======
-      calendarID: this.$route.params.id
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
+      isActive: false, //오버레이
+      postList: [] as any[], //현재 캘린더의 모든 Posts의 문서
+      calendarID: this.$route.params.id, //현재 캘린더 id
+      selectedPost: null, //클릭한 게시물
+      showPostModal: false, //게시글 상세보기 모달
+      showWriteModal: false //게시글 작성 모달
     }
   },
 
   methods: {
-<<<<<<< HEAD
+    // 게시글 상세보기 모달
     openReadModal(item) {
       this.isActive = true
-      this.selectedPostID = item
+      //item은 diaryList에서 현재 클릭한 기록문서
+      this.selectedPost = item
       this.showPostModal = true;
       console.log(item)
     },
-
+    // 게시글 작성 모달
     openWriteModal() {
       this.isActive = true
       this.showWriteModal = true
     },
-
-    openUpdateModal(item) {
+    // 게시글 수정 모달
+    openUpdateModal() {
       this.showPostModal = false
       this.showWriteModal = true
     },
-
+    // 오버레이 가리기
     isActivefalse() {
       this.isActive = false
       this.showWriteModal = false
       this.showPostModal = false
     },
 
-    // //캘린더 목록에서 선택하면 해당 캘린더로 페이지 넘어가기
-    // openReadModal(calendarID: string) {
-    //   this.$router.push(`/calendar/${calendarID}`)
-    // },
-
-=======
-    isActiveTrue() {
-      this.isActive = true
-    },
-
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
     //현재 캘린더의 Posts내에 전체문서 가져오기
     async getDiary() {
       const db: Firestore = getFirestore();
 
-      // getDocs 함수에 위에 정의한 쿼리를 적용해서 모든 문서들을 가져온다.
+      // getDocs 함수에 위에 정의한 쿼리를 적용해서 현재캘린더의 Posts의 모든 문서들을 가져온다.
       const yourCalendars = await getDocs(
         collection(db, `Calendars/${this.calendarID}/Posts`)
       );
@@ -138,11 +113,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/pages/diary.css';
-<<<<<<< HEAD
 </style>
 
 
 <!-- 다이어리 리스트들 중 하나를 클릭  - 모달과 오버레이에 active클래스로 화면에 나타나기 - 클릭한 아이템의 PostID로 도큐먼트 접근 -- 상세보기모달에 정보받아서 띄우기 -->
-=======
-</style>
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142

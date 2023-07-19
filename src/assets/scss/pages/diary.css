@@ -20,7 +20,6 @@
   height: 93.3vh;
   overflow: hidden;
 }
-<<<<<<< HEAD
 .diary .fixMenu .fixHeaderBar .mainScreen .overlay {
   position: absolute;
   z-index: 10;
@@ -35,8 +34,6 @@
 .diary .fixMenu .fixHeaderBar .mainScreen .overlay.active {
   display: block;
 }
-=======
->>>>>>> 1db605773ef36f33997639b0c4d1df759a45c142
 .diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap {
   width: 100%;
   height: 92%;
