@@ -50,7 +50,6 @@ export default {
   created() {
     //컴포넌트가 생성되자마자 현재 로그인한 사용자의 프로필 정보 가져와 표시
     this.getCalendars();
-    console.log(this.calendarList)
   },
 
   methods: {

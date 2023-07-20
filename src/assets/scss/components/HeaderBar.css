@@ -37,8 +37,8 @@
 }
 
 .headerBar {
-  width: 82vw;
-  height: 65px;
+  width: 100%;
+  height: 6vh;
   padding: 0 24px;
   display: flex;
   justify-content: space-between;

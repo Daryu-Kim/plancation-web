@@ -1,8 +1,10 @@
 @import '../abstracts/_variables.scss';
 
 .headerBar {
-  width: 82vw;
-  height: 65px;
+  width: 100%;
+  // height: 3.9rem;
+  height: 6vh;
+
   padding: 0 24px;
 
   display: flex;

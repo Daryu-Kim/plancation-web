@@ -7,6 +7,7 @@
   left: 0;
 }
 .changePw .fixMenu .fixHeaderBar {
+  width: 84vw;
   position: absolute;
   top: 0;
   right: 0;
@@ -16,7 +17,7 @@
 .changePw .fixMenu .fixHeaderBar .mainScreen {
   background-color: var(--bgl);
   width: 100%;
-  height: 93.3vh;
+  height: 94vh;
   padding: 1.7rem;
 }
 .changePw .fixMenu .fixHeaderBar .mainScreen .centerPwModal {

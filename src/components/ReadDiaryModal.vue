@@ -30,32 +30,21 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { collection, getFirestore, deleteDoc, doc } from "firebase/firestore";
 export default {
   data() {
     return {
-      // postList: ''
     }
-  },
-  created() {
-    console.log(this.readPost.postTitle)
   },
   props: {
     readPost: {
-      type: [String, Number],
+      type: Object,
       required: true,
     },
   },
   methods: {
-    // //문서 수정하기
-    // async __updateDiary(postID) {
-    //   try {
-
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // },
 
     //문서 삭제하기
     async __deleteDiary(postID) {

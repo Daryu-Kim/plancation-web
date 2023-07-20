@@ -43,10 +43,6 @@ export default {
     }
   },
 
-  created() {
-    console.log(this.postTitle)
-  },
-
   props: {
     selectedPost: {
       type: Object,
@@ -61,15 +57,12 @@ export default {
     setPostTitle(e: any) {
       var writeTitle = e.target.value;
       this.postTitle = writeTitle
-      console.log(this.postTitle)
     },
 
     //본문 글 값 받아내기
     setPostContent(e: any) {
       var writeContent = e.target.value;
       this.postContent = writeContent
-      console.log(this.selectedPhoto)
-      console.log(this.postContent)
     },
 
     //선택한 사진 값 받아내기
