@@ -36,22 +36,23 @@
         }
       }
     }
+
     .userInfo {
       width: 13.3rem;
-      text-align: end;
       text-overflow: ellipsis;
       overflow: hidden;
 
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
       align-items: center;
       margin: 0.4rem 0;
 
       p {
+        width: 10.7rem;
         color: var(--sub-bold);
       }
 
-      img {
+      .userImage {
         width: 1.8rem;
         height: 1.8rem;
         border-radius: 2rem;

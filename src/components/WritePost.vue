@@ -9,10 +9,9 @@
     <div class="postImage">
       <p class="currentDate fs_11">2023년 6월 7일</p>
       <label for="addPhoto">
-        <div class="selectedPhoto" :style="{ 'background-image': `url(${photoURL})` }">
-          <!-- <img src=this.selectedPhoto alt="사진"> -->
+        <div class="selectedPhoto" :style="photoURL ? { 'background-image': `url(${photoURL})`, border: 'none' } : ''">
           <!-- 👆이 div에 백그라운드 입히기 , 밑은 디스플레이 논 -->
-          <div class="selectedNone">
+          <div class="selectedNone" :style="photoURL ? { display: 'none' } : ''">
             <img src="../assets/images/main/icon-add-image.png" alt="사진추가아이콘">
             <p>사진 추가</p>
           </div>
@@ -21,7 +20,8 @@
       </label>
       <div class="btnWrap">
         <button class="fs_11" @click="$emit('cancle')">취소</button>
-        <button class="fs_11" @click="__addDiary()">기록에 등록</button>
+        <button v-if="this.selectedPost" class="fs_11" @click="__uploadImage(this.selectedPost.postID)">수정하기</button>
+        <button v-else class="fs_11" @click="__addDiary()">기록에 등록</button>
       </div>
     </div>
   </div>
@@ -37,8 +37,8 @@ export default {
     return {
       postTitle: this.selectedPost ? this.selectedPost.postTitle : "",
       postContent: this.selectedPost ? this.selectedPost.postContent : "",
-      selectedPhoto: "",
       photoURL: this.selectedPost ? this.selectedPost.postImage : "",
+      selectedPhoto: "",
       calendarList: [] as any[],
     }
   },
@@ -61,12 +61,15 @@ export default {
     setPostTitle(e: any) {
       var writeTitle = e.target.value;
       this.postTitle = writeTitle
+      console.log(this.postTitle)
     },
 
     //본문 글 값 받아내기
     setPostContent(e: any) {
       var writeContent = e.target.value;
       this.postContent = writeContent
+      console.log(this.selectedPhoto)
+      console.log(this.postContent)
     },
 
     //선택한 사진 값 받아내기
@@ -94,7 +97,7 @@ export default {
           })
       }
       catch (err) { console.log(err) }
-      return console.log('Uploaded a blob or file!');
+      return
     },
 
     //기록/다이어리 등록
@@ -141,7 +144,6 @@ export default {
               this.photoURL = url
               //가지고온 url로 postImage업데이트, 랜덤으로 받은 Posts아이디로 postID업데이트 
               this.updatePost(postID)
-              // this.$router.go(0);
               return console.log(`스토리지 ${postID}에 이미지업로드 완료!`);
             }).catch((err) => {
               console.log(err)
@@ -151,21 +153,32 @@ export default {
       } else {
         //선택한 사진이 없다면?
         this.updatePost(postID)
-        this.$router.go(0);
         return console.log(`이미지없음! 완료!`);
       }
     },
 
-    // 파이어스토어에 Post 사진과 랜덤이름 업데이트
+    // 파이어스토어에 Post 사진과 PostID 업데이트
     async updatePost(postID) {
-      const db = getFirestore();
-      const thisPost = doc(db, `Calendars/${this.$route.params.id}/Posts/${postID}`);
-      await updateDoc(thisPost, {
-        postID: postID,
-        postImage: this.photoURL
-      });
-      return console.log("지금 작성한 Post문서의 랜덤아이디 : ", postID);
-    }
+      try {
+        const db = getFirestore();
+        const thisPost = doc(db, `Calendars/${this.$route.params.id}/Posts/${postID}`);
+        await updateDoc(thisPost, {
+          postContent: this.postContent,
+          postTitle: this.postTitle,
+          postID: postID,
+          postImage: this.photoURL,
+        }).then(() => {
+          alert("기록등록 성공")
+          this.$router.go(0);
+        }).catch((err) => {
+          alert(err)
+        })
+      }
+      catch (err) {
+        console.log(err)
+      }
+      return console.log("지금 작성한 Post문서의 아이디 : ", postID);
+    },
   }
 }
 </script>
