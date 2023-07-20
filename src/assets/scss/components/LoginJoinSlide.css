@@ -1,1 +1,29 @@
-/*# sourceMappingURL=LoginJoinSlide.css.map */
+.LoginJoinSlide {
+  background-color: var(--main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.LoginJoinSlide .slideLogoWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 5rem;
+}
+.LoginJoinSlide .slideLogoWrap > :first-child {
+  width: 8rem;
+}
+.LoginJoinSlide .slideLogoWrap > :nth-child(2) {
+  width: 10rem;
+  margin-top: 2rem;
+}
+.LoginJoinSlide .slideLogoWrap .desc {
+  width: 25rem;
+  text-align: center;
+  color: #fff;
+  margin-top: 3.8rem;
+}/*# sourceMappingURL=LoginJoinSlide.css.map */

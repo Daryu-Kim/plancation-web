@@ -1,9 +1,9 @@
 <template>
   <div class="loginJoin">
     <!-- 오버레이 백그라운드 색상 -->
-    <div class="overlay">
+    <div class="overlay" :class="{ active: isActive }">
       <!-- ⚪ 로그인 모달 --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션 -->
-      <LoginJoinModal :class="{ active: isActive }" class="modal">
+      <LoginJoinModal class="modal">
         <!-- 헤더부분 : isActive일때 회원가입문구로, 아닐 때는 로그인문구로 -->
         <template v-slot:header v-if="isActive">
           <h1 class="fs_16">Create Account</h1>
@@ -82,23 +82,24 @@
           </div>
         </template>
       </LoginJoinModal>
-
-      <!-- ⚪ 슬라이드  --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션-->
-      <LoginJoinSlide :class="{ active: isActive }" class="slide">
-        <template v-slot:goBtn>
-          <button class="goJoinBtn fs_10" @click="toggleSlideButtonClass()">
-            <!-- 버튼 부분 active일때 로그인 하러가기 ,
-              아니라면 회원가입 하러가기로 텍스트변경 -->
-            <template v-if="isActive">
-              로그인 하러가기
-            </template>
-            <template v-else>
-              회원가입 하러가기
-            </template>
-          </button>
-        </template>
-      </LoginJoinSlide>
     </div>
+
+
+    <!-- ⚪ 슬라이드  --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션-->
+    <LoginJoinSlide :class="{ active: isActive }" class="slide">
+      <template v-slot:goBtn>
+        <button class="goJoinBtn fs_10" @click="toggleSlideButtonClass()">
+          <!-- 버튼 부분 active일때 로그인 하러가기 ,
+              아니라면 회원가입 하러가기로 텍스트변경 -->
+          <template v-if="isActive">
+            로그인 하러가기
+          </template>
+          <template v-else>
+            회원가입 하러가기
+          </template>
+        </button>
+      </template>
+    </LoginJoinSlide>
   </div>
 </template>
 

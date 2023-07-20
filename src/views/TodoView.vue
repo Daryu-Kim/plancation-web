@@ -8,7 +8,7 @@
         <HeaderBar class="rightHeader" />
         <!-- 메인 화면 -->
         <div class="mainScreen">
-
+          <TodoList />
         </div>
       </div>
     </div>
@@ -17,11 +17,13 @@
 <script lang="ts">
 import SideBar from "../components/SideBar.vue";
 import HeaderBar from '../components/HeaderBar.vue'
+import TodoList from '../components/TodoList.vue'
 
 export default {
   components: {
     SideBar,
     HeaderBar,
+    TodoList
   }
 }
 </script>

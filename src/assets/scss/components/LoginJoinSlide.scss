@@ -1,0 +1,33 @@
+.LoginJoinSlide {
+  background-color: var(--main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .slideLogoWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 5rem;
+
+    & > :first-child {
+      width: 8rem;
+    }
+
+    & > :nth-child(2) {
+      width: 10rem;
+      margin-top: 2rem;
+    }
+
+    .desc {
+      width: 25rem;
+      text-align: center;
+      color: #fff;
+      margin-top: 3.8rem;
+    }
+  }
+}
