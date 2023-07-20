@@ -10,6 +10,7 @@
       position: absolute;
       top: 0;
       right: 0;
+      width: 84vw;
 
       display: flex;
       flex-direction: column;
@@ -18,7 +19,7 @@
         position: relative;
         background-color: var(--bgl);
         width: 100%;
-        height: 93.3vh; //🐛 높이값 나머지를 구해야하는데
+        height: 95vh; //🐛 높이값 나머지를 구해야하는데
 
         overflow: hidden;
 
@@ -42,16 +43,18 @@
           width: 100%;
           height: 92%; //🐛 높이값 나머지를 구해야하는데
           // filter: blur(6px);
-
+          // flex-wrap: wrap;
+          display: flex;
           overflow: scroll;
+          // padding: 0.8rem;
 
           padding: 1.7rem;
           // border: 1px solid red;
           display: grid;
           //gap: 간격조정 -> padding,margin이랑 똑같이 상하, 좌우값 입력된다.
-          gap: 1rem;
+          gap: 0.8rem;
           //1줄 5개
-          grid-template-columns: repeat(5, 1fr);
+          grid-template-columns: repeat(6, 1fr);
 
           // &.active {
           //   display: none;

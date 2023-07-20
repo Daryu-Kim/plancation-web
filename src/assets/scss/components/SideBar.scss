@@ -1,5 +1,5 @@
 .sidebar {
-  width: 18vw;
+  width: 16vw;
   height: 100vh;
   background-color: #fff;
   border-right: 1px solid var(--line);
@@ -139,7 +139,8 @@
         cursor: pointer;
 
         img {
-          margin-right: 0.4rem;
+          width: 1.3rem;
+          margin-right: 0.8rem;
         }
         p {
           color: var(--sub-medium);

@@ -8,7 +8,6 @@ const requireAuth = () => (to: any, from: any, next: any) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in
-      console.log('현재 로그인된 유저: ' + user.displayName, user.email)
       return next()
     } else {
       // User is signed out

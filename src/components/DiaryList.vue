@@ -1,5 +1,5 @@
 <template>
-  <div class="diaryList" v-for:="item in allDiary" :key="item.id">
+  <div class="diaryList" v-for:="item in  allDiary " :key="item.id">
     <!-- $emit으로 부모컴포넌트에게 클릭이벤트전달 :👇전달인자로 item(클릭한 그 문서데이터)도 같이 올리기-->
     <div class="diaryContent" @click="$emit('diaryClick', item)">
       <div class="imageWrap">
@@ -13,16 +13,16 @@
       </div>
 
       <div class="userInfo">
-        <p class="fs_9">{{ item.postAuthorID }}</p>
-        <!-- <div class="userInfo">
-          <p class="fs_9">{{ item.postAuthorID }}</p>
-        </div> -->
-
-        <!-- 리스트에 보일 제목과 타임스탬프(작성날짜) -->
-        <div class="diaryText">
-          <p class="diaryTitle fs_9">{{ item.postTitle }}</p>
-          <p class="fs_9">{{ item.postTime.seconds }}</p>
+        <!-- <p class="fs_9">{{ item.postAuthorID }}</p> -->
+        <p class="fs_9">유저닉네임</p>
+        <div class="userImage" :style="{ 'background-image': `url(${item.postImage})` }">
         </div>
+      </div>
+
+      <!-- 리스트에 보일 제목과 타임스탬프(작성날짜) -->
+      <div class="diaryText">
+        <p class="diaryTitle fs_9">{{ item.postTitle }}</p>
+        <p class="fs_9">{{ item.postTime.seconds }}</p>
       </div>
     </div>
   </div>

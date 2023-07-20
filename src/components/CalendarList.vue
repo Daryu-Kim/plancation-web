@@ -15,7 +15,7 @@
         <div class="circle"></div>
         <p class="fs_8">{{ item?.calendarID == user ? '개인캘린더' : '공유캘린더' }}</p>
       </div>
-      <button class="shareBtn fs_9" @click="text()">공유하기</button>
+      <button class="shareBtn fs_9" @click="text($event)">공유하기</button>
     </div>
   </div>
 </template>
@@ -54,8 +54,9 @@ export default {
     },
 
     //캘린더 공유
-    text() {
-      alert('공유하기')
+    text($event) {
+      $event.stopPropagation(); // 이벤트 전달 중단
+      alert('공유하기');
     }
   }
 }

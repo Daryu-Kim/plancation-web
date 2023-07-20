@@ -1,0 +1,22 @@
+.todo .fixMenu {
+  position: relative;
+}
+.todo .fixMenu .fixSideBar {
+  position: static;
+  top: 0;
+  left: 0;
+}
+.todo .fixMenu .fixHeaderBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 84vw;
+  display: flex;
+  flex-direction: column;
+}
+.todo .fixMenu .fixHeaderBar .mainScreen {
+  background-color: var(--bgl);
+  width: 100%;
+  height: 95vh;
+  padding: 1.7rem;
+}/*# sourceMappingURL=todo.css.map */

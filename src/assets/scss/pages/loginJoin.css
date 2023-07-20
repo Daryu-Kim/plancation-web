@@ -1,23 +1,22 @@
 .loginJoin {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #fff;
-}
-.loginJoin .overlay {
-  width: 100%;
-  height: 100vh;
   position: relative;
 }
-.loginJoin .overlay .modal {
+.loginJoin .overlay {
   position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
+  top: 0;
+  left: 0;
+  width: 61%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 1200ms ease-in-out;
 }
-.loginJoin .overlay .modal.active {
-  left: 55.5%;
-  right: 0;
+.loginJoin .overlay.active {
+  left: 39%;
 }
 .loginJoin .overlay .modal .joinBottomWrap {
   margin-top: 6rem;
@@ -41,19 +40,20 @@
   color: #fff;
   cursor: pointer;
 }
-.loginJoin .overlay .slide {
+.loginJoin .slide {
+  width: 39%;
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   transition: all 1200ms ease-in-out;
 }
-.loginJoin .overlay .slide.active {
-  right: 62%;
+.loginJoin .slide.active {
+  right: 61%;
 }
-.loginJoin .overlay .slide .goJoinBtn {
-  width: 100%;
-  padding: 0.7rem 0;
+.loginJoin .slide .goJoinBtn {
+  width: 68%;
+  padding: 0.8rem 0;
   margin-top: 4rem;
   border-radius: 5rem;
   border: none;

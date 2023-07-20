@@ -1,41 +1,17 @@
-<!-- <template lang="">
-  <div>
-    <vue-flatpickr v-model="date" :config="options"></vue-flatpickr>
-
-  </div>
-</template>
-<script lang="ts">
-import Flatpickr from 'flatpickr';
-import VueFlatpickr from 'vue-flatpickr-component';
-import 'flatpickr/dist/flatpickr.css';
-
-export default {
-  components: {
-    VueFlatpickr
-  },
-  data() {
-    return {
-      date: '',
-      options: {
-        dateFormat: 'Y-m-d',
-        altInput: true,
-        altFormat: 'F j, Y',
-        locale: {
-          firstDayOfWeek: 1
-        }
-      }
-    };
-  },
-};
-
-</script>
-<style lang="">
-  
-</style> -->
 <template>
   <div class="calendar">
-    <SideBar></SideBar>
-    <HeaderBar></HeaderBar>
+    <div class="fixMenu">
+      <!-- 사이드바 컴포넌트 (NAV메뉴,프로필)-->
+      <SideBar class="fixSideBar" />
+      <div class="fixHeaderBar">
+        <!-- 헤더바 컴포넌트 (상단 헤더, 로고& 설정)-->
+        <HeaderBar class="rightHeader" />
+        <!-- 메인 화면 -->
+        <div class="mainScreen">
+
+        </div>
+      </div>
+    </div>
   </div>
 </template> 
 <script lang="ts">
@@ -50,7 +26,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.calendar {
-  display: flex;
-}
+@import '../assets/scss/pages/calendar.css'
 </style>

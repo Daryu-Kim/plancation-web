@@ -87,11 +87,12 @@ export default {
       this.showPostModal = false
       this.showWriteModal = true
     },
-    // 오버레이 가리기
+    //취소눌렀을 때
     isActivefalse() {
-      this.isActive = false
-      this.showWriteModal = false
-      this.showPostModal = false
+      this.selectedPost = null //선택한 기록데이터 초기화
+      this.isActive = false //오버레이 가리기
+      this.showWriteModal = false //글작성 모달 없애기
+      this.showPostModal = false //상세보기 모달 없애기
     },
 
     //현재 캘린더의 Posts내에 전체문서 가져오기

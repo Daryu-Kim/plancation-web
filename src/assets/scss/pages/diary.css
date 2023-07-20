@@ -10,6 +10,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  width: 84vw;
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +18,7 @@
   position: relative;
   background-color: var(--bgl);
   width: 100%;
-  height: 93.3vh;
+  height: 95vh;
   overflow: hidden;
 }
 .diary .fixMenu .fixHeaderBar .mainScreen .overlay {
@@ -37,9 +38,10 @@
 .diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap {
   width: 100%;
   height: 92%;
+  display: flex;
   overflow: scroll;
   padding: 1.7rem;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  grid-template-columns: repeat(6, 1fr);
 }/*# sourceMappingURL=diary.css.map */
