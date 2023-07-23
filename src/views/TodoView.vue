@@ -28,8 +28,5 @@ export default {
 }
 </script>
 <style lang="scss">
-// .todo {
-//   display: flex;
-// }
 @import '../assets/scss/pages/todo.css'
 </style>
