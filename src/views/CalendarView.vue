@@ -18,6 +18,7 @@
 import SideBar from "../components/SideBar.vue";
 import HeaderBar from '../components/HeaderBar.vue'
 
+
 export default {
   components: {
     SideBar,
