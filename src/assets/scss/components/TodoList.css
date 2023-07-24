@@ -6,7 +6,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 25rem;
+  width: 26rem;
   height: 30rem;
   background-color: #fff;
   border-radius: 0.7rem;
@@ -56,15 +56,22 @@ li {
 .todoList .ListBox ul .listItem label input {
   display: none;
 }
-.todoList .ListBox ul .listItem p {
-  margin-left: 0.5rem;
+.todoList .ListBox ul .listContent {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todoList .ListBox ul .listContent p {
+  width: 60%;
+  margin-right: 0.5rem;
   color: var(--sub-thin);
 }
-.todoList .ListBox ul .right {
+.todoList .ListBox ul .listContent .right {
   display: flex;
   align-items: center;
 }
-.todoList .ListBox ul .right .userImage {
+.todoList .ListBox ul .listContent .right .userImage {
   width: 2rem;
   height: 2rem;
   border-radius: 1rem;
@@ -72,7 +79,7 @@ li {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.todoList .ListBox ul .right img {
+.todoList .ListBox ul .listContent .right img {
   cursor: pointer;
   margin-left: 0.5rem;
 }/*# sourceMappingURL=TodoList.css.map */

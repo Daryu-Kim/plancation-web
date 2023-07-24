@@ -7,7 +7,7 @@ li {
   flex-direction: column;
   justify-content: space-between;
 
-  width: 25rem;
+  width: 26rem;
   height: 30rem;
   background-color: #fff;
   border-radius: 0.7rem;
@@ -43,7 +43,6 @@ li {
 
       display: flex;
       flex-direction: column;
-      // align-items: center;
       justify-content: space-between;
 
       .listItem {
@@ -65,29 +64,36 @@ li {
             display: none;
           }
         }
-
-        p {
-          margin-left: 0.5rem;
-          color: var(--sub-thin);
-        }
       }
-
-      .right {
+      .listContent {
+        width: 90%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
-        .userImage {
-          width: 2rem;
-          height: 2rem;
-          border-radius: 1rem;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
+        p {
+          width: 60%;
+          // border: 1px solid red;
+          margin-right: 0.5rem;
+          color: var(--sub-thin);
         }
+        .right {
+          display: flex;
+          align-items: center;
 
-        img {
-          cursor: pointer;
-          margin-left: 0.5rem;
+          .userImage {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 1rem;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          img {
+            cursor: pointer;
+            margin-left: 0.5rem;
+          }
         }
       }
     }
