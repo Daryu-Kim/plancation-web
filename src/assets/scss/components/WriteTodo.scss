@@ -118,6 +118,7 @@ button {
           display: flex;
           justify-content: space-between;
           margin: 0.5rem 0;
+          cursor: pointer;
 
           .userInfo {
             display: flex;
@@ -133,7 +134,7 @@ button {
               margin-right: 0.5rem;
             }
           }
-          #userCheck {
+          .userCheck {
             display: none;
           }
         }
