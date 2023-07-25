@@ -8,28 +8,29 @@
         <HeaderBar class="rightHeader" />
         <!-- 메인 화면 -->
         <div class="mainScreen">
-          <TodoList />
+          <!-- <TodoList /> -->
+          <WriteTodo />
         </div>
       </div>
     </div>
   </div>
-</template> 
+</template>
+
 <script lang="ts">
-import SideBar from "../components/SideBar.vue";
+import SideBar from "../components/SideBar.vue"
 import HeaderBar from '../components/HeaderBar.vue'
-import TodoList from '../components/TodoList.vue'
+// import TodoList from '../components/TodoList.vue'
+import WriteTodo from '../components/WriteTodo.vue'
 
 export default {
   components: {
     SideBar,
     HeaderBar,
-    TodoList
+    // TodoList,
+    WriteTodo
   }
 }
 </script>
 <style lang="scss">
-// .todo {
-//   display: flex;
-// }
 @import '../assets/scss/pages/todo.css'
 </style>
