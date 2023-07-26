@@ -1,9 +1,9 @@
 <template>
   <div class="loginJoin">
     <!-- 오버레이 백그라운드 색상 -->
-    <div class="overlay">
+    <div class="overlay" :class="{ active: isActive }">
       <!-- ⚪ 로그인 모달 --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션 -->
-      <LoginJoinModal :class="{ active: isActive }" class="modal">
+      <LoginJoinModal class="modal">
         <!-- 헤더부분 : isActive일때 회원가입문구로, 아닐 때는 로그인문구로 -->
         <template v-slot:header v-if="isActive">
           <h1 class="fs_16">Create Account</h1>
@@ -82,23 +82,24 @@
           </div>
         </template>
       </LoginJoinModal>
-
-      <!-- ⚪ 슬라이드  --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션-->
-      <LoginJoinSlide :class="{ active: isActive }" class="slide">
-        <template v-slot:goBtn>
-          <button class="goJoinBtn fs_10" @click="toggleSlideButtonClass()">
-            <!-- 버튼 부분 active일때 로그인 하러가기 ,
-              아니라면 회원가입 하러가기로 텍스트변경 -->
-            <template v-if="isActive">
-              로그인 하러가기
-            </template>
-            <template v-else>
-              회원가입 하러가기
-            </template>
-          </button>
-        </template>
-      </LoginJoinSlide>
     </div>
+
+
+    <!-- ⚪ 슬라이드  --> <!-- 👇 isActive에 값이 true면 active클래스 추가 : 슬라이드 좌우이동 모션-->
+    <LoginJoinSlide :class="{ active: isActive }" class="slide">
+      <template v-slot:goBtn>
+        <button class="goJoinBtn fs_10" @click="toggleSlideButtonClass()">
+          <!-- 버튼 부분 active일때 로그인 하러가기 ,
+              아니라면 회원가입 하러가기로 텍스트변경 -->
+          <template v-if="isActive">
+            로그인 하러가기
+          </template>
+          <template v-else>
+            회원가입 하러가기
+          </template>
+        </button>
+      </template>
+    </LoginJoinSlide>
   </div>
 </template>
 
@@ -224,7 +225,7 @@ export default defineComponent({
         //👇firestore로 'Users'라는 컬렉션에 방금 회원가입한 유저정보 추가하기
         await setDoc(doc(db, "Users", currentUser.user.uid), {
           userID: currentUser.user.uid,
-          userImagePath: null,
+          userImagePath: 'https://firebasestorage.googleapis.com/v0/b/plancation-74a7a.appspot.com/o/Apps%2Fdefault_user_image.png?alt=media&token=24c09b27-9fd8-4604-8900-3f9c16c14452',
           userName: this.displayname,
         })
 
@@ -232,7 +233,7 @@ export default defineComponent({
         //firestore로 'Calendars'라는 컬렉션에 유저UID로 문서추가하기
         await setDoc(doc(db, "Calendars", currentUser.user.uid), {
           calendarAuthorID: currentUser.user.uid,
-          calendarTitle: "개인",
+          calendarTitle: "기본캘린더",
           calendarID: currentUser.user.uid,
           calendarUsers: [currentUser.user.uid]
         })

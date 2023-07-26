@@ -133,12 +133,22 @@
 
 @media (min-width: 0px) {
   html {
-    font-size: 16px;
+    font-size: 11.2px;
+  }
+}
+@media (min-width: 480px) {
+  html {
+    font-size: 14px;
   }
 }
 @media (min-width: 768px) {
   html {
-    font-size: 19.2px;
+    font-size: 15.4px;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 16.8px;
   }
 }
 :root {
@@ -151,7 +161,7 @@
   --title-bar: #c9c9d8;
   --main-bg: #eeefff;
   --sub-about: #434343;
-  --sub-text: #1e1d1d;
+  --sub-text: #252424;
   --sub-bold: #656565;
   --sub-medium: #7d7d7d;
   --sub-thin: #656565;
@@ -182,7 +192,8 @@
   background-color: #fff;
   border-radius: 1rem;
   width: 30rem;
-  padding: 3.5rem 3.2rem;
+  height: 39rem;
+  padding: 2rem 3.2rem;
 }
 .LoginJoinModal .form {
   width: 100%;

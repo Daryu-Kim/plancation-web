@@ -9,7 +9,7 @@
   --title-bar: #c9c9d8;
   --main-bg: #eeefff;
   --sub-about: #434343;
-  --sub-text: #1e1d1d;
+  --sub-text: #252424;
   --sub-bold: #656565;
   --sub-medium: #7d7d7d;
   --sub-thin: #656565;
@@ -37,8 +37,8 @@
 }
 
 .headerBar {
-  width: 82vw;
-  height: 65px;
+  width: 100%;
+  height: 5vh;
   padding: 0 24px;
   display: flex;
   justify-content: space-between;
@@ -51,11 +51,11 @@
   align-items: center;
 }
 .headerBar .left > :first-child {
-  width: 2rem;
+  width: 2.3rem;
   margin-right: 0.5rem;
 }
 .headerBar .left > :last-child {
-  width: 5rem;
+  width: 6rem;
 }
 .headerBar img {
   width: 1.2rem;

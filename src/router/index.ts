@@ -8,12 +8,10 @@ const requireAuth = () => (to: any, from: any, next: any) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in
-      // const uid = user.uid
-      console.log(user)
       return next()
     } else {
       // User is signed out
-      console.log(auth)
+      console.log(`로그아웃됨`)
       next('/loginjoin')
     }
   })
@@ -24,7 +22,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'about'
+      redirect: '/about'
     },
     {
       //처음 소개 페이지

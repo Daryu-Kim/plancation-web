@@ -13,11 +13,17 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^5.4.0",
     "firebase": "^10.0.0",
+    "flatpickr": "^4.6.13",
     "pinia": "^2.0.36",
+    "qalendar": "^3.5.0",
     "sass": "^1.63.3",
+    "v-calendar": "^2.4.1",
     "vue": "^3.3.2",
+    "vue-flatpickr-component": "^11.0.3",
     "vue-router": "^4.2.0",
+    "vue-simple-calendar": "^6.3.1",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

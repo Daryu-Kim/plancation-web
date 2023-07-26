@@ -1,0 +1,105 @@
+.writePost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  display: flex;
+  padding: 3rem 1.5rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+.writePost.active {
+  display: none;
+}
+.writePost .postTextWrap {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+}
+.writePost .postTextWrap .postTitle {
+  width: 100%;
+  color: var(--sub-text);
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid var(--point);
+  outline: none;
+  margin-bottom: 0.8rem;
+}
+.writePost .postTextWrap textarea {
+  width: 100%;
+  height: 27rem;
+  color: var(--sub-text);
+  padding: 0.5rem;
+  border: 1px solid var(--point);
+  outline: none;
+  resize: none;
+}
+.writePost .postImage {
+  width: 30rem;
+  padding: 0 2rem 0 2rem;
+}
+.writePost .postImage .currentDate {
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  color: var(--point);
+  text-align: end;
+}
+.writePost .postImage label .selectedPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  color: var(--sub-bold);
+  width: 100%;
+  height: 80%;
+  border: 1px solid var(--point);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.writePost .postImage label .selectedPhoto .selectedNone {
+  padding: 5rem;
+  transition: all 200ms ease;
+}
+.writePost .postImage label .selectedPhoto .selectedNone:hover {
+  scale: 1.1;
+}
+.writePost .postImage label .selectedPhoto .selectedNone img {
+  width: 2rem;
+}
+.writePost .postImage label #addPhoto {
+  display: none;
+}
+.writePost .btnWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.writePost .btnWrap button {
+  width: 48%;
+  padding: 0.8rem 0;
+  border-radius: 0.4rem;
+  border: none;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.writePost .btnWrap button:first-child {
+  background-color: #fff;
+  border: 1px solid var(--sub-light);
+  color: var(--sub-light);
+  transition: all 200ms ease;
+}
+.writePost .btnWrap button:first-child:hover {
+  background-color: var(--gbtn-hover);
+}
+.writePost .btnWrap button:last-child {
+  background-color: #fff;
+  border: 1px solid var(--point);
+  color: var(--point);
+  transition: all 200ms ease;
+}
+.writePost .btnWrap button:last-child:hover {
+  background-color: var(--pbtn-hover);
+}/*# sourceMappingURL=WritePost.css.map */

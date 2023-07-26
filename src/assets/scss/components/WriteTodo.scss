@@ -1,0 +1,144 @@
+li {
+  list-style: none;
+}
+
+button {
+  width: 5rem;
+  height: 1.6rem;
+  border: none;
+  background-color: var(--point);
+  border-radius: 0.3rem;
+  color: #fff;
+  margin-left: 0.4rem;
+  padding: 0.2rem 0;
+}
+
+.writeTodo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 26rem;
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 0.7rem;
+
+  .todoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 3rem;
+    padding: 1rem;
+    border-radius: 0.7rem 0.7rem 0 0;
+    background-color: var(--title-bar);
+
+    p {
+      color: var(--sub-thin);
+    }
+    img {
+      width: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .writeBox {
+    // border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 0.7rem 0.7rem;
+
+    .writeItem {
+      // border: 1px solid blue;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .title {
+        height: 3rem;
+        input {
+          width: 85%;
+          height: 100%;
+          text-align: end;
+
+          outline: none;
+          border: none;
+        }
+      }
+
+      .periodWrap {
+        display: flex;
+        flex-direction: column;
+
+        .period {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          // .periodBtn {
+          // }
+        }
+
+        .datePicker {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          margin: 0.5rem;
+        }
+      }
+
+      .alert {
+        height: 3rem;
+      }
+
+      .addUser {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        border: none;
+
+        .addUserTitle {
+          margin: 0.5rem 0;
+          color: var(--sub-thin);
+        }
+
+        label {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin: 0.5rem 0;
+          cursor: pointer;
+
+          .userInfo {
+            display: flex;
+            align-items: center;
+
+            .userImage {
+              width: 2rem;
+              height: 2rem;
+              border-radius: 50%;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              margin-right: 0.5rem;
+            }
+          }
+          .userCheck {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

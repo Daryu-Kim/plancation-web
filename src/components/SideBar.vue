@@ -79,6 +79,7 @@
 <script lang="ts">
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getFirestore, updateDoc, doc } from "firebase/firestore";
 export default {
   data() {
     return {
@@ -114,7 +115,7 @@ export default {
         const auth = getAuth()
         const user: any = auth.currentUser
         const storage = getStorage()
-        const storageRef = ref(storage, `Users/${user.uid}/${this.selectedPhoto.name}`)
+        const storageRef = ref(storage, `Users/${user.uid}/profile_image.png`)
 
         // 'file' comes from the Blob or File API
         const response = await uploadBytes(storageRef, this.selectedPhoto)
@@ -144,6 +145,7 @@ export default {
         photoURL: this.photoURL,
       }).then(() => {
         alert("유저프로필사진 업데이트 완료")
+        this.updateUser()
       }).catch((error) => {
         console.log(error)
       });
@@ -165,11 +167,25 @@ export default {
         displayName: this.displayName,
       }).then(() => {
         this.modifyDisplayname = false
+        this.updateUser()
         alert("유저 네임 업데이트 완료")
         console.log(user)
       }).catch((error) => {
         console.log(error)
       });
+    },
+
+    // 파이어스토어에 Users 사진과 닉네임 업데이트
+    async updateUser() {
+      const auth = getAuth()
+      const user: any = auth.currentUser
+      const db = getFirestore();
+      const thisUser = doc(db, `Users/${user.uid}`);
+      await updateDoc(thisUser, {
+        userImagePath: this.photoURL,
+        userName: this.displayName
+      });
+      return console.log("지금 변경된 유저정보 : ", this.displayName);
     },
 
     //로그아웃

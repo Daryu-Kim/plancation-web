@@ -22,39 +22,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.LoginJoinSlide {
-  width: 39rem;
-  background-color: var(--main);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .slideLogoWrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem 5rem;
-    // border: 1px solid red;
-
-    &>:first-child {
-      width: 8rem;
-    }
-
-    &>:nth-child(2) {
-      width: 10rem;
-      margin-top: 2rem;
-    }
-
-    .desc {
-      width: 25rem;
-      // border: 1px solid red;
-      text-align: center;
-      color: #fff;
-      margin-top: 3.8rem;
-    }
-  }
-}
+@import '../assets/scss/components/LoginJoinSlide.css';
 </style>
