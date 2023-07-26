@@ -11,26 +11,54 @@
       top: 0;
       right: 0;
       width: 84vw;
-
+      z-index: 50;
       display: flex;
       flex-direction: column;
 
       .mainScreen {
-        display: flex;
-
+        position: relative;
         width: 100%;
         height: 95vh;
-        padding: 1.7rem;
         background-color: var(--bgl);
+        // padding: 1.7rem;
 
-        // position: relative;
+        .currentUsers {
+          height: 5%;
+        }
 
-        // flex-direction: row;
-        // justify-content: center;
+        .overlay {
+          position: absolute;
+          opacity: 0.5;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #dedede;
+          display: none;
 
-        // .flex {
-        //   display: flex;
-        // }
+          &.active {
+            display: block;
+          }
+        }
+
+        .todoListWrap {
+          width: 100%;
+          height: 95%; //🐛
+          overflow: scroll;
+
+          padding: 1.5rem;
+          display: grid;
+          //gap: 간격조정 -> padding,margin이랑 똑같이 상하, 좌우값 입력된다.
+          gap: 1.6rem;
+          //1줄 4개
+          grid-template-columns: repeat(4, 1fr);
+          //1줄 3개
+          // grid-template-columns: 1fr 1fr 1fr;
+
+          // &.active {
+          //   display: none;
+          // }
+        }
       }
     }
   }

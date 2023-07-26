@@ -8,11 +8,14 @@
         <HeaderBar class="rightHeader" />
         <!-- 메인 화면 -->
         <div class="mainScreen">
-          <CurrentUsers @addClick="openReadModal" />
-          <WriteTodo v-if="showPostModal" />
-          <TodoList class="flex" />
-          <TodoList class="flex" />
-          <TodoList class="flex" />
+          <div class="overlay" @click="isActivefalse()" :class="{ active: isActive }"></div>
+          <CurrentUsers class="currentUsers" @addClick="openReadModal" />
+          <div class="todoListWrap">
+            <WriteTodo v-if="showPostModal" />
+            <TodoList class="flex" />
+            <TodoList class="flex" />
+            <TodoList class="flex" />
+          </div>
           <!-- <WriteTodo /> -->
         </div>
       </div>
@@ -55,6 +58,14 @@ export default {
       this.selectedPost = item
       this.showPostModal = true;
       console.log(item)
+    },
+
+    //취소눌렀을 때
+    isActivefalse() {
+      this.selectedPost = null //선택한 기록데이터 초기화
+      this.isActive = false //오버레이 가리기
+      this.showWriteModal = false //글작성 모달 없애기
+      this.showPostModal = false //상세보기 모달 없애기
     },
   }
 }

@@ -11,13 +11,38 @@
   top: 0;
   right: 0;
   width: 84vw;
+  z-index: 50;
   display: flex;
   flex-direction: column;
 }
 .todo .fixMenu .fixHeaderBar .mainScreen {
-  display: flex;
+  position: relative;
   width: 100%;
   height: 95vh;
-  padding: 1.7rem;
   background-color: var(--bgl);
+}
+.todo .fixMenu .fixHeaderBar .mainScreen .currentUsers {
+  height: 5%;
+}
+.todo .fixMenu .fixHeaderBar .mainScreen .overlay {
+  position: absolute;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dedede;
+  display: none;
+}
+.todo .fixMenu .fixHeaderBar .mainScreen .overlay.active {
+  display: block;
+}
+.todo .fixMenu .fixHeaderBar .mainScreen .todoListWrap {
+  width: 100%;
+  height: 95%;
+  overflow: scroll;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: repeat(4, 1fr);
 }/*# sourceMappingURL=todo.css.map */
