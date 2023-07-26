@@ -6,10 +6,11 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 26rem;
+  width: 30rem;
   height: 30rem;
   background-color: #fff;
   border-radius: 0.7rem;
+  margin-right: 1rem;
 }
 .todoList .todoHeader {
   display: flex;

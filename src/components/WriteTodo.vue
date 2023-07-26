@@ -49,10 +49,7 @@
           <p>알림</p>
           <!-- <알림의 모달띄울곳> -->
           <div>
-            <p>rkdgoals</p>
-            <!-- <p>rkdgoals</p>
-            <p>rkdgoals</p>
-            <p>rkdgoals</p> -->
+            <p>없음</p>
           </div>
         </li>
         <li class="addUser">
@@ -68,7 +65,7 @@
 
             <img v-show="!user.checked" src="../assets/images/main/icon_userEmptyBox.svg" alt="체크없는박스">
             <img v-show="user.checked" src="../assets/images/main/icon_userCheckBox.svg" alt="체크박스">
-            <input :id="'userCheck' + index" type="checkbox" v-model="user.checked">
+            <input :id="'userCheck' + index" type="checkbox" v-model="user.checked" class="userCheck">
           </label>
         </li>
       </ul>
@@ -111,10 +108,10 @@ const sTime = ref();
 const eTime = ref();
 
 const users = ref([
-  { nickname: '유저닉네임1', checked: false },
-  { nickname: '유저닉네임2', checked: false },
-  { nickname: '유저닉네임3', checked: false },
-  { nickname: '유저닉네임4', checked: false },
+  { nickname: '강해민', checked: false },
+  { nickname: '여상현', checked: false },
+  { nickname: '김원재', checked: false },
+  { nickname: '백승호', checked: false },
 ]);
 
 </script>

@@ -102,6 +102,7 @@ button {
   display: flex;
   justify-content: space-between;
   margin: 0.5rem 0;
+  cursor: pointer;
 }
 .writeTodo .writeBox .writeItem .addUser label .userInfo {
   display: flex;
@@ -116,6 +117,6 @@ button {
   background-size: cover;
   margin-right: 0.5rem;
 }
-.writeTodo .writeBox .writeItem .addUser label #userCheck {
+.writeTodo .writeBox .writeItem .addUser label .userCheck {
   display: none;
 }/*# sourceMappingURL=WriteTodo.css.map */
