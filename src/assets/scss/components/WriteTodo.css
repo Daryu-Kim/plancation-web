@@ -97,6 +97,9 @@ button {
   margin: 0.5rem 0;
   color: var(--sub-thin);
 }
+.writeTodo .writeBox .writeItem .addUser img {
+  width: 1.5rem;
+}
 .writeTodo .writeBox .writeItem .addUser label {
   width: 100%;
   display: flex;
