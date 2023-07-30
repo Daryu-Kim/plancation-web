@@ -91,7 +91,19 @@ button {
   margin: 0.5rem;
 }
 .writeTodo .writeBox .writeItem .alert {
+  position: relative;
   height: 3rem;
+  cursor: pointer;
+}
+.writeTodo .writeBox .writeItem .alert .alertModal {
+  display: none;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  z-index: 3;
+}
+.writeTodo .writeBox .writeItem .alert .alertModal.active {
+  display: block;
 }
 .writeTodo .writeBox .writeItem .addUser {
   display: flex;

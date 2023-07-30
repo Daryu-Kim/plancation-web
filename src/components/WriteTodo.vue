@@ -10,8 +10,8 @@
       <ul class="writeItem">
         <li class="title">
           <p>제목</p>
-          <input class="fs_10" type=" text" placeholder="어떤 계획이 있으신가요?" v-bind:value="state.postTitle"
-            v-on:input="setPostTitle">
+          <input class="fs_10" type=" text" placeholder="어떤 계획이 있으신가요?" v-bind:value="state.todoTitle"
+            v-on:input="setTodoTitle">
         </li>
 
         <li class="periodWrap">
@@ -47,11 +47,12 @@
           </div>
         </li>
 
-        <li class="alert">
+        <li class="alert" @click="setActive()">
           <p>알림</p>
           <!-- <알림의 모달띄울곳> -->
           <div>
-            <p>없음</p>
+            <p class="selectAlert">{{ state.alertText }}</p>
+            <AlertModal class="alertModal" :class="{ active: state.isActive }" @updateAlert="updateAlertType" />
           </div>
         </li>
         <li class="addUser">
@@ -77,11 +78,12 @@
 
 
 <script setup lang="ts">
+import AlertModal from '../components/AlertModal.vue'
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { ref, reactive, onMounted, useTransitionState } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, getFirestore, Timestamp, addDoc, collection } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, addDoc, collection } from 'firebase/firestore';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -92,65 +94,103 @@ const eDate = ref();
 const sTime = ref();
 const eTime = ref();
 
+
 const state = reactive({
-  calendarUser: [] as any[],
-  postTitle: '',
+  alertType: [] as any,
+  alertText: '없음',
+  isActive: false,
   calendarID: route.params.id, // 현재 캘린더 id
-  userProfile: [] as any[], //유저의 닉네임,사진,체크유무 파악
-  toDoUsers: [] as any[],
+  calendarUser: [] as any[], // 현재 캘린더의 참여자
+  userProfile: [] as any[], // 유저의 프로필 닉네임,사진,체크유무 파악
+  todoTitle: '', // 할일제목
+  toDoUsers: [] as any[], //할일에 참여할 유저
 });
 
 // 메서드 정의
-// 할일 제목받아오기
-const setPostTitle = (e: any) => {
-  var writeTitle = e.target.value;
-  state.postTitle = writeTitle;
-  // console.log(state.postTitle);
-};
-
-// const checkedUser = (user: any) => {
-//   if (user.checked) {
-//     state.toDoUsers = user.user.userID
-//     // console.log(user.user.userID);
-//   } else {
-//     console.log(user.user.userName + "이 체크 해제되었음")
-//   }
-//   console.log(state.toDoUsers)
-// };
-
-const checkedUser = (user: any) => {
-  if (user.checked) {
-    state.toDoUsers.push(user.user.userID);
-  } else {
-    const index = state.toDoUsers.indexOf(user.user.userID);
-    if (index > -1) {
-      state.toDoUsers.splice(index, 1);
-    }
-    console.log(user.user.userName + "이 체크 해제되었음")
-  }
-  console.log(state.toDoUsers)
-};
-
-
-
 //현재 캘린더의 참여유저들 알아오기
 const getCalendars = async () => {
   const db = getFirestore();
   const yourCalendars = doc(db, 'Calendars', `${state.calendarID}`);
-  const docSnap = await getDoc(yourCalendars);
-
-  if (docSnap.exists()) {
-    state.calendarUser = docSnap.data().calendarUsers.map((user) => ({
-      userUID: user,
-    }));
-    // state.calendarUser.push(docSnap.data());
-  } else {
-    console.log('No such document!');
+  try {
+    const docSnap = await getDoc(yourCalendars)
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          state.calendarUser = docSnap.data().calendarUsers.map((user) => ({
+            userUID: user,
+          }));
+        } else {
+          console.log('No such document!');
+        }
+      })
+      .catch((e) => { console.log(e.message) });
+  } catch (e) {
+    console.log(e.message)
   }
-  return console.log(state.calendarUser)
+  return;
 };
 
-//date타입으로 변환
+//현재캘린더 참여자 uid로 파이어베이스에서 Users 컬렉션을 찾는 함수
+const findUserCollections = async () => {
+  const db = getFirestore();
+  state.calendarUser.forEach(async (user: any) => {
+    // const userUid = userObj.userUID;
+    const userDoc = doc(db, "Users", user.userUID);
+    try {
+      const docSnap = await getDoc(userDoc)
+        .then((docSnap) => {
+          state.userProfile.push({
+            user: docSnap.data(),
+            checked: false
+          });
+        })
+        .catch((e) => { console.log(e.message) })
+    }
+    catch (e) {
+      console.log(e.message)
+    }
+    return;
+  });
+};
+
+const setActive = () => {
+  state.isActive = true
+}
+
+const setActiveFalse = () => {
+  state.isActive = false
+}
+
+//알림모달
+const updateAlertType = (alertText: any) => {
+  state.alertType = alertText;
+  state.alertText = alertText.alert;
+  console.log(state.alertType)
+  setActiveFalse();
+};
+
+
+// 할일 제목받아오기
+const setTodoTitle = (e: any) => {
+  var writeTitle = e.target.value;
+  state.todoTitle = writeTitle;
+};
+
+//todo 참여자 목록에 추가
+const checkedUser = (user: any) => {
+  if (user.checked) {
+    state.toDoUsers.push(user.user.userID);
+    console.log(user.user.userName + "이 체크되었음")
+  } else {
+    const index = state.toDoUsers.indexOf(user.user.userID);
+    if (index > -1) {
+      state.toDoUsers.splice(index, 1);
+      console.log(user.user.userName + "이 체크 해제되었음")
+    }
+  }
+  // console.log(state.toDoUsers)
+};
+
+//고른 날짜&시간 date타입으로 변환
 const combineDateTime = (date, time) => {
   if (date && time) {
     const formattedDateTime = `${date}T${time}`;
@@ -160,43 +200,12 @@ const combineDateTime = (date, time) => {
   }
 };
 
-
-// 새로 추가한 함수: state.calendarUser의 배열에 담긴 유저uid로 파이어베이스에서 유저 uid가 포함된 컬렉션을 찾는 함수
-const findUserCollections = async () => {
-  const db = getFirestore();
-  state.calendarUser.forEach(async (userObj: any) => {
-    const userUid = userObj.userUID;
-
-    const userDoc = doc(db, "Users", userUid);
-    try {
-      const docSnap = await getDoc(userDoc)
-        .then((docSnap) => {
-          // state.userProfile.user.push(docSnap.data())
-          // state.userProfile = docSnap.data().map((user) => ({
-          //   user: user,
-          //   checked: false,
-          // }));
-          state.userProfile.push({
-            user: docSnap.data(),
-            checked: false
-          });
-
-        })
-        .catch((e) => { console.log(e) })
-    }
-    catch (e) {
-      console.log(e)
-    }
-    return console.log(state.userProfile)
-  });
-};
-
-
 //파이어스토어에 todo등록
 const __addTodo = async () => {
+  //선택한 날짜와 시간 합치기
   console.log(sDate.value, sTime.value);
-  const combinedStartDate = combineDateTime(sDate.value, sTime.value);
-  const combinedEndDate = combineDateTime(eDate.value, eTime.value);
+  const startDate = combineDateTime(sDate.value, sTime.value);
+  const endDate = combineDateTime(eDate.value, eTime.value);
 
   try {
     const auth = getAuth()
@@ -204,14 +213,14 @@ const __addTodo = async () => {
     const db = getFirestore();
 
     //랜덤 ID로 문서생성
-    const docRef: any = await addDoc(collection(db, `Calendars/${state.calendarID}/Todos`), {
-      todoAlerts: "없음",
+    const docRef = await addDoc(collection(db, `Calendars/${state.calendarID}/Todos`), {
+      todoAlerts: state.alertType.number,
       todoAuthorID: user.uid,
       todoCheckUsers: [],
-      todoEndTime: combinedEndDate,
-      todoStartTime: combinedStartDate,
-      todoTitle: state.postTitle,
-      todoUsers: [],
+      todoEndTime: startDate,
+      todoStartTime: endDate,
+      todoTitle: state.todoTitle,
+      todoUsers: state.toDoUsers,
       todoID: "test"
     }).then(() => {
       alert("할 일이 추가되었습니다!")
@@ -220,21 +229,16 @@ const __addTodo = async () => {
   } catch (err) {
     console.log(err.message)
   }
-  //   // - todoAlerts: number = 할 일 알림 (0.없음 1.당일 2.하루전 3.일주일전)
-  //   // - todoAuthorID: string = 할 일 게시자 UID
-  //   // - todoCheckUsers: string[] = 할 일 체크한 유저들의 UID
-  //   // - todoEndTime: Timestamp = 할 일 종료 시간
-  //   // - todoStartTime: Timestamp = 할 일 시작 시간
-  //   // - todoTitle: string = 할 일 제목
-  //   // - todoUsers: string[] = 할 일 대상 유저들의 UID
-  //   // - todoID: string = 할 일 ID
-
-  console.log(combinedStartDate, combinedEndDate, state.userProfile);
 };
+//   // - todoAlerts: number = 할 일 알림 (0.없음 1.당일 2.하루전 3.일주일전)
+//   // - todoAuthorID: string = 할 일 게시자 UID
+//   // - todoCheckUsers: string[] = 할 일 체크한 유저들의 UID
+//   // - todoEndTime: Timestamp = 할 일 종료 시간
+//   // - todoStartTime: Timestamp = 할 일 시작 시간
+//   // - todoTitle: string = 할 일 제목
+//   // - todoUsers: string[] = 할 일 대상 유저들의 UID
+//   // - todoID: string = 할 일 ID
 
-
-
-// 라이프사이클훅을 핸들링할 때 Composition API를 사용합니다.
 onMounted(async () => {
   await getCalendars();
   await findUserCollections();
