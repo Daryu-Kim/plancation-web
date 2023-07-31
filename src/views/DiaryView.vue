@@ -54,8 +54,10 @@ export default {
     WritePost,
     ReadDiaryModal,
   },
+
   //게시물 클릭이벤트, 게시물 추가버튼 클릭이벤트
   emits: ['diaryClick', 'addClick'],
+
   created() {
     this.getDiary()
   },

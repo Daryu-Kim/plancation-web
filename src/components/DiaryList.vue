@@ -1,5 +1,5 @@
 <template>
-  <div class="diaryList" v-for:="item in  allDiary " :key="item.id">
+  <div class="diaryList" v-for:="item in allDiary " :key="item.id">
     <!-- $emit으로 부모컴포넌트에게 클릭이벤트전달 :👇전달인자로 item(클릭한 그 문서데이터)도 같이 올리기-->
     <div class="diaryContent" @click="$emit('diaryClick', item)">
       <div class="imageWrap">
@@ -45,7 +45,9 @@ export default {
 
     };
   },
+
   emits: ['diaryClick'],
+
   methods: {
     //다이어리 글쓴이와 일치하는 유저찾아 가져오기
     // async findUser(user) {
