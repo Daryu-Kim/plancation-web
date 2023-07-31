@@ -83,10 +83,9 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { ref, reactive, onMounted } from 'vue';
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, getFirestore, addDoc, collection } from 'firebase/firestore';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { useRoute, useRouter } from 'vue-router';
+import { v4 as uuidv4 } from 'uuid';
 
 // 상태 정의
 const sDate = ref();
@@ -94,8 +93,11 @@ const eDate = ref();
 const sTime = ref();
 const eTime = ref();
 
+const route = useRoute();
+const router = useRouter();
 
 const state = reactive({
+  randomID: '',
   alertType: [] as any,
   alertText: '없음',
   isActive: false,
@@ -152,10 +154,12 @@ const findUserCollections = async () => {
   });
 };
 
+//모달열기
 const setActive = () => {
   state.isActive = true
 }
 
+//모달닫기
 const setActiveFalse = () => {
   state.isActive = false
 }
@@ -200,10 +204,18 @@ const combineDateTime = (date, time) => {
   }
 };
 
+//UUID라이브러리로 랜덤ID생성
+const createUUID = () => {
+  const newUUID = uuidv4()
+  state.randomID = newUUID
+
+  return
+}
+
+
 //파이어스토어에 todo등록
 const __addTodo = async () => {
   //선택한 날짜와 시간 합치기
-  console.log(sDate.value, sTime.value);
   const startDate = combineDateTime(sDate.value, sTime.value);
   const endDate = combineDateTime(eDate.value, eTime.value);
 
@@ -213,16 +225,17 @@ const __addTodo = async () => {
     const db = getFirestore();
 
     //랜덤 ID로 문서생성
-    const docRef = await addDoc(collection(db, `Calendars/${state.calendarID}/Todos`), {
-      todoAlerts: state.alertType.number,
+    const docRef = await setDoc(doc(db, `Calendars/${state.calendarID}/Todos`, state.randomID), {
+      todoAlerts: state.alertType == "" ? 0 : state.alertType.number,
       todoAuthorID: user.uid,
       todoCheckUsers: [],
       todoEndTime: startDate,
       todoStartTime: endDate,
       todoTitle: state.todoTitle,
       todoUsers: state.toDoUsers,
-      todoID: "test"
+      todoID: state.randomID,
     }).then(() => {
+      router.go(0);
       alert("할 일이 추가되었습니다!")
     })
       .catch((e) => { alert(e.message) })
@@ -242,6 +255,7 @@ const __addTodo = async () => {
 onMounted(async () => {
   await getCalendars();
   await findUserCollections();
+  await createUUID();
 });
 
 </script>
