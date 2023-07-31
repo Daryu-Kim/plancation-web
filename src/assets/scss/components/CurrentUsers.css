@@ -1,7 +1,6 @@
 .currentUsers {
   display: flex;
   align-items: center;
-  padding: 1rem 0 0 1.7rem;
 }
 .currentUsers p {
   color: var(--sub-medium);
@@ -14,7 +13,7 @@
 }
 .currentUsers button {
   width: 6rem;
-  height: 3rem;
+  height: 2.5rem;
   border-radius: 5rem;
   cursor: pointer;
   background-color: var(--primary);

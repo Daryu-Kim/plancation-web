@@ -20,12 +20,11 @@
         background-color: var(--bgl);
         width: 100%;
         height: 95vh; //🐛 높이값 나머지를 구해야하는데
-
+        // border: 1px solid red;
         overflow: hidden;
 
         .overlay {
           position: absolute;
-          z-index: 10;
           opacity: 0.5;
           top: 0;
           left: 0;
@@ -41,24 +40,24 @@
 
         .diaryListWrap {
           width: 100%;
-          height: 92%; //🐛 높이값 나머지를 구해야하는데
+          height: 95%; //🐛 높이값 나머지를 구해야하는데
           // filter: blur(6px);
           // flex-wrap: wrap;
-          display: flex;
+          // display: flex;
           overflow: scroll;
-          // padding: 0.8rem;
 
-          padding: 1.7rem;
+          padding: 1.5rem;
           // border: 1px solid red;
-          display: grid;
-          //gap: 간격조정 -> padding,margin이랑 똑같이 상하, 좌우값 입력된다.
-          gap: 0.8rem;
-          //1줄 5개
-          grid-template-columns: repeat(6, 1fr);
-
           // &.active {
           //   display: none;
           // }
+
+          display: grid;
+          //gap: 간격조정 -> padding,margin이랑 똑같이 상하, 좌우값 입력된다.
+          gap: 1.4rem;
+          //1줄 6개
+          grid-template-columns: repeat(6, 1fr);
+          grid-template-rows: repeat(6, 1fr);
         }
       }
     }

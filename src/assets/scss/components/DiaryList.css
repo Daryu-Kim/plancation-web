@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 14rem;
-  height: 18rem;
+  width: 100%;
+  height: 100%;
   padding: 0.5rem;
   background-color: #fff;
   border-radius: 0.6rem;
   cursor: pointer;
 }
 .diaryList .diaryContent .imageWrap {
-  width: 12.5rem;
+  width: 95%;
   height: 12.5rem;
   overflow: hidden;
   border-radius: 0.6rem;

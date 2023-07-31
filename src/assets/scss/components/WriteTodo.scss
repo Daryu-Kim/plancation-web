@@ -11,9 +11,16 @@ button {
   color: #fff;
   margin-left: 0.4rem;
   padding: 0.2rem 0;
+  cursor: pointer;
 }
 
 .writeTodo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -99,7 +106,21 @@ button {
       }
 
       .alert {
+        position: relative;
         height: 3rem;
+        cursor: pointer;
+
+        .alertModal {
+          display: none;
+          position: absolute;
+          top: 3rem;
+          right: 0;
+          z-index: 3;
+
+          &.active {
+            display: block;
+          }
+        }
       }
 
       .addUser {
@@ -111,6 +132,10 @@ button {
         .addUserTitle {
           margin: 0.5rem 0;
           color: var(--sub-thin);
+        }
+
+        img {
+          width: 1.5rem;
         }
 
         label {

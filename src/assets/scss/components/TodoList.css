@@ -6,7 +6,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30rem;
+  width: 100%;
   height: 30rem;
   background-color: #fff;
   border-radius: 0.7rem;
@@ -56,6 +56,9 @@ li {
 }
 .todoList .ListBox ul .listItem label input {
   display: none;
+}
+.todoList .ListBox ul .listItem img {
+  width: 1.5rem;
 }
 .todoList .ListBox ul .listContent {
   width: 90%;
