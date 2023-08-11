@@ -23,7 +23,6 @@
 }
 .diary .fixMenu .fixHeaderBar .mainScreen .overlay {
   position: absolute;
-  z-index: 10;
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -37,11 +36,11 @@
 }
 .diary .fixMenu .fixHeaderBar .mainScreen .diaryListWrap {
   width: 100%;
-  height: 92%;
-  display: flex;
+  height: 95%;
   overflow: scroll;
-  padding: 1.7rem;
+  padding: 1.5rem;
   display: grid;
-  gap: 0.8rem;
+  gap: 1.4rem;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }/*# sourceMappingURL=diary.css.map */

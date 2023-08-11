@@ -27,6 +27,8 @@
             <!-- ⚪ $emit으로 자식컴포넌트에서 부모컴포넌트에게 diaryClick이라는 클릭이벤트를 넘겨줌. -->
             <!-- ⚪ allDiary로 가져온 기록게시물 전부 props 전달하기 -->
             <DiaryList @diaryClick="openReadModal" :allDiary="postList" />
+            <DiaryList @diaryClick="openReadModal" :allDiary="postList" />
+            <DiaryList @diaryClick="openReadModal" :allDiary="postList" />
           </div>
         </div>
       </div>
@@ -52,11 +54,14 @@ export default {
     WritePost,
     ReadDiaryModal,
   },
+
   //게시물 클릭이벤트, 게시물 추가버튼 클릭이벤트
   emits: ['diaryClick', 'addClick'],
+
   created() {
     this.getDiary()
   },
+
   data() {
     return {
       isActive: false, //오버레이
@@ -77,16 +82,19 @@ export default {
       this.showPostModal = true;
       console.log(item)
     },
+
     // 게시글 작성 모달
     openWriteModal() {
       this.isActive = true
       this.showWriteModal = true
     },
+
     // 게시글 수정 모달
     openUpdateModal() {
       this.showPostModal = false
       this.showWriteModal = true
     },
+
     //취소눌렀을 때
     isActivefalse() {
       this.selectedPost = null //선택한 기록데이터 초기화
