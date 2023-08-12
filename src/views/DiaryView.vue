@@ -61,6 +61,7 @@ export default {
   created() {
     this.getDiary()
   },
+
   data() {
     return {
       isActive: false, //오버레이
@@ -81,16 +82,19 @@ export default {
       this.showPostModal = true;
       console.log(item)
     },
+
     // 게시글 작성 모달
     openWriteModal() {
       this.isActive = true
       this.showWriteModal = true
     },
+
     // 게시글 수정 모달
     openUpdateModal() {
       this.showPostModal = false
       this.showWriteModal = true
     },
+
     //취소눌렀을 때
     isActivefalse() {
       this.selectedPost = null //선택한 기록데이터 초기화

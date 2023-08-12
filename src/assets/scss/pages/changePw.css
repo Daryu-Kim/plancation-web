@@ -28,7 +28,8 @@
   align-items: center;
 }
 .changePw .fixMenu .fixHeaderBar .mainScreen .centerPwModal .changePwModal .arrowIcon {
-  margin: 1.5rem 0 5rem 0;
+  width: 1.5rem;
+  margin: 1rem 0 5rem 0;
   cursor: pointer;
 }
 .changePw .fixMenu .fixHeaderBar .mainScreen .centerPwModal .changePwModal h1 {

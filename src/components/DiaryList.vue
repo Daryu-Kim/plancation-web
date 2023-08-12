@@ -38,6 +38,7 @@ export default {
   },
   created() {
     console.log(this.allDiary);
+    console.log(this.$route.params.id)
   },
   data() {
     return {
