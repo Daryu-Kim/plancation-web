@@ -41,4 +41,9 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+.home .fixMenu .fixHeaderBar .mainScreen .notifyTitle .btn_removeAlert {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: end;
 }/*# sourceMappingURL=home.css.map */

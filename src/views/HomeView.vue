@@ -14,7 +14,7 @@
           </div>
           <div class="notifyTitle">
             <p class="homeTitle fs_12">새로운 알림</p>
-            <button class="fs_12">
+            <button class="btn_removeAlert fs_12">
               알림 모두 지우기
             </button>
           </div>

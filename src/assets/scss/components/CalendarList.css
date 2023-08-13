@@ -57,6 +57,7 @@
   background-color: var(--point);
 }
 .calendarList .bottom button {
+  height: 2rem;
   padding: 0.4rem 0.3rem;
   border-radius: 0.6rem;
   border: none;
