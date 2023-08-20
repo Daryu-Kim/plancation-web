@@ -10,11 +10,18 @@
     <router-link to="/setting">
       <img src="@/assets/images/main/icon_set.svg" alt="설정아이콘">
     </router-link>
+    <!-- <div @click="goSetting()">
+      <img src="@/assets/images/main/icon_set.svg" alt="설정아이콘">
+    </div> -->
   </div>
 </template>
 <script lang="ts">
 export default {
-
+  methods: {
+    goSetting() {
+      this.$router.push(`/calendar/${this.$route.params.id}/setting`);
+    },
+  }
 }
 </script>
 <style lang="scss">

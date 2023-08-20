@@ -17,6 +17,6 @@
 .calendar .fixMenu .fixHeaderBar .mainScreen {
   background-color: var(--bgl);
   width: 100%;
-  height: 95vh;
+  height: calc(100vh - 3.6rem);
   padding: 1.7rem;
 }/*# sourceMappingURL=calendar.css.map */

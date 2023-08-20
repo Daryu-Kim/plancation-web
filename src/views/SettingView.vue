@@ -8,7 +8,6 @@
         <HeaderBar class="rightHeader" />
         <!-- 메인 화면 -->
         <div class="mainScreen">
-
         </div>
       </div>
     </div>
@@ -25,6 +24,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 @import '../assets/scss/pages/setting.css'
 </style>

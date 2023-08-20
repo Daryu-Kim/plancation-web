@@ -1,11 +1,13 @@
 .home {
   .fixMenu {
     position: relative;
+
     .fixSideBar {
       position: static;
       top: 0;
       left: 0;
     }
+
     .fixHeaderBar {
       position: absolute;
       top: 0;
@@ -16,9 +18,12 @@
       flex-direction: column;
 
       .mainScreen {
+        position: relative;
+
         background-color: var(--bgl);
         width: 100%;
-        height: 95vh; //✅🐛
+        height: calc(100vh - 3.6rem);
+        // height: 95vh; //✅🐛
         padding: 1.7rem;
         // border: 1px solid red;
         .homeTitle {
@@ -27,9 +32,142 @@
           border-bottom: 1px solid var(--line);
           color: var(--sub-bold);
         }
+
+        .overlay {
+          display: none;
+
+          width: 100%;
+          height: 100%;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+
+          background-color: #dedede;
+          opacity: 0.5;
+        }
+
+        .addCalendarModal {
+          display: none;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -70%);
+          z-index: 2;
+
+          width: 30rem;
+          height: 12rem;
+          padding: 2rem;
+          border-radius: 0.6rem;
+          background-color: #fff;
+          box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+
+          .addCalendarModalContent {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            input {
+              width: 100%;
+              padding: 0.5rem;
+              border: none;
+              border-bottom: 1px solid var(--point);
+              outline: none;
+
+              margin-bottom: 1.8rem;
+            }
+
+            .addCalendarBtnWrap {
+              width: 100%;
+
+              display: flex;
+              justify-content: space-between;
+
+              .cancleBtn {
+                cursor: pointer;
+                width: calc(100% / 2 - 0.5rem);
+                height: 2.5rem;
+                border: 1px solid var(--sub-light);
+                border-radius: 0.3rem;
+                padding: 0.2rem;
+                color: var(--sub-light);
+                background-color: #fff;
+
+                &:hover {
+                  background-color: var(--gbtn-hover);
+                  color: var(--sub-thin);
+                }
+              }
+
+              .addBtn {
+                cursor: pointer;
+                width: calc(100% / 2 - 0.5rem);
+                height: 2.5rem;
+                border: 1px solid var(--point);
+                border-radius: 0.3rem;
+                padding: 0.2rem;
+                color: var(--point);
+                background-color: #fff;
+
+                &:hover {
+                  background-color: var(--pbtn-hover);
+                }
+              }
+            }
+          }
+        }
+
         .CalendarListWrap {
           display: flex;
           margin-bottom: 1.2rem;
+
+          .addCalendar {
+            cursor: pointer;
+
+            width: 14rem;
+            height: 14rem;
+
+            background-color: var(--bgw);
+            border-radius: 0.6rem;
+
+            padding: 1rem;
+            margin-right: 1.2rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            transition: all 200ms ease;
+
+            // img {
+            //   fill: #fff;
+            //   stroke: #fff;
+            // }
+
+            p {
+              padding-top: 1.5rem;
+              color: var(--sub-bold);
+            }
+
+            &:hover {
+              // background-color: var(--pbtn-hover);
+              background-color: var(--main);
+              border: none;
+              .add_icon {
+                fill: white;
+                stroke: #fff;
+              }
+              p {
+                color: #fff;
+              }
+            }
+          }
         }
         .notifyTitle {
           position: relative;

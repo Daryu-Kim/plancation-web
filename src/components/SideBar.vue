@@ -24,7 +24,7 @@
 
     <div class="sidebarMenu">
       <!-- 👇현재 라우터의 이름이 home이면 ? 보여줄 것  -->
-      <template v-if="$route.name === 'home' || $route.name === 'changepw'">
+      <template v-if="$route.name === 'home' || $route.name === 'changepw' || $route.name === 'setting'">
         <ul class="sidebarList">
           <li :class="{ active: $route.path === '/changepw' }" @click="goChangedPw()">
             <img src="@/assets/images/main/icon_key.svg" alt="열쇠아이콘">
