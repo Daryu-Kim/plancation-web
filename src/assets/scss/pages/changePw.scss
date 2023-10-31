@@ -18,7 +18,7 @@
       .mainScreen {
         background-color: var(--bgl);
         width: 100%;
-        height: 95vh;
+        height: calc(100vh - 3.6rem);
         // border: 1px solid red;
         padding: 1.7rem;
 
@@ -33,6 +33,7 @@
           .changePwModal {
             .arrowIcon {
               width: 1.5rem;
+              height: 2.8rem;
               margin: 1rem 0 5rem 0;
               cursor: pointer;
             }
@@ -42,8 +43,9 @@
 
             .changePwBtn {
               width: 100%;
+              height: 2.8rem;
               padding: 0.7rem 0;
-              margin-top: 7.5rem;
+              margin-top: 7rem;
               border-radius: 5rem;
               border: none;
               color: #fff;

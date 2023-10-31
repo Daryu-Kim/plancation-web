@@ -114,7 +114,7 @@ const getCalendars = async () => {
   const db = getFirestore();
   const yourCalendars = doc(db, 'Calendars', `${state.calendarID}`);
   try {
-    const docSnap = await getDoc(yourCalendars)
+    await getDoc(yourCalendars)
       .then((docSnap) => {
         if (docSnap.exists()) {
           state.calendarUser = docSnap.data().calendarUsers.map((user) => ({
@@ -138,17 +138,17 @@ const findUserCollections = async () => {
     // const userUid = userObj.userUID;
     const userDoc = doc(db, "Users", user.userUID);
     try {
-      const docSnap = await getDoc(userDoc)
+      await getDoc(userDoc)
         .then((docSnap) => {
           state.userProfile.push({
             user: docSnap.data(),
             checked: false
           });
         })
-        .catch((e) => { console.log(e.message) })
+        .catch((e) => { alert(e.message) })
     }
     catch (e) {
-      console.log(e.message)
+      alert(e.message)
     }
     return;
   });
@@ -225,7 +225,7 @@ const __addTodo = async () => {
     const db = getFirestore();
 
     //랜덤 ID로 문서생성
-    const docRef = await setDoc(doc(db, `Calendars/${state.calendarID}/Todos`, state.randomID), {
+    await setDoc(doc(db, `Calendars/${state.calendarID}/Todos`, state.randomID), {
       todoAlerts: state.alertType == "" ? 0 : state.alertType.number,
       todoAuthorID: user.uid,
       todoCheckUsers: [],

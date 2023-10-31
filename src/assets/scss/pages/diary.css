@@ -18,7 +18,7 @@
   position: relative;
   background-color: var(--bgl);
   width: 100%;
-  height: 95vh;
+  height: calc(100vh - 3.6rem);
   overflow: hidden;
 }
 .diary .fixMenu .fixHeaderBar .mainScreen .overlay {

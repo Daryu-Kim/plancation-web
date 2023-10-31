@@ -18,7 +18,7 @@
       .mainScreen {
         position: relative;
         width: 100%;
-        height: 95vh;
+        height: calc(100vh - 3.6rem);
         background-color: var(--bgl);
         // padding: 1.7rem;
 
